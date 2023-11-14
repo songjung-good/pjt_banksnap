@@ -60,7 +60,6 @@ const loadMap = () => {
   };
 
   map.value = new window.kakao.maps.Map(container, options);
-  // console.log(map.value)
   infowindow.value = new window.kakao.maps.InfoWindow({ zIndex: 1 }); // Correct initialization
   
   // 키워드로 장소를 검색합니다
@@ -72,7 +71,6 @@ const loadMap = () => {
 const searchPlaces = function() {
     
     const keywordValue = keyword.value.trim();
-    console.log(keywordValue)
     if (!keywordValue) {
       alert('키워드를 입력해주세요!');
       return;
@@ -131,8 +129,6 @@ function displayPlaces(places) {
         // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
         // LatLngBounds 객체에 좌표를 추가합니다
         bounds.extend(placePosition);
-        // console.log(bounds);
-        // console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!')
         // 마커와 검색결과 항목에 mouseover 했을때
         // 해당 장소에 인포윈도우에 장소명을 표시합니다
         // mouseout 했을 때는 인포윈도우를 닫습니다

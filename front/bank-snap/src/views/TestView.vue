@@ -43,6 +43,9 @@
 <script setup>
 import axios from 'axios'
 import { ref, onMounted, watch } from 'vue'
+import { useCounterStore } from '@/stores/counter'
+
+
 const selectedCur1 = ref('미국 달러')
 const selectedCur2 = ref('한국 원')
 
@@ -51,19 +54,19 @@ const exchangeMoney2 = ref(0)
 
 
 const dataList = ref([])
+const store = useCounterStore()
 
 onMounted(() => {
   axios({
     method: 'get',
-    url: 'http://127.0.0.1:8000/bank/exchange/'
+    url: `${store.url}/bank/exchange/`
   })
     .then((res) => {
-      dataList.value = res.data.response
+      dataList.value = res.data
     })
     .catch((err) => {
       console.log(err)
     })
-    // exchangeMoney()
 })
 const cur1 = ref(null)
 const cur2 = ref(null)
