@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>MAIN</h1>
-    <p>내용입력</p>
+    <p>제발충돌하지마</p>
   </div>
 </template>
 
