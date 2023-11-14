@@ -1,6 +1,6 @@
 <template>
   <header>
-    <img alt="Pjt logo" class="logo" src="@/assets/exlogo.gif" width="125" height="125" />
+    <img alt="Pjt logo" class="logo" src="@/assets/exlogo.gif" />
     <div class="wrapper">
       <nav>
         <RouterLink :to="{ name: 'main' }">Home</RouterLink>
@@ -13,11 +13,11 @@
       </nav>
     </div>
   </header>
+  <RouterView />
+  
+  <footer>
 
-  <div>
-    <h1>MAIN</h1>
-      <RouterView />
-  </div>
+  </footer>
 
 </template>
 
@@ -26,5 +26,33 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <style scoped>
+header {
+  line-height: 1.5;
+  max-height: 100vh;
+}
+
+.logo {
+  display: block;
+  margin: 0 auto 2rem;
+}
+
+nav {
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+header .wrapper {
+    display: flex;
+    place-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+header {
+  display: flex;
+  place-items: center;
+  padding-right: calc(var(--section-gap) / 2);
+}
 
 </style>
