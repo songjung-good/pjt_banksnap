@@ -23,7 +23,7 @@ environ.Env.read_env(
     env_file=os.path.join(BASE_DIR, '.env')
 )
 EXCHANGE_KEY = env('EXCHANGE_KEY')
-
+FINANCE_KEY = env('FINANCE_KEY')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
