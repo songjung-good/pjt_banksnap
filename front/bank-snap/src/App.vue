@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>MAIN</h1>
-    <p>내용입력</p>
+    <p>다시입력하기</p>
   </div>
 </template>
 
