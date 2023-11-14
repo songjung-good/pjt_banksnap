@@ -109,7 +109,7 @@ function placesSearchCB(data, status, pagination) {
 // 검색 결과 목록과 마커를 표출하는 함수입니다
 function displayPlaces(places) {
 
-    var listEl = document.getElementById('placesList'), 
+    let listEl = document.getElementById('placesList'), 
     menuEl = document.getElementById('menu_wrap'),
     fragment = document.createDocumentFragment(), 
     bounds = new kakao.maps.LatLngBounds(), 
@@ -121,10 +121,10 @@ function displayPlaces(places) {
     // 지도에 표시되고 있는 마커를 제거합니다
     removeMarker();
     
-    for ( var i=0; i<places.length; i++ ) {
+    for ( let i=0; i<places.length; i++ ) {
 
         // 마커를 생성하고 지도에 표시합니다
-        var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
+        let placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
         marker = addMarker(placePosition, i, places[i].place_name), 
             itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
 
@@ -169,7 +169,7 @@ function displayPlaces(places) {
 // 검색결과 항목을 Element로 반환하는 함수입니다
 function getListItem(index, places) {
 
-    var el = document.createElement('li'),
+    let el = document.createElement('li'),
     itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
                 '<div class="info">' +
                 '   <h5>' + places.place_name + '</h5>';
@@ -181,7 +181,7 @@ function getListItem(index, places) {
         itemStr += '    <span>' +  places.address_name  + '</span>'; 
     }
                 
-      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
+        itemStr += '  <span class="tel">' + places.phone  + '</span>' +
                 '</div>';           
 
     el.innerHTML = itemStr;
@@ -192,7 +192,7 @@ function getListItem(index, places) {
 
 // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 function addMarker(position, idx, title) {
-    var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+    let imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
         imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
         imgOptions =  {
             spriteSize : new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
@@ -213,7 +213,7 @@ function addMarker(position, idx, title) {
 
 // 지도 위에 표시되고 있는 마커를 모두 제거합니다
 function removeMarker() {
-    for ( var i = 0; i < markers.value.length; i++ ) {
+    for ( let i = 0; i < markers.value.length; i++ ) {
         markers.value[i].setMap(null);
     }   
     markers.value = [];
@@ -221,7 +221,7 @@ function removeMarker() {
 
 // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
 function displayPagination(pagination) {
-    var paginationEl = document.getElementById('pagination'),
+    let paginationEl = document.getElementById('pagination'),
         fragment = document.createDocumentFragment(),
         i; 
 
@@ -231,7 +231,7 @@ function displayPagination(pagination) {
     }
 
     for (i=1; i<=pagination.last; i++) {
-        var el = document.createElement('a');
+        let el = document.createElement('a');
         el.href = "#";
         el.innerHTML = i;
 
@@ -253,7 +253,7 @@ function displayPagination(pagination) {
 // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
 // 인포윈도우에 장소명을 표시합니다
 function displayInfowindow(marker, title) {
-    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+    let content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
 
     infowindow.value.setContent(content);
     infowindow.value.open(map.value, marker);
