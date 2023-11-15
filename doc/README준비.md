@@ -84,6 +84,13 @@
 ### 금융추천 알고리즘
 
 - [Dacon 대회](https://dacon.io/competitions/official/236088/codeshare/8342)
+
+
+
+### 마크다운작성
+
+- [Static Badge | Shields.io](https://shields.io/badges)
+- [Simple Icons](https://simpleicons.org/)
 - 
 
 
