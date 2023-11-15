@@ -7,6 +7,12 @@
       <p>작성일 : {{ article.created_at }}</p>
       <p>수정일 : {{ article.updated_at }}</p>
     </div>
+
+    <button @click="deleteArticle">글 삭제</button>
+    <RouterLink 
+      :to="{name: 'CreateArticleView', query: { type: 'modify', id: $route.params.id }}">
+      수정
+    </RouterLink>
   </div>
 </template>
 
@@ -14,10 +20,11 @@
 import axios from 'axios'
 import { onMounted, ref } from 'vue'
 import { useCounterStore } from '@/stores/counter'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter, RouterLink } from 'vue-router'
 
 const store = useCounterStore()
 const route = useRoute()
+const router = useRouter()
 const article = ref(null)
 
 onMounted(() => {
@@ -32,6 +39,22 @@ onMounted(() => {
       console.log(err)
     })
 })
+
+const deleteArticle = function() {
+  axios({
+    method: 'delete',
+    url: `${store.url}/articles/${article.value.id}/`,
+    // headers: {
+
+    // }
+  })
+    .then((res) => {
+      router.push({ name: 'community' })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
 
 </script>
 
