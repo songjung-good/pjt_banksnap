@@ -19,7 +19,7 @@ const password = ref('')
 
 const login = function () {
   const payload = {
-    usename: username.value,
+    username: username.value,
     password: password.value
   }
   store.login(payload)

@@ -28,6 +28,12 @@
             <li class="nav-item">
               <RouterLink class="nav-link" :to="{ name: 'map' }">MAP</RouterLink>
             </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" :to="{ name: 'LoginView' }">Login</RouterLink>
+            </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" :to="{ name: 'SignUpView' }">SignUp</RouterLink>
+            </li>
           </ul>
         </div>
       </div>

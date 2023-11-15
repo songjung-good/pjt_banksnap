@@ -58,6 +58,7 @@ const writeArticle = function() {
   }
 }
 
+console.log(`Token ${store.token}`)
 const createArticle = function () {
   axios({
     method: 'post',
@@ -66,12 +67,15 @@ const createArticle = function () {
       title: title.value,
       content: content.value
     },
-    // hearders: {
-    //   Authorization: `Token ${store.token}`
-    // }
+    headers: {
+      Authorization: `Token ${store.token}`
+    }
   })
     .then((res) => {
       router.push({ name: 'DetailView', params: { id: res.data.id } })
+    })
+    .catch((err) => {
+      console.log(err)
     })
 }
 
@@ -83,12 +87,15 @@ const updateArticle = function () {
       title: title.value,
       content: content.value
     },
-    // hearders: {
-    //   Authorization: `Token ${store.token}`
-    // }
+    headers: {
+      Authorization: `Token ${store.token}`
+    }
   })
     .then((res) => {
       router.push({ name: 'DetailView', params: { id: res.data.id } })
+    })
+    .catch((err) => {
+      console.log(err)
     })
 }
 
