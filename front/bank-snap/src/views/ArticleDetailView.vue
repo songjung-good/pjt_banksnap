@@ -3,9 +3,11 @@
     <h1>Detail</h1>
     <div v-if="article">
       <p>제목 : {{ article.title }}</p>
+      <!-- <p>작성자 : {{ article.user.username }}</p> -->
       <p>내용 : {{ article.content }}</p>
       <p>작성일 : {{ article.created_at }}</p>
       <p>수정일 : {{ article.updated_at }}</p>
+
     </div>
 
     <button @click="deleteArticle">글 삭제</button>
