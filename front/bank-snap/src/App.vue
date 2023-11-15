@@ -1,27 +1,42 @@
 <template>
   <header>
-    <div>
-    <img alt="Pjt logo" class="logo" src="@/assets/exlogo.gif" height="125" @click="goHome"/>
-    </div>
-    <div class="wrapper">
-      <nav>
-        <RouterLink :to="{ name: 'test' }">TEST</RouterLink> |
-        <RouterLink :to="{ name: 'main' }">Home</RouterLink> |
-        <RouterLink :to="{ name: 'interestrate' }">금리비교</RouterLink> |
-        <RouterLink :to="{ name: 'exchangecalculator' }">환율계산기</RouterLink> |
-        <RouterLink :to="{ name: 'community' }">커뮤니티</RouterLink> |
-        <RouterLink :to="{ name: 'map' }">MAP</RouterLink>
-        <!-- <RouterLink :to="{ name: 'user', params: {id: userId} } ">User</RouterLink> -->
-        <!-- <RouterLink :to="{ name: 'login' } ">Login</RouterLink> -->
-      </nav>
-    </div>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img alt="Pjt logo" class="logo" src="@/assets/exlogo.gif" height="130" @click="goHome" />
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <RouterLink class="nav-link" :to="{ name: 'main' }">Home</RouterLink>
+            </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" :to="{ name: 'test' }">장선생님의 영혼</RouterLink>
+            </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" :to="{ name: 'interestrate' }">금리비교</RouterLink>
+            </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" :to="{ name: 'exchangecalculator' }">환율계산기</RouterLink>
+            </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" :to="{ name: 'community' }">커뮤니티</RouterLink>
+            </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" :to="{ name: 'map' }">MAP</RouterLink>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </header>
   <RouterView />
-  
   <footer>
 
   </footer>
-
 </template>
 
 <script setup>
@@ -36,7 +51,7 @@ const goHome = () => {
 </script>
 
 <style scoped>
-header {
+/* header {
   line-height: 1.5;
   max-height: 100vh;
   display: flex;
@@ -60,7 +75,10 @@ header .wrapper {
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
-  }
+  } */
 
+  .logo {
+  cursor: pointer;
+}
 
 </style>
