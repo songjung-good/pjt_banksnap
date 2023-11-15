@@ -1,12 +1,25 @@
-<script setup>
-
-</script>
 
 <template>
     <div>
         <h1>Community</h1>
+        <RouterLink :to="{ name: 'CreateArticleView' }">글 쓰기</RouterLink>        
+        <ArticleList />
     </div>
+
 </template>
+
+<script setup>
+import { onMounted } from 'vue'
+import { useCounterStore } from '@/stores/counter'
+import { RouterLink } from 'vue-router'
+import ArticleList from '@/components/ArticleList.vue'
+
+const store = useCounterStore()
+
+onMounted(() => {
+    store.getArticles()
+})
+</script>
 
 <style scoped>
 
