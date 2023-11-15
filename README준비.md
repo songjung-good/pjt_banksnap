@@ -62,7 +62,10 @@
 
 
 
-### 프로젝트 자료
+### ERD 자료
+
+- [상품추천](https://github.com/sumin416/Eureka/tree/develop/doc/DB%EC%84%A4%EA%B3%84)
+- [농수산물](https://www.erdcloud.com/d/QiA8ksWRJtSpDKDYo)
 
 
 
@@ -92,6 +95,7 @@
 - 이전 기수 프로젝트
   - [6기 프로젝트 공공데이터](https://github.com/ksh103/HappyHouse)
   - [비전공 6기](https://sostl.tistory.com/78)
+  - [전공6기](https://github.com/SSAFY609/Log-it)
 - 이상적인 웹페이지
   - [마이뱅크](https://www.mibank.me/index.php)
   - [bank of hope](https://www.bankofhope.com/ko/hope-stories/take-your-banking-online)
