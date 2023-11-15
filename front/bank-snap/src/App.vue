@@ -51,6 +51,11 @@ const goHome = () => {
 </script>
 
 <style scoped>
+nav {
+  background-color: #e3f2fd;
+  /* position: fixed; */
+}
+
 /* header {
   line-height: 1.5;
   max-height: 100vh;
@@ -64,12 +69,7 @@ const goHome = () => {
   margin: 0 auto 2rem;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
+
 
 header .wrapper {
     display: flex;
