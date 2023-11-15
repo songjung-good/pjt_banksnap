@@ -3,11 +3,11 @@
     <img alt="Pjt logo" class="logo" src="@/assets/exlogo.gif" />
     <div class="wrapper">
       <nav>
-        <RouterLink :to="{ name: 'test' }">TEST</RouterLink>
-        <RouterLink :to="{ name: 'main' }">Home</RouterLink>
-        <RouterLink :to="{ name: 'interestrate' }">금리비교</RouterLink>
-        <RouterLink :to="{ name: 'exchangecalculator' }">환율계산기</RouterLink>
-        <RouterLink :to="{ name: 'community' }">커뮤니티</RouterLink>
+        <RouterLink :to="{ name: 'test' }">TEST</RouterLink> |
+        <RouterLink :to="{ name: 'main' }">Home</RouterLink> |
+        <RouterLink :to="{ name: 'interestrate' }">금리비교</RouterLink> |
+        <RouterLink :to="{ name: 'exchangecalculator' }">환율계산기</RouterLink> |
+        <RouterLink :to="{ name: 'community' }">커뮤니티</RouterLink> |
         <RouterLink :to="{ name: 'map' }">MAP</RouterLink>
         <!-- <RouterLink :to="{ name: 'user', params: {id: userId} } ">User</RouterLink> -->
         <!-- <RouterLink :to="{ name: 'login' } ">Login</RouterLink> -->
