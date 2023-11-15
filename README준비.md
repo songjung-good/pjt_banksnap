@@ -74,12 +74,7 @@
 
 
 
-### 로드맵
 
-- 웹 와이어프레임
-  - [미로](https://miro.com/app/board/uXjVNPPeuOE=/#tpicker-content)
-  - [아이콘](https://icons8.kr/icons/set/pen)
-  - 
 
 # 시작 전 참고사이트
 
@@ -101,9 +96,7 @@
   - [코딩애플](https://codingapple.com/unit/react-build-deploy-github-pages/)
   - [git](https://brunch.co.kr/@everiwon/42)
 
-- readme 작성
 
-  - #### [스킬배지](https://cocoon1787.tistory.com/689)
 
 
 
