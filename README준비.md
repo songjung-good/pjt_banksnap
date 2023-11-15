@@ -56,7 +56,11 @@
 
 # 참고자료
 
-# 참고 자료 및 참고 사이트
+
+
+## 참고 자료 및 참고 사이트
+
+
 
 ### 프로젝트 자료
 
@@ -64,21 +68,26 @@
 
 ### API
 
-- 한국수출입은행 (koreaexim.go.kr)
+- [한국수출입은행API](https://www.koreaexim.go.kr/ir/HPHKIR020M01?apino=2&viewtype=C&searchselect=&searchword=))
   - https://www.koreaexim.go.kr/site/program/financial/exchangeJSON?authkey=AUTHKEY1234567890&searchdate=20180102&data=AP01
   - 일일 호출 가능 횟수를 1000회로 제한 (1000회 이상 호출 시 result:4 반환, 데이터 미제공)
-- Kakao 지도 Web API 가이드
-  - 카카오맵은 마지막에 해야할듯 왜캐 어렵지?
-- 오픈 API 소개 | 오픈API개요 | 오픈API | 금융감독원 금융상품통합비교공시 금융상품한눈에 (fss.or.kr)
+- [Kakao 지도 API](https://apis.map.kakao.com/)
+  - 
+- [금융감독원](fss.or.kr)
   - https://fss.or.kr/finlife/finlifeapi/depositProductsSearch.xml?auth={인증키}&topFinGrpNo=020000&pageNo=1
 
 
 
+### 금융추천 알고리즘
+
+- [Dacon 대회](https://dacon.io/competitions/official/236088/codeshare/8342)
+- 
 
 
-# 시작 전 참고사이트
 
-## 설명
+# 시작 전 참고자료
+
+## 금융프로젝트 관련 링크
 
 - 이전 기수 프로젝트
   - [6기 프로젝트 공공데이터](https://github.com/ksh103/HappyHouse)
@@ -86,8 +95,10 @@
 - 이상적인 웹페이지
   - [마이뱅크](https://www.mibank.me/index.php)
   - [bank of hope](https://www.bankofhope.com/ko/hope-stories/take-your-banking-online)
+  - [핀다](https://finda.co.kr/)
 - 웹페이지 템플릿
   - [start bootstrap](https://startbootstrap.com/?showAngular=false&showPro=false)
+  - [themewagon](https://themewagon.com/theme-price/free/page/2/?swoof=1&pa_frameworks=bootstrap-5%2Cvue-js&really_curr_tax=40-pa_price)
 - 웹페이지 제작 도움글
   - [10분 웹페이지](https://brunch.co.kr/@llun/15)
   - [GPT로 웹페이지 만들기]([]())
