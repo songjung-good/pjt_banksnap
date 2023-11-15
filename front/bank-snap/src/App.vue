@@ -1,6 +1,8 @@
 <template>
   <header>
-    <img alt="Pjt logo" class="logo" src="@/assets/exlogo.gif" />
+    <div>
+    <img alt="Pjt logo" class="logo" src="@/assets/exlogo.gif" height="125" @click="goHome"/>
+    </div>
     <div class="wrapper">
       <nav>
         <RouterLink :to="{ name: 'test' }">TEST</RouterLink> |
@@ -23,17 +25,27 @@
 </template>
 
 <script setup>
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const goHome = () => {
+  router.push('/')
+}
+
 </script>
 
 <style scoped>
 header {
   line-height: 1.5;
   max-height: 100vh;
+  display: flex;
+  place-items: center;
+  padding-right: calc(var(--section-gap) / 2);
 }
 
 .logo {
-  display: block;
+  display: flex;
   margin: 0 auto 2rem;
 }
 
@@ -50,10 +62,5 @@ header .wrapper {
     flex-wrap: wrap;
   }
 
-header {
-  display: flex;
-  place-items: center;
-  padding-right: calc(var(--section-gap) / 2);
-}
 
 </style>
