@@ -47,10 +47,11 @@
 </script>
 
 <template>
+<body>
   <div>
     <h1>메인 페이지</h1>
-
   </div>
+</body>
 </template>
 
 <style scoped>
@@ -74,5 +75,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+}
+
+body {
+  box-sizing: border-box;
 }
 </style>

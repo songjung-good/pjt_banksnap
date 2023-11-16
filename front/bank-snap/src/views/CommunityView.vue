@@ -1,11 +1,12 @@
 
 <template>
+
     <div>
         <h1>Community</h1>
         <RouterLink :to="{ name: 'CreateArticleView', query:{ type: 'create' }}">글 쓰기</RouterLink>
         <ArticleList />
     </div>
-
+    
 
 </template>
 

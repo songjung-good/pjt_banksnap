@@ -1,7 +1,7 @@
 <template>
-  <header>
+  <header px-8>
     <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
+      <div class="container px-8">
         <a class="navbar-brand" href="#">
           <img alt="Pjt logo" class="logo" src="@/assets/logo_nonbackgroound.png" height="50" @click="goHome" />
         </a>
@@ -39,7 +39,9 @@
       </div>
     </nav>
   </header>
-  <RouterView :key="$route.fullPath"/>
+  <body>
+    <RouterView :key="$route.fullPath"/>  
+  </body>
   <footer>
     
   </footer>
@@ -67,6 +69,10 @@ const closeNavbar = () => {
 </script>
 
 <style scoped>
+body {
+  box-sizing: border-box;
+}
+
 nav {
   background-color: #e3f2fd;
   /* position: fixed;
