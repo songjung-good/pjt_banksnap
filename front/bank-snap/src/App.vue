@@ -39,7 +39,7 @@
       </div>
     </nav>
   </header>
-  <RouterView />
+  <RouterView :key="$route.fullPath"/>
   <footer>
 
   </footer>
