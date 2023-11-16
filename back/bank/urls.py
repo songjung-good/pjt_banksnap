@@ -5,4 +5,5 @@ app_name='bank'
 urlpatterns = [
   path('exchange/', views.exchange, name='exchange'),
   path('finance/', views.finance, name='finance'),
+  path('deposit/<str:type>', views.deposit, name='deposit'),
 ]
