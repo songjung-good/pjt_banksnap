@@ -56,6 +56,7 @@ const goHome = () => {
 
 </script>
 
+
 <style scoped>
 nav {
   background-color: #e3f2fd;
