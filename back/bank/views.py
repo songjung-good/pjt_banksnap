@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.response import Response
-
+from django.shortcuts import get_object_or_404, get_list_or_404
 from rest_framework.decorators import api_view
 import datetime
 import requests
@@ -45,11 +45,12 @@ def finance(request):
   for product in baseList:
     if DepositProduct.objects.filter(fin_prdt_cd=product.get('fin_prdt_cd')).exists():
       continue
+
+    # 예금 deposit_type = 1
     product['deposit_type'] = 1
     product_serializer = DepositProductSerializer(data=product)
     
     if product_serializer.is_valid(raise_exception=True):
-      # 예금 deposit_type = 1
       product_serializer.save()
 
 
@@ -70,10 +71,11 @@ def finance(request):
   for product in baseList:
     if DepositProduct.objects.filter(fin_prdt_cd=product.get('fin_prdt_cd')).exists():
       continue
+
+    # 적금 deposit_type = 2
     product['deposit_type'] = 2
     product_serializer = DepositProductSerializer(data=product)
     if product_serializer.is_valid(raise_exception=True):
-      # 적금 deposit_type = 2
       product_serializer.save()
 
   for option in optionList:
@@ -85,12 +87,14 @@ def finance(request):
 
     if option_serializer.is_valid(raise_exception=True):
         option_serializer.save(product=product)
-  data = response['result']['optionList']
+  data = response['result']['baseList']
   return Response(data)
 
 
-
-
+@api_view(['GET'])
+def deposit(request, type):
+  depositProducts = get_list_or_404(DepositProduct)
+  
 
 
 
