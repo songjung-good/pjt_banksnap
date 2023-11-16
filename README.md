@@ -1,17 +1,5 @@
----
-
----
-
-<style>
-  body {
-    background-image: url("header_photo.png");
-    background-repeat: no-repeat;
-    background-position: top center;
-  }
-</style>
-
 <body>
-  <img src="header_photo.png" alt="배너 그림" />
+<img src="header_photo.png" alt="배너 그림" />
 </body>
 
 
