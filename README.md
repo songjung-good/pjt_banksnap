@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+---
+projectBankSnap
+---
+
+>>>>>>> fb08f5c589ba4cc573bfae3ece6d2007aaaaad5f
 <body>
 <img src="header_photo.png" alt="배너 그림" />
 </body>
@@ -7,8 +14,6 @@
 
 
 
-
-[TOC]
 
 
 
