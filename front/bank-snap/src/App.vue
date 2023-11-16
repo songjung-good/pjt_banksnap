@@ -41,7 +41,7 @@
   </header>
   <RouterView :key="$route.fullPath"/>
   <footer>
-
+    
   </footer>
 </template>
 
