@@ -13,7 +13,11 @@
 
 <br><br>
 
+## 😀 Team
 
+
+
+<br><br>
 
 ## 프로젝트 기간💞️ 
 
@@ -59,7 +63,11 @@
 
 ###### <br><br>
 
+## 협업 툴 👊
 
+- Notion
+- Mattermost
+- Postman
 
 
 
@@ -67,3 +75,8 @@
 
 ###### <br><br>
 
+## 👨‍💻 Tech Architecture
+
+[![TechArchitecture](https://user-images.githubusercontent.com/53832553/154430527-09bd19d6-993f-4dc0-ae4f-5a5e77220055.png)](https://user-images.githubusercontent.com/53832553/154430527-09bd19d6-993f-4dc0-ae4f-5a5e77220055.png)
+
+<br><br>

@@ -1,14 +1,14 @@
 <template>
   <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img alt="Pjt logo" class="logo" src="@/assets/exlogo.gif" height="130" @click="goHome" />
+          <img alt="Pjt logo" class="logo" src="@/assets/logo_nonbackgroound.png" height="50" @click="goHome" />
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" @click="toggleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" :class="{ 'show': isNavbarOpen }" @click="closeNavbar">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <RouterLink class="nav-link" :to="{ name: 'main' }">Home</RouterLink>
@@ -41,11 +41,12 @@
   </header>
   <RouterView :key="$route.fullPath"/>
   <footer>
-
+    
   </footer>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -53,35 +54,26 @@ const router = useRouter()
 const goHome = () => {
   router.push('/')
 }
+const isNavbarOpen = ref(false);
+
+const toggleNavbar = () => {
+  isNavbarOpen.value = !isNavbarOpen.value;
+}
+
+const closeNavbar = () => {
+  isNavbarOpen.value = false;
+}
 
 </script>
 
 <style scoped>
 nav {
   background-color: #e3f2fd;
-  /* position: fixed; */
+  /* position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; */
 }
-
-/* header {
-  line-height: 1.5;
-  max-height: 100vh;
-  display: flex;
-  place-items: center;
-  padding-right: calc(var(--section-gap) / 2);
-}
-
-.logo {
-  display: flex;
-  margin: 0 auto 2rem;
-}
-
-
-
-header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  } */
 
   .logo {
   cursor: pointer;
