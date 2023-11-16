@@ -1,7 +1,7 @@
 <template>
-  <header px-8>
-    <nav class="navbar navbar-expand-lg">
-      <div class="container px-8">
+  <header>
+    <div class="center">
+      <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="#">
           <img alt="Pjt logo" class="logo" src="@/assets/logo_nonbackgroound.png" height="50" @click="goHome" />
         </a>
@@ -36,13 +36,13 @@
             </li>
           </ul>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </div>
   </header>
-  <body>
+  <body class="center">
     <RouterView :key="$route.fullPath"/>  
   </body>
-  <footer>
+  <footer class="center">
     
   </footer>
 </template>
@@ -69,10 +69,6 @@ const closeNavbar = () => {
 </script>
 
 <style scoped>
-body {
-  box-sizing: border-box;
-}
-
 nav {
   background-color: #e3f2fd;
   /* position: fixed;
@@ -84,5 +80,33 @@ nav {
   .logo {
   cursor: pointer;
 }
+</style>
 
+<style>
+body {
+    box-sizing: border-box;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  @media screen and (min-width: 1024px) {
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  /* .content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .left,
+  .right {
+    flex: 2 0 0;
+  }
+
+  .center {
+    flex: 8 0 0;
+  } */
+}
 </style>
