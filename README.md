@@ -1,5 +1,5 @@
 ---
-
+projectBankSnap
 ---
 
 <body>
@@ -11,8 +11,6 @@
 
 
 
-
-[TOC]
 
 
 
