@@ -68,6 +68,7 @@ const closeNavbar = () => {
 
 </script>
 
+
 <style scoped>
 nav {
   background-color: #e3f2fd;

@@ -93,9 +93,14 @@ def finance(request):
 
 @api_view(['GET'])
 def deposit(request, type):
-  depositProducts = get_list_or_404(DepositProduct, deposit_type=type)
-
-
+  if type == 'deposit':
+    depositProducts = get_list_or_404(DepositProduct, deposit_type=1)
+  else:
+    depositProducts = get_list_or_404(DepositProduct, deposit_type=2)
+  serializer = DepositProductSerializer(depositProducts, many=True)
+  print(serializer.data)
+  return Response(serializer.data)
+  
 
 
 
