@@ -1,10 +1,26 @@
-<style>   
-	body {     
-		background: url(header_photo.png) no-repeat center center;     
-		background-size: cover;   
-	}
+---
+
+---
+
+<style>
+  body {
+    background-image: url("header_photo.png");
+    background-repeat: no-repeat;
+    background-position: top center;
+  }
 </style>
 
+<body>
+  <img src="header_photo.png" alt="배너 그림" />
+</body>
+
+
+
+
+
+
+
+[TOC]
 
 
 
@@ -53,10 +69,10 @@
   | 11/24(금) | 발표!!!!                                                     |                                                              |                                                              |
 
   
+  
+  <br><br>
 
-<br>
 
-<br>
 
 ## 기술 스택 👀
 
@@ -73,18 +89,20 @@
 </p>
 
 
-###### <br><br>
+
+
 
 ## 협업 툴 👊
 
 - Notion
+
 - Mattermost
+
 - Postman
+
 - github
 
-
-
-###### <br><br>
+  <br><br>
 
 ## ~~Tech Architecture 👨‍💻 수정이 필요합니다ㅠㅠ!~~ 
 
