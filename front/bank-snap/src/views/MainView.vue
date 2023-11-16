@@ -1,47 +1,47 @@
 
 <script setup>
-// import { ref, computed, onMounted } from 'vue'
-// import { useRouter } from 'vue-router';
-// import axios from 'axios'
+import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router';
+import axios from 'axios'
 
-// const router = useRouter()
-// const specialImages = ref([])
+const router = useRouter()
+const specialImages = ref([])
 
-// const clientId = '2KPHeGdbQvNEOM1Aly4d'
-// const clientSecret = 'w194LdQlzo'
-// const searchQuery = '금융'
-// const displayCount = 10
-// const startPage = 1
-// const sortOption = 'sim'
-// const searchURL = `https://openapi.naver.com/v1/search/news.json?query=${searchQuery}&display=${displayCount}&start=${startPage}&sort=${sortOption}`
+const clientId = '2KPHeGdbQvNEOM1Aly4d'
+const clientSecret = 'w194LdQlzo'
+const searchQuery = '금융'
+const displayCount = 10
+const startPage = 1
+const sortOption = 'sim'
+const searchURL = `https://openapi.naver.com/v1/search/news.json?query=${searchQuery}&display=${displayCount}&start=${startPage}&sort=${sortOption}`
 
-// onMounted(() => {
-//   axios.get(searchURL, {
-//     headers: {
-//       'X-Naver-Client-Id': clientId,
-//       'X-Naver-Client-Secret': clientSecret
-//     }
-//   })
-//     .then((response) => {
-//       news.value = response.data.items
-//     })
-//     .catch((error) => {
-//       console.error(error)
-//     })
-// })
+onMounted(() => {
+  axios.get(searchURL, {
+    headers: {
+      'X-Naver-Client-Id': clientId,
+      'X-Naver-Client-Secret': clientSecret
+    }
+  })
+    .then((response) => {
+      news.value = response.data.items
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+})
 
-// axios.get(searchURL)
-//     .then((response) => {
-//         // console.log(response.data)
-//         news.value = response.data
-//     }).catch((error) => {
-//         console.error(error)
-//     })
+axios.get(searchURL)
+    .then((response) => {
+        // console.log(response.data)
+        news.value = response.data
+    }).catch((error) => {
+        console.error(error)
+    })
 
-//     // 삼항연산자는 가독성을 위함 / 없어도 boolean값 반환
-// const imgIsEmpty = computed(() => {
-//     return specialImages.value.length > 0 ? true : false
-// })
+    // 삼항연산자는 가독성을 위함 / 없어도 boolean값 반환
+const imgIsEmpty = computed(() => {
+    return specialImages.value.length > 0 ? true : false
+})
 
 
 </script>

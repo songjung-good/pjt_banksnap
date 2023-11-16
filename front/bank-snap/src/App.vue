@@ -93,20 +93,5 @@ body {
     max-width: 1000px;
     margin: 0 auto;
   }
-
-  /* .content {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-  }
-
-  .left,
-  .right {
-    flex: 2 0 0;
-  }
-
-  .center {
-    flex: 8 0 0;
-  } */
 }
 </style>
