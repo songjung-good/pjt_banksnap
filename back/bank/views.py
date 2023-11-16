@@ -93,8 +93,8 @@ def finance(request):
 
 @api_view(['GET'])
 def deposit(request, type):
-  depositProducts = get_list_or_404(DepositProduct)
-  
+  depositProducts = get_list_or_404(DepositProduct, deposit_type=type)
+
 
 
 
