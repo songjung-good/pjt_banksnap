@@ -15,6 +15,8 @@
       :to="{name: 'CreateArticleView', query: { type: 'modify', id: $route.params.id }}">
       수정
     </RouterLink>
+    <CommentList :article-id="$route.params.id" />
+    <CommentWrite :article-id="$route.params.id"/>
   </div>
 </template>
 
@@ -23,6 +25,8 @@ import axios from 'axios'
 import { onMounted, ref } from 'vue'
 import { useCounterStore } from '@/stores/counter'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
+import CommentList from '@/components/CommentList.vue'
+import CommentWrite from '@/components/CommentWrite.vue'
 
 const store = useCounterStore()
 const route = useRoute()

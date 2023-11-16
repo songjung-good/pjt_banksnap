@@ -81,4 +81,4 @@ export const useCounterStore = defineStore('counter', () => {
 
 
   return { url, articles, getArticles, login, signUp, token, isLogin }
-})
+}, { persist: true })
