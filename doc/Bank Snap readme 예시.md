@@ -2,6 +2,11 @@
 
 🔔 본 프로젝트는 **삼성 청년 SW 아카데미** 1학기 관통 프로젝트 결과물입니다
 
+- 👀 I’m interested in Game
+- 🌱 I’m currently learning Python
+- 💞️ I’m looking to collaborate on smart people
+- 📫 How to reach me add proflie
+
 <br><br>
 
 
