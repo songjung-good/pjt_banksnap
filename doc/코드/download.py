@@ -24,7 +24,7 @@ def get_product_data():
                     'join_member': product.get('join_member', ''),
                     'join_way': product.get('join_way', ''),
                     'spcl_cnd': product.get('spcl_cnd', ''),
-                    'deposit_type': product.get('deposit_type', '')
+                    # 'deposit_type': product.get('deposit_type', '') //
                 }
 
                 data = {
@@ -33,7 +33,7 @@ def get_product_data():
                 }
 
                 total_data.append(data)
-        print(total_data)
+
     with open("fin_product_data.json", "w", encoding="utf-8") as w:
         json.dump(total_data, w, indent="\t", ensure_ascii=False)
 
