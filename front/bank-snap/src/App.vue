@@ -17,7 +17,7 @@
               <RouterLink class="nav-link" :to="{ name: 'test' }">장선생님의 영혼</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link" :to="{ name: 'interestrate' }">금리비교</RouterLink>
+              <RouterLink class="nav-link" :to="{ name: 'DepositView' }">금리비교</RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink class="nav-link" :to="{ name: 'exchangecalculator' }">환율계산기</RouterLink>
@@ -33,6 +33,10 @@
             </li>
             <li class="nav-item">
               <RouterLink class="nav-link" :to="{ name: 'SignUpView' }">SignUp</RouterLink>
+            </li>
+            <li class="nav-item">
+              <!-- params 값 수정 필요! -->
+              <RouterLink class="nav-link" :to="{ name: 'ProfileView', params:{id: 1}}">MyPage</RouterLink>
             </li>
           </ul>
         </div>

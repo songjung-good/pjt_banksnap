@@ -32,7 +32,6 @@ const props = defineProps({
 })
 
 const options = ref(props.product.depositoption_set)
-console.log(options.value)
 </script>
 
 <style scoped>
