@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router';
 import axios from 'axios'
 
 const router = useRouter()
-const news = ref([])
+const newsList = ref([])
 const clientId = import.meta.env.VITE_clientId
 const clientSecret = import.meta.env.VITE_clientSecret
 const searchQuery = '금융' //'%EA%B8%88%EC%9C%B5'
@@ -23,8 +23,7 @@ onMounted(() => {
     }
   })
     .then((response) => {
-      news.value = response.data.items
-      // console.log(response.data.items)
+      newsList.value = response.data.items
     })
     .catch((error) => {
       console.error(error)
@@ -34,7 +33,7 @@ onMounted(() => {
 
     // 삼항연산자는 가독성을 위함 / 없어도 boolean값 반환
 const imgIsEmpty = computed(() => {
-    return news.value.length > 0 ? true : false
+    return newsList.value.length > 0 ? true : false
 })
 
 
@@ -47,13 +46,13 @@ const imgIsEmpty = computed(() => {
   </div>
   <div>
     <h3>오늘의 경제 이슈</h3>
-    <ul v-for="(items, key) in news" :key="key">
-      <li v-for="(item, key) in items" :key="key">
-        <li v-if="key === 'title'">
-          {{ key }} : {{ item }}
-        </li>
-        <li v-else></li>
-      </li>
+    <ul>
+      <div v-for="news in newsList" :key="news.title">
+        <a :href="news.link">
+          <li v-html="news.title"></li>
+        </a>
+      </div>
+      
     </ul>
   </div>
 </body>
