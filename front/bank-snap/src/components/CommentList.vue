@@ -20,7 +20,6 @@ const store = useCounterStore()
 const props = defineProps({
   articleId: String,
 })
-console.log(`${store.url}/articles/comments/${props.articleId}/`)
 onMounted(() => {
   axios({
       method: 'get',
