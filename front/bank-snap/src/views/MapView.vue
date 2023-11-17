@@ -1,9 +1,12 @@
 <template>
   <div>
     <h1>MAP</h1>
+
     <div>
         <select v-model="selectLocal1">
-            <option v-for="local1 in localType1" :key="local1" :value="local1">{{ local1 }}</option>            
+            <option v-for="local1 in localType1" :key="local1" :value="local1">
+                {{ local1 }}
+            </option>            
         </select>
         <select v-model="selectLocal2">
             <option v-for="local2 in localType2" :key="local2" :value="local2">{{ local2 }}</option>            

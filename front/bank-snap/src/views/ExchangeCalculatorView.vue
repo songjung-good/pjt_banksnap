@@ -18,7 +18,7 @@
       <div>
         <h3>환율 표</h3>
         <div class="table-responsive">
-        <table class="table">
+        <table class="table table-striped">
           <tr>
             <th>국가</th>
             <th>송금 받을 때</th>

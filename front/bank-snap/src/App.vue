@@ -1,7 +1,7 @@
 <template>
   <header>
     <div class="center">
-      <nav class="navbar navbar-expand-lg bg-color-#e3f2fd">
+      <nav class="navbar navbar-expand-lg bg-#e3f2fd">
         <a class="navbar-brand" href="#">
           <img alt="Pjt logo" class="logo" src="@/assets/logo_nonbackgroound.png" height="50" @click="goHome" />
         </a>
