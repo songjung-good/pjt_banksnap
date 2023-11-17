@@ -29,6 +29,7 @@ export const useCounterStore = defineStore('counter', () => {
         articles.value = res.data
       })
       .catch((err) => {
+        articles.value = []
         console.log(err)
       })
   }
