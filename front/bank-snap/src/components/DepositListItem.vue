@@ -5,19 +5,23 @@
     <td>{{ product.etc_note }}</td>
     <td>{{ product.join_way }}</td>
   </tr>
-    <table>
-      <tr>
-        <th>타입</th>
-        <th>가입 기간</th>
-        <th>이율</th>
-        <th>최대 이율</th>
-      </tr>
-      <DepositOptionItem
+  <tr>
+    <td colspan="4">
+      <table class="option-table">
+        <tr>
+          <th>타입</th>
+          <th>가입 기간</th>
+          <th>이율</th>
+          <th>최대 이율</th>
+        </tr>
+        <DepositOptionItem
         v-for="option in options"
         :key="option.id"
         :option="option" 
-      />
-    </table>
+        />
+      </table>
+    </td>
+  </tr>
 </template>
 
 <script setup>
@@ -32,5 +36,9 @@ console.log(options.value)
 </script>
 
 <style scoped>
+.option-table {
+  width: 100%;
+  text-align: center;
 
+}
 </style>
