@@ -21,3 +21,9 @@ class DepositOption(models.Model):
   intr_rate = models.FloatField(null=True, default=-1)
   intr_rate2 = models.FloatField(null=True, default=-1)
   save_trm = models.IntegerField(default=-1)
+
+
+class Bank(models.Model):
+  bank_code = models.CharField(max_length=20)
+  bank_name = models.CharField(max_length=30)
+  
