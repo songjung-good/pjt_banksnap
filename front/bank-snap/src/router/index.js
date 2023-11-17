@@ -12,9 +12,14 @@ const router = createRouter({
       component: MainView
     },
     {
-      path: '/interstrate',
-      name: 'interestrate',
-      component: () => import('../views/InterestRatesView.vue')
+      path: '/deposit',
+      name: 'DepositView',
+      component: () => import('../views/DepositView.vue')
+    },
+    {
+      path: '/saving',
+      name: 'SavingView',
+      component: () => import('../views/SavingView.vue')
     },
     {
       path: '/calculator',
