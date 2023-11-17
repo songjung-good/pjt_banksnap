@@ -12,7 +12,9 @@ const searchQuery = '금융' //'%EA%B8%88%EC%9C%B5'
 const displayCount = 10
 const startPage = 1
 const sortOption = 'sim'
+
 const searchURL = `/v1/search/news?query=${searchQuery}&display=${displayCount}&start=${startPage}&sort=${sortOption}`
+
 onMounted(() => {
   axios.get(searchURL, {
     headers: {
@@ -22,7 +24,7 @@ onMounted(() => {
   })
     .then((response) => {
       news.value = response.data.items
-      console.log(response.data.items)
+      // console.log(response.data.items)
     })
     .catch((error) => {
       console.error(error)
@@ -42,6 +44,17 @@ const imgIsEmpty = computed(() => {
 <body>
   <div>
     <h1>메인 페이지</h1>
+  </div>
+  <div>
+    <h3>오늘의 경제 이슈</h3>
+    <ul v-for="(items, key) in news" :key="key">
+      <li v-for="(item, key) in items" :key="key">
+        <li v-if="key === 'title'">
+          {{ key }} : {{ item }}
+        </li>
+        <li v-else></li>
+      </li>
+    </ul>
   </div>
 </body>
 </template>
