@@ -3,19 +3,16 @@
     <h1>MAP</h1>
     <div>
         <select v-model="selectLocal1">
-            <option v-for="local1 in localType1"
-                :value="local1">{{ local1 }}
-            </option>            
+            <option v-for="local1 in localType1" :key="local1" :value="local1">{{ local1 }}</option>            
         </select>
         <select v-model="selectLocal2">
-            <option v-for="local2 in localType2"
-                :value="local2">{{ local2 }}
-            </option>            
+            <option v-for="local2 in localType2" :key="local2" :value="local2">{{ local2 }}</option>            
         </select>
         <select v-model="selectLocal3">
-            <option v-for="local3 in localType3"
-                :value="local3">{{ local3 }}
-            </option>            
+            <option v-for="local3 in localType3" :key="local3" :value="local3">{{ local3 }}</option>            
+        </select>
+        <select v-model="selecteBank">
+            <option v-for="bank in banks" :key="bank" :value="bank">{{ bank }}</option>
         </select>
         <form @submit.prevent="searchPlaces">
             <button type="submit">검색하기</button> 
@@ -70,6 +67,10 @@ watch(selectLocal2, () => {
 })
 
 
+const banks = ["국민은행","우리은행","신한은행","KEB하나은행","한국스탠다드차타드은행","외한은행","한국시티은행","경남은행","광주은행","대구은행","부산은행","전북은행","제주은행","기업은행","농협","수협","한국산업은행","한국수출입은행"]
+const selecteBank = ref(banks[0])
+
+
 onMounted(() => {
   if (window.kakao && window.kakao.maps) {
     loadMap();
@@ -109,7 +110,7 @@ const loadMap = () => {
 };
 const searchPlaces = function() {
     
-    const keywordValue = `${selectLocal1.value} ${selectLocal2.value} ${selectLocal3.value} 은행`
+    const keywordValue = `${selectLocal1.value} ${selectLocal2.value} ${selectLocal3.value} ${selecteBank.value}`
     if (!keywordValue) {
       alert('키워드를 입력해주세요!');
       return;
