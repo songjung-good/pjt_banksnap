@@ -5,8 +5,8 @@ from rest_framework.decorators import api_view
 import datetime
 import requests
 from django.conf import settings
-from .serializers import DepositProductSerializer, DepositOptionSerializer
-from .models import DepositProduct, DepositOption
+from .serializers import DepositProductSerializer, DepositOptionSerializer, BankSerializer
+from .models import DepositProduct, DepositOption, Bank
 
 
 @api_view(['GET'])
@@ -45,13 +45,18 @@ def finance(request):
   for product in baseList:
     if DepositProduct.objects.filter(fin_prdt_cd=product.get('fin_prdt_cd')).exists():
       continue
-
+    if not Bank.objects.filter(fin_co_no=product.get('fin_co_no')).exists():
+      bank_serializer = BankSerializer(data=product)
+      if bank_serializer.is_valid():
+        bank = bank_serializer.save()
+    else:
+      bank = Bank.objects.get(fin_co_no=product.get('fin_co_no'))
     # 예금 deposit_type = 1
     product['deposit_type'] = 1
     product_serializer = DepositProductSerializer(data=product)
     
     if product_serializer.is_valid(raise_exception=True):
-      product_serializer.save()
+      product_serializer.save(bank=bank)
 
 
   for option in optionList:
@@ -71,12 +76,17 @@ def finance(request):
   for product in baseList:
     if DepositProduct.objects.filter(fin_prdt_cd=product.get('fin_prdt_cd')).exists():
       continue
-
+    if not Bank.objects.filter(fin_co_no=product.get('fin_co_no')).exists():
+      bank_serializer = BankSerializer(data=product)
+      if bank_serializer.is_valid():
+        bank = bank_serializer.save()
+    else:
+      bank = Bank.objects.get(fin_co_no=product.get('fin_co_no'))
     # 적금 deposit_type = 2
     product['deposit_type'] = 2
     product_serializer = DepositProductSerializer(data=product)
     if product_serializer.is_valid(raise_exception=True):
-      product_serializer.save()
+      product_serializer.save(bank=bank)
 
   for option in optionList:
         
@@ -88,7 +98,6 @@ def finance(request):
     if option_serializer.is_valid(raise_exception=True):
         option_serializer.save(product=product)
   data = response['result']['baseList']
-  print(data)
   return Response(data)
 
 
@@ -99,7 +108,7 @@ def deposit(request, type):
   else:
     depositProducts = get_list_or_404(DepositProduct, deposit_type=2)
   serializer = DepositProductSerializer(depositProducts, many=True)
-  # print(serializer.data)
+  # print(serializer.data[0])
   return Response(serializer.data)
   
 
