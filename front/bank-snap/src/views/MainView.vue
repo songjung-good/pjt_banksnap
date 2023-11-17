@@ -44,8 +44,8 @@ const imgIsEmpty = computed(() => {
   <div>
     <h1>메인 페이지</h1>
   </div>
-  <div>
-    <h3>오늘의 경제 이슈</h3>
+  <div class="product-card">
+    <h3 >오늘의 경제 이슈</h3>
     <ul>
       <div v-for="news in newsList" :key="news.title">
         <a :href="news.link">
@@ -66,7 +66,9 @@ const imgIsEmpty = computed(() => {
 
 .product-card{
     border: 1px solid black;
-    width: 205px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .product-card IMG{
