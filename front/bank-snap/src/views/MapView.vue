@@ -1,16 +1,33 @@
 <template>
   <div>
     <h1>MAP</h1>
+    <div>
+        <select v-model="selectLocal1">
+            <option v-for="local1 in localType1"
+                :value="local1">{{ local1 }}
+            </option>            
+        </select>
+        <select v-model="selectLocal2">
+            <option v-for="local2 in localType2"
+                :value="local2">{{ local2 }}
+            </option>            
+        </select>
+        <select v-model="selectLocal3">
+            <option v-for="local3 in localType3"
+                :value="local3">{{ local3 }}
+            </option>            
+        </select>
+        <form @submit.prevent="searchPlaces">
+            <button type="submit">검색하기</button> 
+        </form>
+    </div>
     <div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-
+    
     <div id="menu_wrap" class="bg_white">
         <div class="option">
             <div>
-              <form @submit.prevent="searchPlaces">
-                    키워드 : <input type="text" v-model="keyword" id="keyword" size="15"> 
-                    <button type="submit">검색하기</button> 
-              </form>
+              
             </div>
         </div>
         <hr>
@@ -24,14 +41,33 @@
 
 
 <script setup>
-import { ref, onMounted } from 'vue'
-
+import { ref, onMounted, watch, computed } from 'vue'
+import local from "@/assets/local.json"
 const API_KEY = import.meta.env.VITE_KAKAO
 const map = ref(null);
 const infowindow = ref(null); // infowindow 추가
 const markers = ref([])
 let marker = ''
-const keyword = ref('명지')
+
+// select 박스 설정
+const selectLocal1 = ref(Object.keys(local)[0])
+const selectLocal2 = ref(Object.keys(local[selectLocal1.value])[0])
+const selectLocal3 = ref(local[selectLocal1.value][selectLocal2.value][0])
+
+const localType1 = ref(Object.keys(local))
+const localType2 = computed(() => {
+    return Object.keys(local[selectLocal1.value])
+})
+const localType3 = computed(() => {
+    return local[selectLocal1.value][selectLocal2.value]
+})
+
+watch(selectLocal1, () => {
+    selectLocal2.value = Object.keys(local[selectLocal1.value])[0]
+})
+watch(selectLocal2, () => {
+    selectLocal3.value = local[selectLocal1.value][selectLocal2.value][0]
+})
 
 
 onMounted(() => {
@@ -41,6 +77,9 @@ onMounted(() => {
     loadScript();
   }
 });
+
+
+
 
 // api 스크립트 불러오기
 const loadScript = () => {
@@ -70,16 +109,15 @@ const loadMap = () => {
 };
 const searchPlaces = function() {
     
-    const keywordValue = keyword.value.trim();
+    const keywordValue = `${selectLocal1.value} ${selectLocal2.value} ${selectLocal3.value} 은행`
     if (!keywordValue) {
       alert('키워드를 입력해주세요!');
       return;
     }
     const ps = new kakao.maps.services.Places();
-    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-    ps.keywordSearch(`${keywordValue} 은행`, placesSearchCB);
+    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다\
+    ps.keywordSearch(keywordValue, placesSearchCB);
     
-    keyword.value = ''
   }
 function placesSearchCB(data, status, pagination) {
     if (status === kakao.maps.services.Status.OK) {

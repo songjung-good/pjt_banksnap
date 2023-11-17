@@ -88,6 +88,7 @@ def finance(request):
     if option_serializer.is_valid(raise_exception=True):
         option_serializer.save(product=product)
   data = response['result']['baseList']
+  print(data)
   return Response(data)
 
 
@@ -98,7 +99,7 @@ def deposit(request, type):
   else:
     depositProducts = get_list_or_404(DepositProduct, deposit_type=2)
   serializer = DepositProductSerializer(depositProducts, many=True)
-  print(serializer.data)
+  # print(serializer.data)
   return Response(serializer.data)
   
 

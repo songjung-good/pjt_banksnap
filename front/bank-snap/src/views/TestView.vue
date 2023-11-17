@@ -1,94 +1,52 @@
 <template>
   <div>
     <h1>TEST PAGE</h1>
-    <div>
-      <h3>환율계산</h3>
-      <div>
-        <select v-model="selectedCur1">
-          <option v-for="data in dataList" :value="data.cur_nm">{{ data.cur_nm }}</option>            
-        </select>
-        <input type="number" v-model="exchangeMoney1">
-      </div>
-      <div>     
-        <select v-model="selectedCur2">
-          <option v-for="data in dataList" :value="data.cur_nm">{{ data.cur_nm }}</option>            
-        </select>
-        <input type="number" v-model="exchangeMoney2" readonly>
-      </div>
-
-    </div>
-
-
-
-    <div>
-      <h3>환율 표</h3>
-      <table>
-        <tr>
-          <th>국가</th>
-          <th>송금 받을 때</th>
-          <th>송금 보낼 때</th>
-          <th>매매 기준율</th>
-        </tr>
-        <tr v-for="data in dataList">
-          <td>{{ data.cur_nm }}</td>
-          <td>{{ data.ttb }}</td>
-          <td>{{ data.tts }}</td>
-          <td>{{ data.deal_bas_r }}</td>
-        </tr>
-      </table>
-    </div>
+    <select v-model="selectLocal1">
+      <option v-for="local1 in localType1"
+        :value="local1">{{ local1 }}
+      </option>            
+    </select>
+    <select v-model="selectLocal2">
+      <option v-for="local2 in localType2"
+        :value="local2">{{ local2 }}
+      </option>            
+    </select>
+    <select v-model="selectLocal3">
+      <option v-for="local3 in localType3"
+        :value="local3">{{ local3 }}
+      </option>            
+    </select>
   </div>
 </template>
 
 <script setup>
 import axios from 'axios'
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch, computed } from 'vue'
 import { useCounterStore } from '@/stores/counter'
 
+import local from "@/assets/local.json"
 
-const selectedCur1 = ref('미국 달러')
-const selectedCur2 = ref('한국 원')
+const selectLocal1 = ref(Object.keys(local)[0])
+const selectLocal2 = ref(Object.keys(local[selectLocal1.value])[0])
+const selectLocal3 = ref(local[selectLocal1.value][selectLocal2.value][0])
 
-const exchangeMoney1 = ref(0)
-const exchangeMoney2 = ref(0)
-
-
-const dataList = ref([])
-const store = useCounterStore()
-
-onMounted(() => {
-  axios({
-    method: 'get',
-    url: `${store.url}/bank/exchange/`
-  })
-    .then((res) => {
-      dataList.value = res.data
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+const localType1 = ref(Object.keys(local))
+const localType2 = computed(() => {
+  return Object.keys(local[selectLocal1.value])
 })
-const cur1 = ref(null)
-const cur2 = ref(null)
+const localType3 = computed(() => {
+  return local[selectLocal1.value][selectLocal2.value]
+})
 
-const exchange = function() {
-  cur1.value = dataList.value.find(data => data.cur_nm === selectedCur1.value)
-  cur2.value = dataList.value.find(data => data.cur_nm === selectedCur2.value)
-  const deal = Number(cur1.value.deal_bas_r.replace(/,/g, '')) / Number(cur2.value.deal_bas_r.replace(/,/g, ''))
-  exchangeMoney2.value = Number(exchangeMoney1.value) * deal
-}
-
-
-
-watch([exchangeMoney1, selectedCur1, selectedCur2], () => {
-    exchange()
+watch(selectLocal1, () => {
+  selectLocal2.value = Object.keys(local[selectLocal1.value])[0]
+})
+watch(selectLocal2, () => {
+  selectLocal3.value = local[selectLocal1.value][selectLocal2.value][0]
 })
 
 </script>
 
 <style scoped>
-  tr, th, td {
-    border-bottom: 1px solid black;
-    padding: 3px;
-  }
+
 </style>
