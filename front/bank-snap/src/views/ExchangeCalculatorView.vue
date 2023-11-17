@@ -8,21 +8,17 @@
             <option v-for="data in dataList" :value="data.cur_nm">{{ data.cur_nm }}</option>            
           </select>
           <input type="number" v-model="exchangeMoney1">
-        </div>
-        <div>     
           <select v-model="selectedCur2">
             <option v-for="data in dataList" :value="data.cur_nm">{{ data.cur_nm }}</option>            
           </select>
           <input type="number" v-model="exchangeMoney2" readonly>
         </div>
-  
       </div>
-  
-  
   
       <div>
         <h3>환율 표</h3>
-        <table>
+        <div class="table-responsive">
+        <table class="table">
           <tr>
             <th>국가</th>
             <th>송금 받을 때</th>
@@ -36,6 +32,7 @@
             <td>{{ data.deal_bas_r }}</td>
           </tr>
         </table>
+        </div>
       </div>
     </div>
   </template>
@@ -91,4 +88,17 @@
       border-bottom: 1px solid black;
       padding: 3px;
     }
+
+    .exchange-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+  .exchange-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 80%; /* 원하는 폭으로 조절하세요 */
+  }
   </style>
