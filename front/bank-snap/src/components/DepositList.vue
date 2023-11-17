@@ -13,6 +13,7 @@
       :product="product"
       />
     </table>
+    
   </div>
 </template>
 
@@ -22,12 +23,13 @@ import axios from 'axios'
 import { useCounterStore } from '@/stores/counter'
 import DepositListItem from '@/components/DepositListItem.vue'
 
+
 const props = defineProps({
   type: String,
 })
 const store = useCounterStore()
 const products = ref(null)
-
+const options = ref(null)
 
 onMounted(() => {
   axios({
@@ -52,8 +54,11 @@ onMounted(() => {
 
 </style>
 <style>
-  tr, th, td {
+  th {
     border-bottom: 1px solid black;
     padding: 3px;
+  }
+  .tr-border {
+    border-top: 1px solid black;
   }
 </style>

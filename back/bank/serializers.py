@@ -10,10 +10,10 @@ class DepositOptionSerializer(serializers.ModelSerializer):
 
 
 class DepositProductSerializer(serializers.ModelSerializer):
+  depositoption_set = DepositOptionSerializer(many=True, read_only=True)
   class Meta:
     model = DepositProduct
     fields = '__all__'
-  deposit_option_set = DepositOptionSerializer(many=True, read_only=True)
 
 
 class DepositListSerializer(serializers.ModelSerializer):
