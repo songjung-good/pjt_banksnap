@@ -6,16 +6,14 @@ import axios from 'axios'
 
 const router = useRouter()
 const news = ref([])
-const clientId = 'ZKseutzPuX2HvkBsVewc'
-const clientSecret = 'ItptxoOD_C'
+const clientId = import.meta.env.VITE_clientId
+const clientSecret = import.meta.env.VITE_clientSecret
 const searchQuery = '금융' //'%EA%B8%88%EC%9C%B5'
 const displayCount = 10
 const startPage = 1
 const sortOption = 'sim'
-const searchURL = `/v1/search/news?query=${searchQuery}`
-// &display=${displayCount}&start=${startPage}&sort=${sortOption}
+const searchURL = `/v1/search/news?query=${searchQuery}&display=${displayCount}&start=${startPage}&sort=${sortOption}`
 onMounted(() => {
-  console.log(clientId)
   axios.get(searchURL, {
     headers: {
       'X-Naver-Client-Id':clientId,
@@ -24,19 +22,13 @@ onMounted(() => {
   })
     .then((response) => {
       news.value = response.data.items
+      console.log(response.data.items)
     })
     .catch((error) => {
       console.error(error)
     })
 })
 
-axios.get(searchURL)
-    .then((response) => {
-        // console.log(response.data)
-        news.value = response.data
-    }).catch((error) => {
-        console.error(error)
-    })
 
     // 삼항연산자는 가독성을 위함 / 없어도 boolean값 반환
 const imgIsEmpty = computed(() => {
