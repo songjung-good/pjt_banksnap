@@ -5,21 +5,21 @@ import { useRouter } from 'vue-router';
 import axios from 'axios'
 
 const router = useRouter()
-const specialImages = ref([])
-
-const clientId = '2KPHeGdbQvNEOM1Aly4d'
-const clientSecret = 'w194LdQlzo'
-const searchQuery = '금융'
+const news = ref([])
+const clientId = 'ZKseutzPuX2HvkBsVewc'
+const clientSecret = 'ItptxoOD_C'
+const searchQuery = '금융' //'%EA%B8%88%EC%9C%B5'
 const displayCount = 10
 const startPage = 1
 const sortOption = 'sim'
-const searchURL = `https://openapi.naver.com/v1/search/news.json?query=${searchQuery}&display=${displayCount}&start=${startPage}&sort=${sortOption}`
-
+const searchURL = `/v1/search/news?query=${searchQuery}`
+// &display=${displayCount}&start=${startPage}&sort=${sortOption}
 onMounted(() => {
+  console.log(clientId)
   axios.get(searchURL, {
     headers: {
-      'X-Naver-Client-Id': clientId,
-      'X-Naver-Client-Secret': clientSecret
+      'X-Naver-Client-Id':clientId,
+      'X-Naver-Client-Secret':clientSecret
     }
   })
     .then((response) => {
@@ -40,7 +40,7 @@ axios.get(searchURL)
 
     // 삼항연산자는 가독성을 위함 / 없어도 boolean값 반환
 const imgIsEmpty = computed(() => {
-    return specialImages.value.length > 0 ? true : false
+    return news.value.length > 0 ? true : false
 })
 
 

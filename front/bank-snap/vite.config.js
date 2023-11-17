@@ -1,7 +1,8 @@
 import { fileURLToPath, URL } from 'node:url'
-
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+
+
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,5 +16,13 @@ export default defineConfig({
   }
   ,define: {
     'process.env': process.env
-  }
+  },
+  server: {
+    proxy: {
+      '/v1': {
+        target: 'https://openapi.naver.com',
+        changeOrigin: true,
+      },
+    },
+  },
 })
