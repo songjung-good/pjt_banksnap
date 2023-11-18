@@ -28,14 +28,13 @@
             <li class="nav-item">
               <RouterLink class="nav-link" :to="{ name: 'map' }">MAP</RouterLink>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="!isLogin">
               <RouterLink class="nav-link" :to="{ name: 'LoginView' }">Login</RouterLink>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="!isLogin">
               <RouterLink class="nav-link" :to="{ name: 'SignUpView' }">SignUp</RouterLink>
             </li>
             <li class="nav-item">
-              <!-- params 값 수정 필요! -->
               <RouterLink class="nav-link" :to="{ name: 'ProfileView', params:{id: user}}">MyPage</RouterLink>
             </li>
           </ul>
@@ -60,7 +59,7 @@ const router = useRouter()
 const store = useCounterStore()
 
 const user = ref(store.user)
-
+const isLogin = ref(store.isLogin)
 const goHome = () => {
   router.push('/')
 }
