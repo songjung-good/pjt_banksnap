@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>{{ username }} 님의 Profile</h1>
-
+    <ProfileArticle />
   </div>
 </template>
 
@@ -10,10 +10,13 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { useCounterStore } from '@/stores/counter'
 import axios from 'axios'
+
+import ProfileArticle from '@/components/ProfileArticle.vue'
 const store = useCounterStore()
 const route = useRoute()
 
 const username = ref('')
+const articles = ref([])
 
 onMounted(() => {
   axios({
@@ -24,7 +27,9 @@ onMounted(() => {
       }
     })
       .then((res) =>{
-        username.value = res.data.username
+        console.log(res.data)
+        username.value = res.data.user.username
+        articles.value = res.data.articles
       })
       .catch((err) => {
         console.log(err)
