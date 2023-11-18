@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1>{{ username }} 님의 Profile</h1>
-    <ProfileArticle />
+    <template v-if="articles.length > 0">
+      <ProfileArticle :articles="articles" />
+    </template>
   </div>
 </template>
 
@@ -27,9 +29,9 @@ onMounted(() => {
       }
     })
       .then((res) =>{
-        console.log(res.data)
         username.value = res.data.user.username
         articles.value = res.data.articles
+        console.log(res.data.articles)
       })
       .catch((err) => {
         console.log(err)
