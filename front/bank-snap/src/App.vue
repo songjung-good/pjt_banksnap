@@ -36,7 +36,7 @@
             </li>
             <li class="nav-item">
               <!-- params 값 수정 필요! -->
-              <RouterLink class="nav-link" :to="{ name: 'ProfileView', params:{id: 1}}">MyPage</RouterLink>
+              <RouterLink class="nav-link" :to="{ name: 'ProfileView', params:{id: user}}">MyPage</RouterLink>
             </li>
           </ul>
         </div>
@@ -54,8 +54,12 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
+import { useCounterStore  } from '@/stores/counter'
 
 const router = useRouter()
+const store = useCounterStore()
+
+const user = ref(store.user)
 
 const goHome = () => {
   router.push('/')

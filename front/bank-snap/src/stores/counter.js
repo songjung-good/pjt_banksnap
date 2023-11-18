@@ -9,6 +9,7 @@ export const useCounterStore = defineStore('counter', () => {
   const url = ref('http://127.0.0.1:8000')
   const articles = ref([])
   const token = ref(null)
+  const user = ref(null)
   const isLogin = computed(() => {
     if (token.value === null) {
       return false
@@ -68,9 +69,9 @@ export const useCounterStore = defineStore('counter', () => {
         username,
         password
       }
-    })
+    })  
       .then((res) => {
-        // console.log(res)
+        user.value = username
         token.value = res.data.key
         router.push({ name: 'main' })
       })
@@ -81,5 +82,5 @@ export const useCounterStore = defineStore('counter', () => {
 
 
 
-  return { url, articles, getArticles, login, signUp, token, isLogin }
+  return { url, articles, getArticles, login, signUp, token, isLogin, user }
 }, { persist: true })
