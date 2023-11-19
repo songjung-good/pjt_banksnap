@@ -112,6 +112,14 @@ def deposit(request, type):
   # print(serializer.data[0])
   return Response(serializer.data)
   
+@api_view(['GET'])
+def deposit_detail(request, product_id):
+  print(231213223)
+  product = DepositProduct.objects.get(pk=product_id)
+  print(product)
+  serializer = DepositProductSerializer(product)
+  print(serializer.data)
+  return Response(serializer.data)
 
 
 

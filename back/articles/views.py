@@ -50,7 +50,7 @@ def article_detail(request, article_pk):
 def comment(request, article_pk):
   article = get_object_or_404(Article, pk=article_pk)
   if request.method == 'GET':
-    comments = get_list_or_404(Comment, article=article)
+    comments = Comment.objects.filter(article=article)
     serializer = CommentListSerializer(comments, many=True)
     return Response(serializer.data)
   

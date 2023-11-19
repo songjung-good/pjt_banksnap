@@ -22,6 +22,11 @@ const router = createRouter({
       component: () => import('../views/SavingView.vue')
     },
     {
+      path: '/product/:id',
+      name: 'ProductDetailView',
+      component: () => import('../views/ProductDetailView.vue')
+    },
+    {
       path: '/calculator',
       name: 'exchangecalculator',
       component: () => import('../views/ExchangeCalculatorView.vue')

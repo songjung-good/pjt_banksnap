@@ -14,7 +14,7 @@ class DepositProductSerializer(serializers.ModelSerializer):
   kor_co_nm = serializers.CharField(source='bank.kor_co_nm', read_only=True)
   class Meta:
     model = DepositProduct
-    fields = '__all__'
+    exclude = ('like_users',)
     read_only_fields = ('bank',)
 
 
