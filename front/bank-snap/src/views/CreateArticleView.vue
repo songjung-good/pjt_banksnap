@@ -17,7 +17,6 @@ import ArticleWrite from '@/components/ArticleWrite.vue'
 const route = useRoute()
 const type = ref(route.query.type)
 const articleId = ref(route.query.id)
-console.log(articleId)
 </script>
 
 <style scoped>
