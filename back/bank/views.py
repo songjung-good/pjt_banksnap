@@ -116,9 +116,19 @@ def deposit(request, type):
 def deposit_detail(request, product_id):
   product = DepositProduct.objects.get(pk=product_id)
   serializer = DepositProductSerializer(product)
-  return Response(serializer.data)
+  if request.user in product.like_users.all():
+    is_liked = True
+  else:
+    is_liked = False
+  response = {
+    'product': serializer.data,
+    'is_liked': is_liked
+  }
+  # return Response(serializer.data)
+  return Response(response)
 
-@api_view(['POST'])
+
+@api_view(['POST', 'DELETE'])
 def product_like(request, product_id):
   product = DepositProduct.objects.get(pk=product_id)
   if request.user in product.like_users.all():
@@ -127,5 +137,4 @@ def product_like(request, product_id):
   else:
     product.like_users.add(request.user)
     is_liked = True
-
-    return Response(is_liked)
+  return Response({'is_liked': is_liked})

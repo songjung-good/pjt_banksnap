@@ -4,7 +4,7 @@
     </div>
     <!-- 정보 수정 필요 -->
     <p> {{ product }}</p>
-    <button @click="likeProduct">좋아요</button>
+    <button @click="likeProduct">{{ likeButton }}</button>
 </template>
 
 <script setup>
@@ -17,16 +17,22 @@ import { useCounterStore } from '@/stores/counter'
 const store = useCounterStore()
 const route = useRoute()
 const product = ref(null)
-
+const likeButton = ref(null)
 onMounted(() => {
     axios({
         method: 'get',
         url: `${store.url}/bank/product/detail/${route.params.id}/`,
-
+        headers: {
+            Authorization: `Token ${store.token}`
+        }
     })
     .then((res) =>{
-        console.log(product)
-        product.value = res.data
+        product.value = res.data.product
+        if (res.data.is_liked){
+            likeButton.value = '좋아요 취소'
+        }else {
+            likeButton.value = '좋아요'
+        }
 
     })
     .catch((err) => {
@@ -43,8 +49,12 @@ const likeProduct = function() {
         }
     })
     .then((res) =>{
-        console.log(res.data)
-        // 좋아요 버튼 처리해야함!
+        if (res.data.is_liked){
+            likeButton.value = '좋아요 취소'
+        }else{
+            likeButton.value = '좋아요'
+        }
+
     })
     .catch((err) => {
         console.log(err)
