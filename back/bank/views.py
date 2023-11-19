@@ -114,49 +114,18 @@ def deposit(request, type):
   
 @api_view(['GET'])
 def deposit_detail(request, product_id):
-  print(231213223)
   product = DepositProduct.objects.get(pk=product_id)
-  print(product)
   serializer = DepositProductSerializer(product)
-  print(serializer.data)
   return Response(serializer.data)
 
+@api_view(['POST'])
+def product_like(request, product_id):
+  product = DepositProduct.objects.get(pk=product_id)
+  if request.user in product.like_users.all():
+    product.like_users.remove(request.user)
+    is_liked = False
+  else:
+    product.like_users.add(request.user)
+    is_liked = True
 
-
-
-
-
-
-
-
-
-
-
-# def test(request):
-#   DP_URL = 'http://finlife.fss.or.kr/finlifeapi/depositProductsSearch.json'
-#   SP_URL = 'http://finlife.fss.or.kr/finlifeapi/savingProductsSearch.json'
-
-#   API_KEY = '<API_KEY>'
-
-
-#   params = {
-#     'auth': API_KEY,
-#     # 금융회사 코드 020000(은행), 030200(여신전문), 030300(저축은행), 050000(보험), 060000(금융투자)
-#     'topFinGrpNo': '020000',
-#     'pageNo': 1
-#   }
-
-#   # 정기예금 목록 저장
-#   response = requests.get(DP_URL, params=params).json()
-#   baseList = response.get('result').get('baseList')   # 상품 목록
-
-#   for product in baseList:
-    
-
-
-#   # 적금 목록 저장
-#   response = requests.get(SP_URL, params=params).json()
-#   baseList = response.get('result').get('baseList')   # 상품 목록
-
-#   for product in baseList:
-
+    return Response(is_liked)

@@ -9,7 +9,10 @@
       <ProfileComment :comments="comments" />
     </template>
     <hr>
-    
+    <template v-if="products.length > 0">
+      <ProfileProduct :products="products" />
+    </template>
+
   </div>
 </template>
 
@@ -21,6 +24,7 @@ import axios from 'axios'
 
 import ProfileArticle from '@/components/ProfileArticle.vue'
 import ProfileComment from '@/components/ProfileComment.vue'
+import ProfileProduct from '@/components/ProfileProduct.vue'
 
 const store = useCounterStore()
 const route = useRoute()
@@ -28,6 +32,8 @@ const route = useRoute()
 const username = ref('')
 const articles = ref([])
 const comments = ref([])
+const products = ref([])
+
 onMounted(() => {
   axios({
       method: 'get',
@@ -40,6 +46,7 @@ onMounted(() => {
         username.value = res.data.username
         articles.value = res.data.article_set
         comments.value = res.data.comment_set
+        products.value = res.data.like_products
       })
       .catch((err) => {
         console.log(err)

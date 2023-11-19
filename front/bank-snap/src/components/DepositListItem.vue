@@ -22,10 +22,12 @@
       </table>
     </td>
   </tr>
+  <RouterLink :to="{ name: 'ProductDetailView', params:{id: product.id}}">자세히 보기</RouterLink>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 import DepositOptionItem from '@/components/DepositOptionItem.vue'
 const props = defineProps({
   product: Object,
