@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 
 class Bank(models.Model):
@@ -7,6 +8,8 @@ class Bank(models.Model):
 
 
 class DepositProduct(models.Model):
+  bank = models.ForeignKey(Bank, on_delete=models.CASCADE)
+  like_users = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="like_products")
   fin_prdt_cd = models.TextField(unique=True)                   # 금융 상품 코드
   # kor_co_nm = models.TextField(default='none')                  # 금융 회사 명
   fin_prdt_nm = models.TextField(default='none')                # 금융 상품 명
@@ -16,8 +19,6 @@ class DepositProduct(models.Model):
   join_way = models.TextField(default='none')                   # 가입 방법
   spcl_cnd = models.TextField(default='none')                   # 우대 조건\
   deposit_type = models.IntegerField(default=-1)                 # 예/적금 구분 , 예금 = 1 적금 = 2
-  bank = models.ForeignKey(Bank, on_delete=models.CASCADE)
-
 
 class DepositOption(models.Model):
   product = models.ForeignKey(DepositProduct, on_delete=models.CASCADE)

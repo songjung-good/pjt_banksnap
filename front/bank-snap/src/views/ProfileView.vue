@@ -4,9 +4,12 @@
     <template v-if="articles.length > 0">
       <ProfileArticle :articles="articles" />
     </template>
+    <hr>
     <template v-if="comments.length > 0">
       <ProfileComment :comments="comments" />
     </template>
+    <hr>
+    
   </div>
 </template>
 
