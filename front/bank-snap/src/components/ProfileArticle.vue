@@ -19,7 +19,5 @@ const store = useCounterStore()
 const props = defineProps({
     'articles': Object,
 })
-console.log(props.articles)
 const articles = ref(props.articles)
-console.log(articles.value)
 </script>

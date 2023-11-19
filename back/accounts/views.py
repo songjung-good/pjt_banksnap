@@ -11,11 +11,5 @@ def profile(request, username):
     User = get_user_model()
     person = User.objects.get(username=username)
     user_serializer = UserSerializer(person)
-    articles = Article.objects.filter(user=person)
-    articles_serializer = ArticleListSerializer(articles, many=True)
-    context = {
-        'user': user_serializer.data,
-        'articles': articles_serializer.data
-    }
-
-    return Response(context)
+    
+    return Response(user_serializer.data)
