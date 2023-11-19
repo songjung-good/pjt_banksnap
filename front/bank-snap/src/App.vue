@@ -34,7 +34,7 @@
             <li class="nav-item" v-if="!isLogin">
               <RouterLink class="nav-link" :to="{ name: 'SignUpView' }">SignUp</RouterLink>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" v-if="isLogin">
               <RouterLink class="nav-link" :to="{ name: 'ProfileView', params:{id: user}}">MyPage</RouterLink>
             </li>
           </ul>
