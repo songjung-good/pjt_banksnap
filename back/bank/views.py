@@ -12,7 +12,8 @@ from .models import DepositProduct, DepositOption, Bank
 @api_view(['GET'])
 def exchange(request):
   authkey = settings.EXCHANGE_KEY
-  now = datetime.datetime.now().strftime("%Y%m%d")
+  # now = datetime.datetime.now().strftime("%Y%m%d")
+  now = 20231117
   data = 'AP01'
   URL = 'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON'
   params = {
