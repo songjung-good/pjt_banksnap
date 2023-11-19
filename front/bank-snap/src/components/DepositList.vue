@@ -35,9 +35,7 @@ onMounted(() => {
   axios({
     method: 'get',
     url: `${store.url}/bank/product/${props.type}/`,
-    // headers: {
-    //   Authorization: `Token ${store.token}`
-    // }
+    
   })
     .then((res) =>{
       products.value = res.data

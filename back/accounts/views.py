@@ -11,5 +11,5 @@ def profile(request, username):
     User = get_user_model()
     person = User.objects.get(username=username)
     user_serializer = UserSerializer(person)
-    
+    print(user_serializer.data)
     return Response(user_serializer.data)
