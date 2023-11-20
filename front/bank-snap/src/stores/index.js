@@ -52,13 +52,32 @@ export const useIndexStore = defineStore('index', () => {
           username: username,
           password: password1
         })
+        
+      })
+      .then((res) => {
+        createUserInfo()
         router.push({ name: 'main' })
       })
+
       .catch((err) => {
         console.log(err)
       })
   }
-
+  const createUserInfo = function () {
+    axios({
+      method: 'post',
+      url: `${url.value}/user/propensity/`,
+      headers: {
+        Authorization: `Token ${token.value}`
+      }
+      .then((res) => {
+        
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    })
+  }
   const login = function (payload) {
     const { username, password } = payload
 

@@ -22,3 +22,4 @@ class PropensitySerializer(serializers.ModelSerializer):
   class Meta:
     model = Propensity
     fields = ('id', 'user_info', 'bank_info', 'deposit_now', 'deposit_type', 'income', 'age',)
+    read_only_fields = ('bank', 'user',)
