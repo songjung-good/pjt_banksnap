@@ -1,4 +1,3 @@
-
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router';
@@ -12,7 +11,6 @@ const searchQuery = '금융' //'%EA%B8%88%EC%9C%B5'
 const displayCount = 10
 const startPage = 1
 const sortOption = 'sim'
-
 const searchURL = `/v1/search/news?query=${searchQuery}&display=${displayCount}&start=${startPage}&sort=${sortOption}`
 
 onMounted(() => {
@@ -30,12 +28,10 @@ onMounted(() => {
     })
 })
 
-
     // 삼항연산자는 가독성을 위함 / 없어도 boolean값 반환
 const imgIsEmpty = computed(() => {
     return newsList.value.length > 0 ? true : false
 })
-
 
 </script>
 
@@ -71,5 +67,4 @@ const imgIsEmpty = computed(() => {
     height: 200px;
     object-fit: fill;
 }
-
 </style>
