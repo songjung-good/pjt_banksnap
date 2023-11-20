@@ -79,8 +79,22 @@ export const useCounterStore = defineStore('counter', () => {
         console.log(err)
       })
   }
+  const logout = function () {
+    axios({
+      method: 'post',
+      url: `${url.value}/accounts/logout/`,
+    })
+      .then((res) => {
+        token.value = null
+        user.value = null
+        router.go()
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
 
 
 
-  return { url, articles, getArticles, login, signUp, token, isLogin, user }
+  return { url, articles, getArticles, login, signUp, logout, token, isLogin, user }
 }, { persist: true })

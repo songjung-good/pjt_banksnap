@@ -37,6 +37,9 @@
             <li class="nav-item" v-if="isLogin">
               <RouterLink class="nav-link" :to="{ name: 'ProfileView', params:{id: user}}">MyPage</RouterLink>
             </li>
+            <li class="nav-item" v-if="isLogin">
+              <button @click="logout">Logout</button>
+            </li>
           </ul>
         </div>
       </nav>
@@ -93,6 +96,7 @@ const store = useCounterStore()
 
 const user = ref(store.user)
 const isLogin = ref(store.isLogin)
+const logout = ref(store.logout)
 const goHome = () => {
   router.push('/')
 }
