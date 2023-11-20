@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table class="table table-hover">
+    <table class="table">
       <tr class="table-info">
         <th>상품 코드</th>
         <th>은행명</th>

@@ -31,7 +31,7 @@ const closeNavbar = () => {
 
 <template>
   <header>
-    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-light">
       <div class="center container-fluid">
         <a class="navbar-brand" href="#">
           <img alt="Pjt logo" class="logo" src="@/assets/logo_nonbackgroound.png" height="50" @click="goHome" />
@@ -42,38 +42,40 @@ const closeNavbar = () => {
         <div class="collapse navbar-collapse" :class="{ 'show': isNavbarOpen }" @click="closeNavbar">
           <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li class="nav-item">
-              <RouterLink class="nav-link " :to="{ name: 'main' }">Home</RouterLink>
+              <RouterLink class="btn btn-outline-info nav-link" :to="{ name: 'main' }">
+                🏡메인
+              </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link" :to="{ name: 'test' }">장선생님의 영혼</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'test' }">👻장선생님의 영혼</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link" :to="{ name: 'DepositView' }">금리비교</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'DepositView' }">🐷예적금 상품</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link" :to="{ name: 'exchangecalculator' }">환율계산기</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'exchangecalculator' }">💹환율계산기</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link" :to="{ name: 'map' }">MAP</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'map' }">🗺️MAP</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link" :to="{ name: 'community' }">커뮤니티</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'community' }">📰커뮤니티</RouterLink>
             </li>
             <li class="nav-item" v-if="isLogin">
-              <RouterLink class="nav-link" :to="{ name: 'ProfileView', params:{id: user}}">MyPage</RouterLink>
+              <RouterLink v-if="user" class="nav-link btn btn-outline-info" :to="{ name: 'ProfileView', params:{id: user}}">⚙️MyPage</RouterLink>
             </li>
-            <div>              
-              <!-- <button type="button" class="btn btn-outline-primary me-2" v-if="!isLogin"> -->
-                <RouterLink v-if="!isLogin" class="btn btn-primary me-2" :to="{ name: 'LoginView' }" >Login</RouterLink>
-              <!-- </button> -->
-              <button type="button" class="btn btn-outline-primary me-2" @click="logout" v-if="isLogin">
+            <li>              
+              <RouterLink v-if="!isLogin" class="nav-link btn btn-outline-info" :to="{ name: 'LoginView' }" >🔑Login</RouterLink>
+            </li>
+            <li>
+              <button type="button" class="nav-link btn btn-outline-info" @click="logout" v-if="isLogin">
                 Logout
               </button>
-              <!-- <button type="button" class=""> -->
-                <RouterLink class="btn btn-primary me-2" :to="{ name: 'SignUpView' }">SignUp</RouterLink>
-                <!-- </button> -->
-              </div>
-            </ul>
+            </li>
+            <li>
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'SignUpView' }">SignUp</RouterLink>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
@@ -87,6 +89,12 @@ const closeNavbar = () => {
 .logo {
   cursor: pointer;
 }
+.input-container {
+  display: flex;
+  gap: 10px; /* 좌우 간격을 조절할 값 (원하는 간격으로 조절) */
+  justify-content: space-around; /* 입력 요소들을 동일한 간격으로 배치 */
+  align-items: center; /* 세로 중앙 정렬을 위한 설정 */
+}
 </style>
 
 <style>
@@ -98,7 +106,7 @@ const closeNavbar = () => {
     max-width: 1280px;
     margin: 0 auto;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen {
   .container {
     max-width: 1280px;
     margin: 0 auto;

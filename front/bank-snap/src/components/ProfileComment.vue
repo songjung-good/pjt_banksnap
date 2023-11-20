@@ -4,7 +4,7 @@
         <RouterLink 
             v-for="comment in comments" 
             :key="comment.id"
-            :to="{ name: 'DetailView', params: { id: comment.article.id }}">
+            :to="{ name: 'DetailView', params: { id: comment.article }}">
             <p>{{ comment.content }}</p>
         </RouterLink>
     </div>
