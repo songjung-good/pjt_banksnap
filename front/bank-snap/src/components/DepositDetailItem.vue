@@ -11,10 +11,10 @@
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import axios from 'axios'
-import { useCounterStore } from '@/stores/counter'
+import { useIndexStore } from '@/stores/index'
 
 
-const store = useCounterStore()
+const store = useIndexStore()
 const route = useRoute()
 const product = ref(null)
 const likeButton = ref(null)

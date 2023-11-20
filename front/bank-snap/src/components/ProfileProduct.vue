@@ -13,9 +13,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useCounterStore } from '@/stores/counter'
+import { useIndexStore } from '@/stores/index'
 
-const store = useCounterStore()
+const store = useIndexStore()
 
 const props = defineProps({
     'products': Object,

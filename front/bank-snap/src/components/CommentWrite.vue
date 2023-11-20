@@ -10,12 +10,12 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useCounterStore } from '@/stores/counter'
+import { useIndexStore } from '@/stores/index'
 import { useRouter } from 'vue-router'
 import axios from 'axios'
 
 
-const store = useCounterStore()
+const store = useIndexStore()
 const content = ref(null)
 const router = useRouter()
 const props = defineProps({

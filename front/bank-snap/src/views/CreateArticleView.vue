@@ -10,7 +10,7 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
-import { useCounterStore } from '@/stores/counter'
+import { useIndexStore } from '@/stores/index'
 import { useRouter, useRoute } from 'vue-router'
 import ArticleWrite from '@/components/ArticleWrite.vue'
 

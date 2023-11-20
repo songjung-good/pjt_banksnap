@@ -12,9 +12,9 @@
 
 <script setup>
 import { ref } from 'vue'
-import { useCounterStore } from '@/stores/counter'
+import { useIndexStore } from '@/stores/Index'
 
-const store = useCounterStore()
+const store = useIndexStore()
 
 const username = ref('')
 const password1 = ref('')

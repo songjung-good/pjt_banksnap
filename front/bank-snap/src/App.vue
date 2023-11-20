@@ -1,3 +1,35 @@
+
+
+<script setup>
+import { ref, computed } from 'vue'
+import { RouterLink, useRouter } from 'vue-router'
+import { useIndexStore  } from '@/stores/index'
+
+const router = useRouter()
+const store = useIndexStore()
+
+const user = ref(null)
+user.value = store.user
+const isLogin = computed(()=>{
+  return store.isLogin
+})
+console.log(isLogin)
+const logout = ref(store.logout)
+const goHome = () => {
+  router.push('/')
+}
+const isNavbarOpen = ref(false);
+
+const toggleNavbar = () => {
+  isNavbarOpen.value = !isNavbarOpen.value;
+}
+
+const closeNavbar = () => {
+  isNavbarOpen.value = false;
+}
+
+</script>
+
 <template>
   <header>
     <div class="center">
@@ -49,37 +81,6 @@
     <RouterView :key="$route.fullPath"/>  
   </body>
 </template>
-
-<script setup>
-import { ref, computed } from 'vue'
-import { RouterLink, useRouter } from 'vue-router'
-import { useCounterStore  } from '@/stores/counter'
-
-const router = useRouter()
-const store = useCounterStore()
-
-const user = ref(null)
-user.value = store.user
-const isLogin = computed(()=>{
-  return store.isLogin
-})
-console.log(isLogin)
-const logout = ref(store.logout)
-const goHome = () => {
-  router.push('/')
-}
-const isNavbarOpen = ref(false);
-
-const toggleNavbar = () => {
-  isNavbarOpen.value = !isNavbarOpen.value;
-}
-
-const closeNavbar = () => {
-  isNavbarOpen.value = false;
-}
-
-</script>
-
 
 <style scoped>
 .logo {

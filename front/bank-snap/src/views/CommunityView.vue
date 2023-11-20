@@ -14,11 +14,11 @@
 
 <script setup>
 import { onMounted } from 'vue'
-import { useCounterStore } from '@/stores/counter'
+import { useIndexStore } from '@/stores/index'
 import { RouterLink } from 'vue-router'
 import ArticleList from '@/components/ArticleList.vue'
 
-const store = useCounterStore()
+const store = useIndexStore()
 const isLogin = store.isLogin
 onMounted(() => {
     store.getArticles()

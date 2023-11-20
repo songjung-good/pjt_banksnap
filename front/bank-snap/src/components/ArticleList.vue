@@ -10,9 +10,9 @@
 </template>
 
 <script setup>
-import { useCounterStore } from '@/stores/counter'
+import { useIndexStore } from '@/stores/index'
 import ArticleListItem from '@/components/ArticleListItem.vue'
 
-const store = useCounterStore()
+const store = useIndexStore()
 
 </script>

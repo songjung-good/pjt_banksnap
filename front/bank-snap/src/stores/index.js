@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import axios from 'axios'
 
 
-export const useCounterStore = defineStore('counter', () => {
+export const useIndexStore = defineStore('index', () => {
   const router = useRouter()
   const url = ref('http://127.0.0.1:8000')
   const articles = ref([])

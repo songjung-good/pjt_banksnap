@@ -40,7 +40,7 @@
   <script setup>
   import axios from 'axios'
   import { ref, onMounted, watch } from 'vue'
-  import { useCounterStore } from '@/stores/counter'
+  import { useIndexStore } from '@/stores/index'
   
   
   const selectedCur1 = ref('미국 달러')
@@ -51,7 +51,7 @@
   
   
   const dataList = ref([])
-  const store = useCounterStore()
+  const store = useIndexStore()
   
   onMounted(() => {
     axios({

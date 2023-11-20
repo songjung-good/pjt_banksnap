@@ -23,12 +23,12 @@
 <script setup>
 import axios from 'axios'
 import { onMounted, ref } from 'vue'
-import { useCounterStore } from '@/stores/counter'
+import { useIndexStore } from '@/stores/index'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
 import CommentList from '@/components/CommentList.vue'
 import CommentWrite from '@/components/CommentWrite.vue'
 
-const store = useCounterStore()
+const store = useIndexStore()
 const route = useRoute()
 const router = useRouter()
 const article = ref(null)

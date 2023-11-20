@@ -18,14 +18,14 @@
 <script setup>
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
-import { useCounterStore } from '@/stores/counter'
+import { useIndexStore } from '@/stores/index'
 import { useRoute, useRouter } from 'vue-router'
 const props = defineProps({
   type: String,
   id: Number,
 })
 
-const store = useCounterStore()
+const store = useIndexStore()
 const router = useRouter()
 const route = useRoute()
 const title = ref(null)

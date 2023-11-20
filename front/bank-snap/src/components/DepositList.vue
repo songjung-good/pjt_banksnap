@@ -20,14 +20,14 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
-import { useCounterStore } from '@/stores/counter'
+import { useIndexStore } from '@/stores/index'
 import DepositListItem from '@/components/DepositListItem.vue'
 
 
 const props = defineProps({
   type: String,
 })
-const store = useCounterStore()
+const store = useIndexStore()
 const products = ref(null)
 const options = ref(null)
 

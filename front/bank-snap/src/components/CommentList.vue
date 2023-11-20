@@ -11,12 +11,12 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useCounterStore } from '@/stores/counter'
+import { useIndexStore } from '@/stores/index'
 import CommentListItem from '@/components/CommentListItem.vue'
 import axios from 'axios'
 
 const comments = ref(null)
-const store = useCounterStore()
+const store = useIndexStore()
 const props = defineProps({
   articleId: String,
 })

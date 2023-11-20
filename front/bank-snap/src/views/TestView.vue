@@ -22,7 +22,7 @@
 <script setup>
 import axios from 'axios'
 import { ref, onMounted, watch, computed } from 'vue'
-import { useCounterStore } from '@/stores/counter'
+import { useIndexStore } from '@/stores/index'
 
 import local from "@/assets/local.json"
 
