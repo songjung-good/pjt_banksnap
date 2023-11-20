@@ -63,9 +63,7 @@ def comment(request, article_pk):
 
 @api_view(['DELETE'])
 def comment_delete(request, comment_pk):
-  print(13123)
   comment = get_object_or_404(Comment, pk=comment_pk)
-  print(comment)
   comment.delete()
   return Response(status=status.HTTP_204_NO_CONTENT)
     

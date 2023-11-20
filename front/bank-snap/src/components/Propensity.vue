@@ -2,8 +2,10 @@
 import { ref, onMounted } from 'vue'
 import { useIndexStore } from '@/stores/index'
 import axios from 'axios'
+import { RouterLink } from 'vue-router'
 const store = useIndexStore()
-const userInfo = ref(null)
+const username = ref(null)
+const userId = ref(null)
 const bank = ref(null)
 const age = ref(-11)
 const income = ref(-11)
@@ -15,11 +17,11 @@ onMounted(() => {
   url: `${store.url}/user/propensity/`,
   headers: {
     Authorization: `Token ${store.token}`
-  }
+    }
   })
     .then((res) => {
-      // userInfo.value = res.data.user_info
-      console.log(res.data)  
+      username.value = res.data.user_info.username
+      userId.value =  res.data.user_info.id
       bank.value = res.data.bank_info.kor_co_nm
       age.value = res.data.age
       income.value = res.data.income
@@ -35,7 +37,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <!-- <h1>{{ userInfo.username }} 님의 정보 </h1> -->
+    <h1>{{ username }} 님의 정보 </h1>
     <div>
       <p>나이 : {{ age }}</p>
       <p>연봉 : {{ income }}</p>
@@ -44,6 +46,8 @@ onMounted(() => {
       <p>투자 성향 : {{ depositType }}</p>
     </div>
   </div>
+  <RouterLink v-if="userId" :to="{ name: 'PropensityUpdateView' }">정보 수정</RouterLink>
+
 </template>
 <style scoped>
 

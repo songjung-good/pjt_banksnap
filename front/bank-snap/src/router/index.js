@@ -72,9 +72,14 @@ const router = createRouter({
       component: () => import('@/views/ProfileView.vue')
     },
     {
-      path: '/propensity/:id',
+      path: '/propensity',
       name: 'PropensityView',
       component: () => import('@/views/PropensityView.vue')
+    },
+    {
+      path: '/propensity/update',
+      name: 'PropensityUpdateView',
+      component: () => import('@/views/PropensityUpdateView.vue')
     },
   ]
 })

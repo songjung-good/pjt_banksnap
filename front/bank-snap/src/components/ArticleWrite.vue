@@ -58,7 +58,6 @@ const writeArticle = function() {
   }
 }
 
-console.log(`Token ${store.token}`)
 const createArticle = function () {
   axios({
     method: 'post',

@@ -46,6 +46,7 @@ onMounted(() => {
       }
     })
       .then((res) =>{
+        console.log(res.data)
         username.value = res.data.username
         articles.value = res.data.article_set
         comments.value = res.data.comment_set
