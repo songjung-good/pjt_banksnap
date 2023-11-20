@@ -26,7 +26,7 @@ const props = defineProps({
 const createComment = function () {
   axios({
     method: 'post',
-    url: `${store.url}/articles/comments/${props.articleId}`,
+    url: `${store.url}/articles/comments/${props.articleId}/`,
     data: {
       content: content.value
     },

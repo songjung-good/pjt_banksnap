@@ -59,3 +59,13 @@ def comment(request, article_pk):
     if serializer.is_valid(raise_exception=True):
         serializer.save(article=article, user=request.user)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+    
+
+@api_view(['DELETE'])
+def comment_delete(request, comment_pk):
+  print(13123)
+  comment = get_object_or_404(Comment, pk=comment_pk)
+  print(comment)
+  comment.delete()
+  return Response(status=status.HTTP_204_NO_CONTENT)
+    
