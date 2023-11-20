@@ -87,7 +87,7 @@ export const useCounterStore = defineStore('counter', () => {
       .then((res) => {
         token.value = null
         user.value = null
-        router.go()
+        router.push({name: 'main'})
       })
       .catch((err) => {
         console.log(err)
