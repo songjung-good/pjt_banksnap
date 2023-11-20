@@ -39,7 +39,6 @@
 
 - 2023년 11월 14일 ~ 2023년 11월 24일 (11일)👋
 
-  
 
   ### 일정
 
@@ -60,8 +59,7 @@
   <br><br>
 
 
-
-## 기술 스택 👀
+## 개발 환경 👀
 
 <p align="center">
   <img src="https://img.shields.io/badge/API-Kakao_Map-yellow?style=flat&logo=kakao&logoColor=white"> 
@@ -77,10 +75,11 @@
   <img src="https://img.shields.io/badge/Library-pinia-orange?style=flat&logo=pinia&logoColor=white">
 </p>
 
-```markdown
-python: 3.11.4
 
-JavaScript: 
+```markdown
+python: 3.9.13
+
+JavaScript: es6++??
 
 Sqlite: <- 플러그인으로 쓰는데??
 
@@ -104,21 +103,30 @@ pinia: 2.1.7
 ​	<br>	<br>	
 
 
-
-
 ## 협업 툴 👊
 
 - Notion
 
 - Mattermost
 
-- Postman
-
 - github
 
   <br><br>
 
-## ~~Tech Architecture 👨‍💻 수정이 필요합니다ㅠㅠ!~~ 
+
+
+## ERD
+
+![DB구조](doc\구조\DB.png)
+
+  <br> <br>
+
+
+## 주요기능
+
+
+
+## ~~아키텍쳐 👨‍💻 수정이 필요합니다ㅠㅠ!~~ 
 
 [![TechArchitecture](https://user-images.githubusercontent.com/53832553/154430527-09bd19d6-993f-4dc0-ae4f-5a5e77220055.png)](https://user-images.githubusercontent.com/53832553/154430527-09bd19d6-993f-4dc0-ae4f-5a5e77220055.png)
 
