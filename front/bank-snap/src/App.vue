@@ -91,6 +91,9 @@ const closeNavbar = () => {
 </style>
 
 <style>
+/* Bootstrap styles */
+@import './assets/css/bootstrap.min.css';
+
 .center {
     box-sizing: border-box;
     max-width: 1280px;
@@ -98,7 +101,7 @@ const closeNavbar = () => {
   }
   @media screen and (min-width: 1024px) {
   .container {
-    max-width: 1000px;
+    max-width: 1280px;
     margin: 0 auto;
   }
 }
