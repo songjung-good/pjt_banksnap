@@ -1,5 +1,4 @@
 
-
 <script setup>
 import { ref, computed } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
@@ -32,7 +31,7 @@ const closeNavbar = () => {
 
 <template>
   <header>
-    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
       <div class="center container-fluid">
         <a class="navbar-brand" href="#">
           <img alt="Pjt logo" class="logo" src="@/assets/logo_nonbackgroound.png" height="50" @click="goHome" />
@@ -43,7 +42,7 @@ const closeNavbar = () => {
         <div class="collapse navbar-collapse" :class="{ 'show': isNavbarOpen }" @click="closeNavbar">
           <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li class="nav-item">
-              <RouterLink class="nav-link" :to="{ name: 'main' }">Home</RouterLink>
+              <RouterLink class="nav-link " :to="{ name: 'main' }">Home</RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink class="nav-link" :to="{ name: 'test' }">장선생님의 영혼</RouterLink>

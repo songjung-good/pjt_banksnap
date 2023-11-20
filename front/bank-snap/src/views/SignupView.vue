@@ -1,12 +1,26 @@
 <template>
-  <div>
-    <h1>SignUp</h1>
-    <form @submit.prevent="signUp">
-      <p>아이디 : <input type="text" v-model.trim="username"></p>
-      <p>비밀번호 확인 : <input type="password" v-model.trim="password1"></p>
-      <p>비밀번호 확인 : <input type="password" v-model.trim="password2"></p>
-      <input type="submit">
-    </form>
+  <h1>SignUp</h1>
+  <div class="text-center">
+    <main class="form-signin">
+      <form @submit.prevent="signUp">
+        <img class="mb-4" src="../assets/logo_nonbackgroound.png" alt="" width="80" height="57">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <div class="form-floating">
+          <input type="text" v-model.trim="username" class="form-control" id="floatingInput" placeholder="ID">
+          <label for="floatingInput">아이디</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" v-model.trim="password1" class="form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">비밀번호</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" v-model.trim="password2" class="form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">비밀번호확인</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">Welcome! BankSnap</p>
+      </form>
+    </main>
   </div>
 </template>
 
@@ -32,5 +46,9 @@ const signUp = function() {
 </script>
 
 <style scoped>
+/* Bootstrap styles */
+@import '@/assets/css/bootstrap.min.css';
 
+/* Additional styles */
+@import '@/assets/css/signin.css';
 </style>
