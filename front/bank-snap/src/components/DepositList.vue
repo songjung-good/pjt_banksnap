@@ -1,7 +1,7 @@
 <template>
   <div>
-    <table>
-      <tr>
+    <table class="table">
+      <tr class="table-info">
         <th>상품 코드</th>
         <th>은행명</th>
         <th>정보</th>

@@ -1,5 +1,4 @@
 
-
 <script setup>
 import { ref, computed } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
@@ -31,8 +30,8 @@ const closeNavbar = () => {
 
 <template>
   <header>
-    <div class="center">
-      <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="center container-fluid">
         <a class="navbar-brand" href="#">
           <img alt="Pjt logo" class="logo" src="@/assets/logo_nonbackgroound.png" height="50" @click="goHome" />
         </a>
@@ -40,41 +39,45 @@ const closeNavbar = () => {
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" :class="{ 'show': isNavbarOpen }" @click="closeNavbar">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li class="nav-item">
-              <RouterLink class="nav-link" :to="{ name: 'main' }">Home</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink class="nav-link" :to="{ name: 'test' }">장선생님의 영혼</RouterLink>
-            </li>
-            <li class="nav-item">
-              <RouterLink class="nav-link" :to="{ name: 'DepositView' }">금리비교</RouterLink>
+              <RouterLink class="btn btn-outline-info nav-link" :to="{ name: 'main' }">
+                🏡메인
+              </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link" :to="{ name: 'exchangecalculator' }">환율계산기</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'test' }">👻장선생님의 영혼</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link" :to="{ name: 'community' }">커뮤니티</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'DepositView' }">🐷예적금 상품</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link" :to="{ name: 'map' }">MAP</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'exchangecalculator' }">💹환율계산기</RouterLink>
             </li>
-            <li class="nav-item" v-if="!isLogin">
-              <RouterLink class="nav-link" :to="{ name: 'LoginView' }">Login</RouterLink>
+            <li class="nav-item">
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'map' }">🗺️MAP</RouterLink>
             </li>
-            <li class="nav-item" v-if="!isLogin">
-              <RouterLink class="nav-link" :to="{ name: 'SignUpView' }">SignUp</RouterLink>
+            <li class="nav-item">
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'community' }">📰커뮤니티</RouterLink>
             </li>
             <li class="nav-item" v-if="isLogin">
-              <RouterLink class="nav-link" :to="{ name: 'ProfileView', params:{id: user}}">MyPage</RouterLink>
+              <RouterLink v-if="user" class="nav-link btn btn-outline-info" :to="{ name: 'ProfileView', params:{id: user}}">⚙️MyPage</RouterLink>
             </li>
-            <li class="nav-item" v-if="isLogin">
-              <button class="nav-link" @click="logout">Logout</button>
+            <li>              
+              <RouterLink v-if="!isLogin" class="nav-link btn btn-outline-info" :to="{ name: 'LoginView' }" >🔑Login</RouterLink>
+            </li>
+            <li>
+              <button type="button" class="nav-link btn btn-outline-info" @click="logout" v-if="isLogin">
+                Logout
+              </button>
+            </li>
+            <li>
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'SignUpView' }">SignUp</RouterLink>
             </li>
           </ul>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   </header>
   <body class="center">
     <RouterView :key="$route.fullPath"/>  
@@ -85,17 +88,26 @@ const closeNavbar = () => {
 .logo {
   cursor: pointer;
 }
+.input-container {
+  display: flex;
+  gap: 10px; /* 좌우 간격을 조절할 값 (원하는 간격으로 조절) */
+  justify-content: space-around; /* 입력 요소들을 동일한 간격으로 배치 */
+  align-items: center; /* 세로 중앙 정렬을 위한 설정 */
+}
 </style>
 
 <style>
-body {
+/* Bootstrap styles */
+@import './assets/css/bootstrap.min.css';
+
+.center {
     box-sizing: border-box;
-    max-width: 1000px;
+    max-width: 1280px;
     margin: 0 auto;
   }
-  @media screen and (min-width: 1024px) {
+  @media screen {
   .container {
-    max-width: 1000px;
+    max-width: 1280px;
     margin: 0 auto;
   }
 }

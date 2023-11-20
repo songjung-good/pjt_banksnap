@@ -59,11 +59,6 @@ const imgIsEmpty = computed(() => {
 </template>
 
 <style scoped>
-
-</style>
-
-<style>
-
 .product-card{
     border: 1px solid black;
     display: flex;
@@ -77,13 +72,4 @@ const imgIsEmpty = computed(() => {
     object-fit: fill;
 }
 
-.product-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-body {
-  box-sizing: border-box;
-}
 </style>
