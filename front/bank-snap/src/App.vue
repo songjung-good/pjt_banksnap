@@ -38,7 +38,7 @@
               <RouterLink class="nav-link" :to="{ name: 'ProfileView', params:{id: user}}">MyPage</RouterLink>
             </li>
             <li class="nav-item" v-if="isLogin">
-              <button @click="logout">Logout</button>
+              <button class="nav-link" @click="logout">Logout</button>
             </li>
           </ul>
         </div>
