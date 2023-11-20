@@ -78,8 +78,6 @@ const closeNavbar = () => {
   isNavbarOpen.value = false;
 }
 
-const activeTheme = ref('auto');
-
 </script>
 
 
