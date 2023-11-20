@@ -32,8 +32,8 @@ const closeNavbar = () => {
 
 <template>
   <header>
-    <div class="center">
-      <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+    <nav class="navbar navbar-expand-lg bg-light" data-bs-theme="light">
+      <div class="center container-fluid">
         <a class="navbar-brand" href="#">
           <img alt="Pjt logo" class="logo" src="@/assets/logo_nonbackgroound.png" height="50" @click="goHome" />
         </a>
@@ -41,7 +41,7 @@ const closeNavbar = () => {
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" :class="{ 'show': isNavbarOpen }" @click="closeNavbar">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
             <li class="nav-item">
               <RouterLink class="nav-link" :to="{ name: 'main' }">Home</RouterLink>
             </li>
@@ -55,27 +55,29 @@ const closeNavbar = () => {
               <RouterLink class="nav-link" :to="{ name: 'exchangecalculator' }">환율계산기</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link" :to="{ name: 'community' }">커뮤니티</RouterLink>
-            </li>
-            <li class="nav-item">
               <RouterLink class="nav-link" :to="{ name: 'map' }">MAP</RouterLink>
             </li>
-            <li class="nav-item" v-if="!isLogin">
-              <RouterLink class="nav-link" :to="{ name: 'LoginView' }">Login</RouterLink>
-            </li>
-            <li class="nav-item" v-if="!isLogin">
-              <RouterLink class="nav-link" :to="{ name: 'SignUpView' }">SignUp</RouterLink>
+            <li class="nav-item">
+              <RouterLink class="nav-link" :to="{ name: 'community' }">커뮤니티</RouterLink>
             </li>
             <li class="nav-item" v-if="isLogin">
               <RouterLink class="nav-link" :to="{ name: 'ProfileView', params:{id: user}}">MyPage</RouterLink>
             </li>
-            <li class="nav-item" v-if="isLogin">
-              <button class="nav-link" @click="logout">Logout</button>
-            </li>
-          </ul>
+            <div>              
+              <!-- <button type="button" class="btn btn-outline-primary me-2" v-if="!isLogin"> -->
+                <RouterLink v-if="!isLogin" class="btn btn-primary me-2" :to="{ name: 'LoginView' }" >Login</RouterLink>
+              <!-- </button> -->
+              <button type="button" class="btn btn-outline-primary me-2" @click="logout" v-if="isLogin">
+                Logout
+              </button>
+              <!-- <button type="button" class=""> -->
+                <RouterLink class="btn btn-primary me-2" :to="{ name: 'SignUpView' }">SignUp</RouterLink>
+                <!-- </button> -->
+              </div>
+            </ul>
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   </header>
   <body class="center">
     <RouterView :key="$route.fullPath"/>  
@@ -89,9 +91,9 @@ const closeNavbar = () => {
 </style>
 
 <style>
-body {
+.center {
     box-sizing: border-box;
-    max-width: 1000px;
+    max-width: 1280px;
     margin: 0 auto;
   }
   @media screen and (min-width: 1024px) {
