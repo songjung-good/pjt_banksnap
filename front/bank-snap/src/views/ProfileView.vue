@@ -1,6 +1,9 @@
 <template>
   <div>
     <h1>{{ username }} 님의 Profile</h1>
+    <p>
+      <RouterLink :to="{name: 'PropensityView'}">내 정보</RouterLink>
+    </p>
     <template v-if="articles.length > 0">
       <ProfileArticle :articles="articles" />
     </template>
@@ -18,7 +21,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, RouterLink } from 'vue-router'
 import { useIndexStore } from '@/stores/index'
 import axios from 'axios'
 

@@ -13,7 +13,6 @@ user.value = store.user
 const isLogin = computed(()=>{
   return store.isLogin
 })
-console.log(isLogin)
 const logout = ref(store.logout)
 const goHome = () => {
   router.push('/')

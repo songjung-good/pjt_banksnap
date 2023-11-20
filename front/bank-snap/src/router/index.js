@@ -71,6 +71,11 @@ const router = createRouter({
       name: 'ProfileView',
       component: () => import('@/views/ProfileView.vue')
     },
+    {
+      path: '/propensity/:id',
+      name: 'PropensityView',
+      component: () => import('@/views/PropensityView.vue')
+    },
   ]
 })
 

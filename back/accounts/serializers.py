@@ -2,7 +2,8 @@ from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from articles.serializers import ArticleSerializer
 from articles.serializers import CommentViewSerializer
-from bank.serializers import DepositProductSerializer
+from bank.serializers import DepositProductSerializer, BankSerializer
+from .models import Propensity
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -12,3 +13,12 @@ class UserSerializer(serializers.ModelSerializer):
   class Meta:
     model = get_user_model()
     fields = '__all__'    
+
+
+class PropensitySerializer(serializers.ModelSerializer):
+  user_info = UserSerializer(source='user', read_only=True)
+  bank_info = BankSerializer(source='bank', read_only=True)
+
+  class Meta:
+    model = Propensity
+    fields = ('id', 'user_info', 'bank_info', 'deposit_now', 'deposit_type', 'income', 'age',)
