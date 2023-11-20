@@ -37,6 +37,9 @@
             <li class="nav-item" v-if="isLogin">
               <RouterLink class="nav-link" :to="{ name: 'ProfileView', params:{id: user}}">MyPage</RouterLink>
             </li>
+            <li class="nav-item" v-if="isLogin">
+              <button @click="logout">Logout</button>
+            </li>
           </ul>
         </div>
       </nav>
@@ -48,15 +51,20 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
 import { useCounterStore  } from '@/stores/counter'
 
 const router = useRouter()
 const store = useCounterStore()
 
-const user = ref(store.user)
-const isLogin = ref(store.isLogin)
+const user = ref(null)
+user.value = store.user
+const isLogin = computed(()=>{
+  return store.isLogin
+})
+console.log(isLogin)
+const logout = ref(store.logout)
 const goHome = () => {
   router.push('/')
 }

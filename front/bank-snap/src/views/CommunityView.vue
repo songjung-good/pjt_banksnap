@@ -3,7 +3,9 @@
 
     <div>
         <h1>Community</h1>
-        <RouterLink :to="{ name: 'CreateArticleView', query:{ type: 'create' }}">글 쓰기</RouterLink>
+        <span v-if="isLogin">
+            <RouterLink :to="{ name: 'CreateArticleView', query:{ type: 'create' }}">글 쓰기</RouterLink>
+        </span>
         <ArticleList />
     </div>
     
@@ -17,7 +19,7 @@ import { RouterLink } from 'vue-router'
 import ArticleList from '@/components/ArticleList.vue'
 
 const store = useCounterStore()
-
+const isLogin = store.isLogin
 onMounted(() => {
     store.getArticles()
 })
