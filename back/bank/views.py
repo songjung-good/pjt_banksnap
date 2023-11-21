@@ -13,7 +13,7 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 
 from bs4 import BeautifulSoup
 import urllib.request as req
-from selenium import webdriver
+# from selenium import webdriver
 
 @api_view(['GET'])
 def exchange(request):
@@ -158,8 +158,9 @@ def price(request):
     ["천연가스", "https://finance.naver.com/marketindex/materialDetail.naver?marketindexCd=CMDT_NG"],
     ["커피", "https://finance.naver.com/marketindex/materialDetail.naver?marketindexCd=CMDT_KC"]
   ]
-  # 금, 가솔린, 천연가스
+
   items = []
+
   for (name, url) in item_lst:
     res = req.urlopen(url)
     soup = BeautifulSoup(res, "html.parser", from_encoding='utf-8')
@@ -173,7 +174,6 @@ def price(request):
     
     for before_p in before_prices:
       before_price += before_p.get_text()
-    print(before_prices)
     items.append({
       'name': name,
       'graph': graph,

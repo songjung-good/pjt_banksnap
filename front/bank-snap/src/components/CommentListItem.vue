@@ -2,7 +2,7 @@
   <div>
     <p>
       {{ comment.user }} : {{ comment.content }}
-      <button @click="deleteComment">댓글 삭제</button>
+      <button @click="deleteComment" class="btn btn-outline-secondary">댓글 삭제</button>
     </p>
   </div>
 </template>

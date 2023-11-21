@@ -1,24 +1,33 @@
 <template>
   <div>
     <h1>Detail</h1>
+    <main class="flex-shrink-0">
     <div v-if="article">
-      <p>제목 : {{ article.title }}</p>
-      <!-- <p>작성자 : {{ article.user.username }}</p> -->
-      <p>내용 : {{ article.content }}</p>
-      <p>작성일 : {{ article.created_at }}</p>
-      <p>수정일 : {{ article.updated_at }}</p>
+        <div class="container">
+          <h1 class="mt-5">제목 : {{ article.title }}</h1>
+          <p class="text-end">작성일 : {{ article.created_at }} | 수정일 : {{ article.updated_at }}</p>
+          <p class="lead">{{ article.content }}</p>
+          <div class="text-end ">
 
-    </div>
+            <div class="btn-group" role="group">
+              <button @click="deleteArticle" class="btn btn-outline-secondary">삭제</button>
+              <RouterLink class="btn btn-outline-secondary"
+              :to="{name: 'CreateArticleView', query: { type: 'modify', id: $route.params.id }}">
+              수정
+              </RouterLink>
+            </div>
+          </div>
+            <hr>
+          </div>
+        </div>
+        <div class="container">
 
-    <button @click="deleteArticle">글 삭제</button>
-    <RouterLink 
-      :to="{name: 'CreateArticleView', query: { type: 'modify', id: $route.params.id }}">
-      수정
-    </RouterLink>
-    <CommentList :article-id="$route.params.id" />
-    <CommentWrite :article-id="$route.params.id"/>
-  </div>
-</template>
+          <CommentList :article-id="$route.params.id" />
+          <CommentWrite :article-id="$route.params.id"/>
+        </div>
+      </main>
+      </div>
+    </template>
 
 <script setup>
 import axios from 'axios'
@@ -27,12 +36,13 @@ import { useIndexStore } from '@/stores/index'
 import { useRoute, useRouter, RouterLink } from 'vue-router'
 import CommentList from '@/components/CommentList.vue'
 import CommentWrite from '@/components/CommentWrite.vue'
+import moment from 'moment'
 
 const store = useIndexStore()
 const route = useRoute()
 const router = useRouter()
 const article = ref(null)
-
+const createdAt = ref(null)
 onMounted(() => {
   axios({
     method: 'get',
@@ -40,6 +50,8 @@ onMounted(() => {
   })
     .then((res) => {
       article.value = res.data
+      article.value.created_at = moment(res.data.created_at).format('YYYY-MM-DD HH:mm:ss')
+      article.value.updated_at = moment(res.data.updated_at).format('YYYY-MM-DD HH:mm:ss')
     })
     .catch((err) => {
       console.log(err)

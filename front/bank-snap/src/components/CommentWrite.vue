@@ -1,9 +1,12 @@
 <template>
   <div>
+
     <form @submit.prevent="createComment">
-      <p>댓글쓰기</p>
-      <textarea v-model.trim="content"></textarea>
-      <input type="submit">
+      <div class="input-group">
+        <span class="input-group-text">댓글</span>
+        <textarea class="form-control" aria-label="With textarea" v-model.trim="content"></textarea>
+        <input type="submit" value="댓글 작성" class="btn btn-outline-secondary">
+      </div>
     </form>
   </div>
 </template>
