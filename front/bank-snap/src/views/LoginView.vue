@@ -15,22 +15,6 @@
         <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
         <p class="mt-5 mb-3 text-muted">안녕하세요, 고객님!</p>
       </form>
-      <div class="modal" tabindex="-1" role="dialog" :class="{ 'show': showErrorModal }">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">로그인 실패</h5>
-              <button type="button" class="btn-close" @click="closeErrorModal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              로그인에 실패했습니다. 아이디와 비밀번호를 다시 확인해주세요.
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" @click="closeErrorModal">닫기</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </main>
   </div> 
 </template>     

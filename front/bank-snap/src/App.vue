@@ -1,14 +1,12 @@
 
 <script setup>
 import MainNavbar from '@/components/MainNavbar.vue';
-import MainSurvey from '@/components/MainSurvey.vue';
 </script>
 
 <template>
   <main class="center">
     <MainNavbar />
     <router-view />
-    <MainSurvey />
   </main>
 </template>
 
