@@ -1,13 +1,19 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404, get_list_or_404
+
+from rest_framework.decorators import permission_classes
 from rest_framework.decorators import api_view
 import datetime
 import requests
 from django.conf import settings
 from .serializers import DepositProductSerializer, DepositOptionSerializer, BankSerializer
 from .models import DepositProduct, DepositOption, Bank
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
+from bs4 import BeautifulSoup
+import urllib.request as req
+from selenium import webdriver
 
 @api_view(['GET'])
 def exchange(request):
@@ -103,6 +109,7 @@ def finance(request):
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def deposit(request, type):
   if type == 'deposit':
     depositProducts = get_list_or_404(DepositProduct, deposit_type=1)
@@ -113,6 +120,7 @@ def deposit(request, type):
   return Response(serializer.data)
   
 @api_view(['GET'])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def deposit_detail(request, product_id):
   product = DepositProduct.objects.get(pk=product_id)
   serializer = DepositProductSerializer(product)
@@ -138,3 +146,39 @@ def product_like(request, product_id):
     product.like_users.add(request.user)
     is_liked = True
   return Response({'is_liked': is_liked})
+
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticatedOrReadOnly])
+def price(request):
+  item_lst = [
+    ["금", "https://finance.naver.com/marketindex/goldDetail.naver"],
+    ["은", "https://finance.naver.com/marketindex/worldGoldDetail.naver?marketindexCd=CMDT_SI&fdtc=2"],
+    ["가솔린", "https://finance.naver.com/marketindex/oilDetail.naver?marketindexCd=OIL_GSL"],
+    ["천연가스", "https://finance.naver.com/marketindex/materialDetail.naver?marketindexCd=CMDT_NG"],
+    ["커피", "https://finance.naver.com/marketindex/materialDetail.naver?marketindexCd=CMDT_KC"]
+  ]
+  # 금, 가솔린, 천연가스
+  items = []
+  for (name, url) in item_lst:
+    res = req.urlopen(url)
+    soup = BeautifulSoup(res, "html.parser", from_encoding='utf-8')
+    graph = soup.select_one("#content > div.spot > div.flash_area > img").get("src")
+    prices = soup.select("#content > div.spot > div.today > p.no_today")
+    before_prices = soup.select("#content > div.spot > div.today > p.no_exday")
+    price = ''
+    before_price = ''
+    for p in prices:
+      price += p.get_text()
+    
+    for before_p in before_prices:
+      before_price += before_p.get_text()
+    print(before_prices)
+    items.append({
+      'name': name,
+      'graph': graph,
+      'price': price,
+      'before_price': before_price,
+    })
+
+  return Response(items)

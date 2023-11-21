@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import MapView from '@/views/MapView.vue'
-import TestView from '@/views/TestView.vue'
 import MainView from '@/views/MainView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,7 +28,7 @@ const router = createRouter({
     },
     {
       path: '/calculator',
-      name: 'exchangecalculator',
+      name: 'ExchangeCalculator',
       component: () => import('../views/ExchangeCalculatorView.vue')
     },
     {
@@ -45,11 +45,6 @@ const router = createRouter({
       path: '/create/article',
       name: 'CreateArticleView',
       component: () => import('../views/CreateArticleView.vue')
-    },
-    {
-      path: '/test',
-      name: 'test',
-      component: TestView
     },
     {
       path: '/article/:id',
@@ -80,6 +75,16 @@ const router = createRouter({
       path: '/propensity/update',
       name: 'PropensityUpdateView',
       component: () => import('@/views/PropensityUpdateView.vue')
+    },
+    {
+      path: '/price',
+      name: 'PriceView',
+      component: () => import('@/views/PriceView.vue')
+    },
+    {
+      path: '/estate',
+      name: 'EstateView',
+      component: () => import('@/views/EstateView.vue')
     },
   ]
 })

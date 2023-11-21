@@ -36,7 +36,7 @@ export const useIndexStore = defineStore('index', () => {
   }
 
   const signUp = function (payload) {
-    const { username, password1, password2 } = payload
+    const { username, password1, password2, age } = payload
     axios({
       method: 'post',
       url: `${url.value}/accounts/signup/`,
@@ -47,22 +47,40 @@ export const useIndexStore = defineStore('index', () => {
       }
     })
       .then((res) => {
-        // console.log(res)
-        login({
+        return login({
           username: username,
           password: password1
         })
-        router.push({ name: 'main' })
+
+      })
+      .then((res) => {
+        createUserInfo(age)
       })
       .catch((err) => {
         console.log(err)
       })
   }
-
+  const createUserInfo = function (age) {
+    axios({
+      method: 'post',
+      url: `${url.value}/user/propensity/`,
+      data: {
+        age: age,
+      },
+      headers: {
+        Authorization: `Token ${token.value}`
+      }
+    })
+      .then((res) => {
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
   const login = function (payload) {
     const { username, password } = payload
 
-    axios({
+    return axios({
       method: 'post',
       url: `${url.value}/accounts/login/`,
       data: {
