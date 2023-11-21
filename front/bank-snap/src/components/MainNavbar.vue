@@ -73,9 +73,9 @@ const closeNavbar = () => {
               <RouterLink v-if="!isLogin" class="nav-link btn btn-outline-info" :to="{ name: 'LoginView' }" >🔑Login</RouterLink>
             </li>
             <li>
-              <button type="button" class="nav-link btn btn-outline-info" @click="logout" v-if="isLogin">
+              <a type="button" class="nav-link btn btn-outline-info" @click="logout" v-if="isLogin">
                 Logout
-              </button>
+              </a>
             </li>
             <li>
               <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'SignUpView' }">SignUp</RouterLink>

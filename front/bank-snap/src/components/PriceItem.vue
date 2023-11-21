@@ -1,7 +1,8 @@
 <template>
   <div>
     <h3>{{ item.name }} 현재 가격</h3>
-    <p>{{ item.price }} 원</p>
+    <h5>{{ item.price }}</h5>
+    <p>{{ item.before_price }}</p>
     <img :src="item.graph" alt="">
     <hr>
   </div>

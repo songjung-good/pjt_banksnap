@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework import status
-from .serializers import UserSerializer, PropensitySerializer
+from .serializers import UserSerializer, PropensitySerializer, PropensityFormSerializer
 from bank.models import Bank
 from .models import Propensity
 import json
@@ -21,13 +21,15 @@ def propensity(request):
         propensity = Propensity.objects.get(user=request.user)
         propensity_serializer = PropensitySerializer(propensity)
         return Response(propensity_serializer.data)
-    
     elif request.method == 'POST':
-        propensity_serializer = PropensitySerializer(data=request.data)
+        propensity_serializer = PropensityFormSerializer(data=request.data)
+
         if propensity_serializer.is_valid():
+            print('여기까지만와줘..')
             bank = Bank.objects.get(fin_co_no=0)
             propensity_serializer.save(user=request.user, bank=bank)
-            
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(status=status.HTTP_400_BAD_REQUEST)
 
     elif request.method == 'PUT':
         propensity = Propensity.objects.get(user=request.user)

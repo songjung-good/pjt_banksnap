@@ -10,6 +10,7 @@ from .models import DepositProduct, DepositOption, Bank
 
 from bs4 import BeautifulSoup
 import urllib.request as req
+from selenium import webdriver
 
 @api_view(['GET'])
 def exchange(request):
@@ -144,37 +145,49 @@ def product_like(request, product_id):
 
 @api_view(['GET'])
 def price(request):
-  url = "https://finance.naver.com/marketindex"
-  res = req.urlopen(url)
   
+  gold_url = "https://finance.naver.com/marketindex/goldDetail.naver"
+  oil_url = "https://finance.naver.com/marketindex/oilDetail.naver?marketindexCd=OIL_GSL"
+  
+  res = req.urlopen(gold_url)
   soup = BeautifulSoup(res, "html.parser")
+  gold_graph = soup.select_one("#content > div.spot > div.flash_area > img").get("src")
+  gold_prices = soup.select("#content > div.spot > div.today > p.no_today")
+  gold_before_prices = soup.select("#content > div.spot > div.today > p.no_exday")
+  
+  gold_price = ''
+  gold_before_price = ''
+  for price in gold_prices:
+    gold_price += price.get_text()
+  
+  for before_price in gold_before_prices:
+    gold_before_price += before_price.get_text()
+  
+  res = req.urlopen(oil_url)
+  soup = BeautifulSoup(res, "html.parser")
+  gasoline_graph = soup.select_one("#content > div.spot > div.flash_area > img").get("src")
+  gasoline_prices = soup.select("#content > div.spot > div.today > p.no_today")
+  gasoline_before_prices = soup.select("#content > div.spot > div.today > p.no_exday")
+  gasoline_price = ''
+  gasoline_before_price = ''
+  
+  for price in gasoline_prices:
+    gasoline_price += price.get_text()
 
-  gasoline_price = soup.select_one("a.head.gasoline > div.head_info > span.value").string
-  gold_graph = soup.select_one("#oilGoldList > li:nth-child(4) > a.graph_img > img").get("src")
-  gasoline_graph = soup.select_one("#oilGoldList > li.on > a.graph_img > img").get("src")
-  gold_price = soup.select_one("a.head.gold_domestic > div.head_info > span.value").string
-  # print(gold_graph)
-  # print()
-  # print(gasoline_graph)
-  # print()
-  # print('금 가격 = ', gold_price)
-  # print('휘발유 가격 = ', gasoline_price)
-  # gold = {
-  #   'name': 'gold',
-  #   'graph': gold_graph,
-  #   'price': gold_price
-  # }
-  # gasoline = 
+  for before_price in gasoline_before_prices:
+    gasoline_before_price += before_price.get_text()
+
   items = [{
     'name': '금',
     'graph': gold_graph,
     'price': gold_price,
-    # 'before_price': gold_before_price,
+    'before_price': gold_before_price,
   },
   {
     'name': '가솔린',
     'graph': gasoline_graph,
-    'price': gasoline_price
+    'price': gasoline_price,
+    'before_price': gasoline_before_price,
   }]
   # gold_url = "https://finance.naver.com/marketindex/goldDetail.naver"
   # res_gold = req.urlopen(gold_url)

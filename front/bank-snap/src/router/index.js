@@ -86,6 +86,11 @@ const router = createRouter({
       name: 'PriceView',
       component: () => import('@/views/PriceView.vue')
     },
+    {
+      path: '/estate',
+      name: 'EstateView',
+      component: () => import('@/views/EstateView.vue')
+    },
   ]
 })
 
