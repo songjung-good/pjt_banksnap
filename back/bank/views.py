@@ -10,7 +10,6 @@ from .models import DepositProduct, DepositOption, Bank
 
 from bs4 import BeautifulSoup
 import urllib.request as req
-from selenium import webdriver
 
 @api_view(['GET'])
 def exchange(request):

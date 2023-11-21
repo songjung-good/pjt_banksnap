@@ -63,6 +63,9 @@ const closeNavbar = () => {
             <li class="nav-item">
               <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'community' }">📰커뮤니티</RouterLink>
             </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'PriceView' }">📰투자 정보</RouterLink>
+            </li>
             <li class="nav-item" v-if="isLogin">
               <RouterLink v-if="user" class="nav-link btn btn-outline-info" :to="{ name: 'ProfileView', params:{id: user}}">⚙️MyPage</RouterLink>
             </li>
