@@ -81,6 +81,11 @@ const router = createRouter({
       name: 'PropensityUpdateView',
       component: () => import('@/views/PropensityUpdateView.vue')
     },
+    {
+      path: '/price',
+      name: 'PriceView',
+      component: () => import('@/views/PriceView.vue')
+    },
   ]
 })
 
