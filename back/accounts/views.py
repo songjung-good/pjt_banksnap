@@ -25,7 +25,6 @@ def propensity(request):
         propensity_serializer = PropensityFormSerializer(data=request.data)
 
         if propensity_serializer.is_valid():
-            print('여기까지만와줘..')
             bank = Bank.objects.get(fin_co_no=0)
             propensity_serializer.save(user=request.user, bank=bank)
             return Response(status=status.HTTP_201_CREATED)

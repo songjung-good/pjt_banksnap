@@ -145,56 +145,33 @@ def product_like(request, product_id):
 
 @api_view(['GET'])
 def price(request):
-  
-  gold_url = "https://finance.naver.com/marketindex/goldDetail.naver"
-  oil_url = "https://finance.naver.com/marketindex/oilDetail.naver?marketindexCd=OIL_GSL"
-  
-  res = req.urlopen(gold_url)
-  soup = BeautifulSoup(res, "html.parser")
-  gold_graph = soup.select_one("#content > div.spot > div.flash_area > img").get("src")
-  gold_prices = soup.select("#content > div.spot > div.today > p.no_today")
-  gold_before_prices = soup.select("#content > div.spot > div.today > p.no_exday")
-  
-  gold_price = ''
-  gold_before_price = ''
-  for price in gold_prices:
-    gold_price += price.get_text()
-  
-  for before_price in gold_before_prices:
-    gold_before_price += before_price.get_text()
-  
-  res = req.urlopen(oil_url)
-  soup = BeautifulSoup(res, "html.parser")
-  gasoline_graph = soup.select_one("#content > div.spot > div.flash_area > img").get("src")
-  gasoline_prices = soup.select("#content > div.spot > div.today > p.no_today")
-  gasoline_before_prices = soup.select("#content > div.spot > div.today > p.no_exday")
-  gasoline_price = ''
-  gasoline_before_price = ''
-  
-  for price in gasoline_prices:
-    gasoline_price += price.get_text()
-
-  for before_price in gasoline_before_prices:
-    gasoline_before_price += before_price.get_text()
-
-  items = [{
-    'name': '금',
-    'graph': gold_graph,
-    'price': gold_price,
-    'before_price': gold_before_price,
-  },
-  {
-    'name': '가솔린',
-    'graph': gasoline_graph,
-    'price': gasoline_price,
-    'before_price': gasoline_before_price,
-  }]
-  # gold_url = "https://finance.naver.com/marketindex/goldDetail.naver"
-  # res_gold = req.urlopen(gold_url)
-  # wd = webdriver.Chrome()
-  # wd.get(gold_url)
-  # gold_soup = BeautifulSoup(wd.page_source, "html.parser")
-  # gold_before_price = gold_soup.select("body > div > table > tbody > tr:nth-child(2) > td:nth-child(2)")
-  # print(gold_before_price)
+  item_lst = [
+    ["금", "https://finance.naver.com/marketindex/goldDetail.naver"],
+    ["은", "https://finance.naver.com/marketindex/worldGoldDetail.naver?marketindexCd=CMDT_SI&fdtc=2"],
+    ["가솔린", "https://finance.naver.com/marketindex/oilDetail.naver?marketindexCd=OIL_GSL"],
+    ["천연가스", "https://finance.naver.com/marketindex/materialDetail.naver?marketindexCd=CMDT_NG"],
+    ["커피", "https://finance.naver.com/marketindex/materialDetail.naver?marketindexCd=CMDT_KC"]
+  ]
+  # 금, 가솔린, 천연가스
+  items = []
+  for (name, url) in item_lst:
+    res = req.urlopen(url)
+    soup = BeautifulSoup(res, "html.parser")
+    graph = soup.select_one("#content > div.spot > div.flash_area > img").get("src")
+    prices = soup.select("#content > div.spot > div.today > p.no_today")
+    before_prices = soup.select("#content > div.spot > div.today > p.no_exday")
+    price = ''
+    before_price = ''
+    for p in prices:
+      price += p.get_text()
+    
+    for before_p in before_prices:
+      before_price += before_p.get_text()
+    items.append({
+      'name': name,
+      'graph': graph,
+      'price': price,
+      'before_price': before_price,
+    })
 
   return Response(items)
