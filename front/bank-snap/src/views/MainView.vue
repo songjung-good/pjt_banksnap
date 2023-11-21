@@ -3,6 +3,7 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router';
 import axios from 'axios'
+import MainNavbar from '@/components/MainNavbar.vue';
 
 const router = useRouter()
 const newsList = ref([])
@@ -30,16 +31,15 @@ onMounted(() => {
     })
 })
 
-
     // 삼항연산자는 가독성을 위함 / 없어도 boolean값 반환
 const imgIsEmpty = computed(() => {
     return newsList.value.length > 0 ? true : false
 })
 
-
 </script>
 
 <template>
+  <MainNavbar />
 <body>
   <div>
     <h1>메인 페이지</h1>
