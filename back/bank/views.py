@@ -10,6 +10,7 @@ from .models import DepositProduct, DepositOption, Bank
 
 from bs4 import BeautifulSoup
 import urllib.request as req
+from selenium import webdriver
 
 @api_view(['GET'])
 def exchange(request):
@@ -146,12 +147,13 @@ def product_like(request, product_id):
 def price(request):
   url = "https://finance.naver.com/marketindex"
   res = req.urlopen(url)
-
+  
   soup = BeautifulSoup(res, "html.parser")
-  gold_price = soup.select_one("a.head.gold_domestic > div.head_info > span.value").string
+
   gasoline_price = soup.select_one("a.head.gasoline > div.head_info > span.value").string
   gold_graph = soup.select_one("#oilGoldList > li:nth-child(4) > a.graph_img > img").get("src")
   gasoline_graph = soup.select_one("#oilGoldList > li.on > a.graph_img > img").get("src")
+  gold_price = soup.select_one("a.head.gold_domestic > div.head_info > span.value").string
   # print(gold_graph)
   # print()
   # print(gasoline_graph)
@@ -167,12 +169,20 @@ def price(request):
   items = [{
     'name': '금',
     'graph': gold_graph,
-    'price': gold_price
+    'price': gold_price,
+    # 'before_price': gold_before_price,
   },
   {
     'name': '가솔린',
     'graph': gasoline_graph,
     'price': gasoline_price
   }]
+  # gold_url = "https://finance.naver.com/marketindex/goldDetail.naver"
+  # res_gold = req.urlopen(gold_url)
+  # wd = webdriver.Chrome()
+  # wd.get(gold_url)
+  # gold_soup = BeautifulSoup(wd.page_source, "html.parser")
+  # gold_before_price = gold_soup.select("body > div > table > tbody > tr:nth-child(2) > td:nth-child(2)")
+  # print(gold_before_price)
 
   return Response(items)
