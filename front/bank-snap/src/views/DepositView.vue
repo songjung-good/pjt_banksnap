@@ -2,10 +2,15 @@
 <template>
     <div>
         <h1>Interest-Rates</h1>
-        <div>
-            <RouterLink :to="{ name: 'DepositView' }">예금</RouterLink> | 
-            <RouterLink :to="{ name: 'SavingView' }">적금</RouterLink>
-        </div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+
+                <RouterLink :to="{ name: 'DepositView' }" class="nav-link active" aria-current="page" >예금</RouterLink>
+            </li>
+            <li class="nav-item">
+                <RouterLink :to="{ name: 'SavingView' }" class="nav-link">적금</RouterLink>
+            </li>
+        </ul>
         <!-- 예금 -->
         <DepositList type="deposit" />        
     </div>
