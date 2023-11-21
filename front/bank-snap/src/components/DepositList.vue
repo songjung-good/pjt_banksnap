@@ -4,7 +4,7 @@
       <tr class="table-info">
         <th>상품 코드</th>
         <th>은행명</th>
-        <th>정보</th>
+        <th>상품명</th>
         <th>가입 방법</th>
       </tr>
       <DepositListItem

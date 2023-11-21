@@ -2,7 +2,7 @@
   <tr class="border-top">
     <td>{{ product.fin_prdt_cd }}</td>
     <td>{{ product.kor_co_nm }}</td>
-    <td>{{ product.etc_note }}</td>
+    <td>{{ product.fin_prdt_nm }}</td>
     <td>{{ product.join_way }}</td>
   </tr>
   <tr>
