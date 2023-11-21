@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>시세</h3>
     <PriceItem 
     v-for="item in items"
     :key="item.name"

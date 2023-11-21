@@ -17,6 +17,10 @@
           <input type="password" v-model.trim="password2" class="form-control" id="floatingPassword" placeholder="Password">
           <label for="floatingPassword">비밀번호확인</label>
         </div>
+        <div class="form-floating">
+          <input type="number" v-model.trim="age" class="form-control" id="floatingInput" placeholder="ID">
+          <label for="floatingInput">나이</label>
+        </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
         <p class="mt-5 mb-3 text-muted">뱅크스냅에 오신 것을 환영합니다!</p>
       </form>
@@ -33,12 +37,14 @@ const store = useIndexStore()
 const username = ref('')
 const password1 = ref('')
 const password2 = ref('')
+const age = ref(null)
 
 const signUp = function() {
   const payload = {
     username: username.value,
     password1: password1.value,
-    password2: password2.value
+    password2: password2.value,
+    age: age.value
   }
   store.signUp(payload)
 }

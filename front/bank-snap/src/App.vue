@@ -14,6 +14,9 @@ import MainSurvey from '@/components/MainSurvey.vue';
 
 <style>
 /* Bootstrap styles */
+body {
+  font-family: 'Nanum Gothic', sans-serif;
+}
 @import '@/assets/css/bootstrap.min.css';
 
 .center {

@@ -1,15 +1,19 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404, get_list_or_404
+
+from rest_framework.decorators import permission_classes
 from rest_framework.decorators import api_view
 import datetime
 import requests
 from django.conf import settings
 from .serializers import DepositProductSerializer, DepositOptionSerializer, BankSerializer
 from .models import DepositProduct, DepositOption, Bank
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 
 from bs4 import BeautifulSoup
 import urllib.request as req
+from selenium import webdriver
 
 @api_view(['GET'])
 def exchange(request):
@@ -105,6 +109,7 @@ def finance(request):
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def deposit(request, type):
   if type == 'deposit':
     depositProducts = get_list_or_404(DepositProduct, deposit_type=1)
@@ -115,6 +120,7 @@ def deposit(request, type):
   return Response(serializer.data)
   
 @api_view(['GET'])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def deposit_detail(request, product_id):
   product = DepositProduct.objects.get(pk=product_id)
   serializer = DepositProductSerializer(product)
@@ -143,45 +149,36 @@ def product_like(request, product_id):
 
 
 @api_view(['GET'])
+@permission_classes([IsAuthenticatedOrReadOnly])
 def price(request):
-  url = "https://finance.naver.com/marketindex"
-  res = req.urlopen(url)
-  
-  soup = BeautifulSoup(res, "html.parser")
-
-  gasoline_price = soup.select_one("a.head.gasoline > div.head_info > span.value").string
-  gold_graph = soup.select_one("#oilGoldList > li:nth-child(4) > a.graph_img > img").get("src")
-  gasoline_graph = soup.select_one("#oilGoldList > li.on > a.graph_img > img").get("src")
-  gold_price = soup.select_one("a.head.gold_domestic > div.head_info > span.value").string
-  # print(gold_graph)
-  # print()
-  # print(gasoline_graph)
-  # print()
-  # print('금 가격 = ', gold_price)
-  # print('휘발유 가격 = ', gasoline_price)
-  # gold = {
-  #   'name': 'gold',
-  #   'graph': gold_graph,
-  #   'price': gold_price
-  # }
-  # gasoline = 
-  items = [{
-    'name': '금',
-    'graph': gold_graph,
-    'price': gold_price,
-    # 'before_price': gold_before_price,
-  },
-  {
-    'name': '가솔린',
-    'graph': gasoline_graph,
-    'price': gasoline_price
-  }]
-  # gold_url = "https://finance.naver.com/marketindex/goldDetail.naver"
-  # res_gold = req.urlopen(gold_url)
-  # wd = webdriver.Chrome()
-  # wd.get(gold_url)
-  # gold_soup = BeautifulSoup(wd.page_source, "html.parser")
-  # gold_before_price = gold_soup.select("body > div > table > tbody > tr:nth-child(2) > td:nth-child(2)")
-  # print(gold_before_price)
+  item_lst = [
+    ["금", "https://finance.naver.com/marketindex/goldDetail.naver"],
+    ["은", "https://finance.naver.com/marketindex/worldGoldDetail.naver?marketindexCd=CMDT_SI&fdtc=2"],
+    ["가솔린", "https://finance.naver.com/marketindex/oilDetail.naver?marketindexCd=OIL_GSL"],
+    ["천연가스", "https://finance.naver.com/marketindex/materialDetail.naver?marketindexCd=CMDT_NG"],
+    ["커피", "https://finance.naver.com/marketindex/materialDetail.naver?marketindexCd=CMDT_KC"]
+  ]
+  # 금, 가솔린, 천연가스
+  items = []
+  for (name, url) in item_lst:
+    res = req.urlopen(url)
+    soup = BeautifulSoup(res, "html.parser", from_encoding='utf-8')
+    graph = soup.select_one("#content > div.spot > div.flash_area > img").get("src")
+    prices = soup.select("#content > div.spot > div.today > p.no_today")
+    before_prices = soup.select("#content > div.spot > div.today > p.no_exday")
+    price = ''
+    before_price = ''
+    for p in prices:
+      price += p.get_text()
+    
+    for before_p in before_prices:
+      before_price += before_p.get_text()
+    print(before_prices)
+    items.append({
+      'name': name,
+      'graph': graph,
+      'price': price,
+      'before_price': before_price,
+    })
 
   return Response(items)
