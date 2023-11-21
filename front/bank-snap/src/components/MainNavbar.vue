@@ -49,7 +49,7 @@ const closeNavbar = () => {
               </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'test' }">👻장선생님의 영혼</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'test' }">👑장선생님의 영혼</RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'DepositView' }">🐷예적금 상품</RouterLink>
@@ -61,7 +61,7 @@ const closeNavbar = () => {
               <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'map' }">🗺️MAP</RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'community' }">📰커뮤니티</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'community' }">📢커뮤니티</RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'PriceView' }">📰투자 정보</RouterLink>
@@ -73,12 +73,12 @@ const closeNavbar = () => {
               <RouterLink v-if="!isLogin" class="nav-link btn btn-outline-info" :to="{ name: 'LoginView' }" >🔑Login</RouterLink>
             </li>
             <li>
-              <button type="button" class="nav-link btn btn-outline-info" @click="logout" v-if="isLogin">
-                Logout
-              </button>
+              <a type="button" class="nav-link btn btn-outline-info" @click="logout" v-if="isLogin">
+                🔑Logout
+              </a>
             </li>
             <li>
-              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'SignUpView' }">SignUp</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'SignUpView' }">🖋️SignUp</RouterLink>
             </li>
           </ul>
         </div>

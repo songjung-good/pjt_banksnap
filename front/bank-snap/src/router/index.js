@@ -3,6 +3,7 @@ import MapView from '@/views/MapView.vue'
 import TestView from '@/views/TestView.vue'
 import MainView from '@/views/MainView.vue'
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
