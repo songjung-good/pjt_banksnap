@@ -27,6 +27,11 @@ const router = createRouter({
       component: () => import('../views/ProductDetailView.vue')
     },
     {
+      path: '/economynews',
+      name: 'EconomyNews',
+      component: () => import('../views/EconomyNewsView.vue')
+    },
+    {
       path: '/calculator',
       name: 'ExchangeCalculator',
       component: () => import('../views/ExchangeCalculatorView.vue')

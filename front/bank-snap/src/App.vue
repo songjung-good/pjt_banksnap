@@ -13,11 +13,12 @@ import MainSurvey from '@/components/MainSurvey.vue';
 </template>
 
 <style>
+@import '@/assets/css/bootstrap.min.css';
 /* Bootstrap styles */
 body {
   font-family: 'Nanum Gothic', sans-serif;
 }
-@import '@/assets/css/bootstrap.min.css';
+
 
 .center {
     box-sizing: border-box;
