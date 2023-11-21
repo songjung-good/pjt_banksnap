@@ -3,10 +3,13 @@
     <td>{{ product.fin_prdt_cd }}</td>
     <td>{{ product.kor_co_nm }}</td>
     <td>{{ product.fin_prdt_nm }}</td>
-    <td>{{ product.join_way }}</td>
+    <td>
+      <RouterLink :to="{ name: 'ProductDetailView', params:{id: product.id}}">자세히 보기</RouterLink>
+    </td>
+      
   </tr>
-  <tr>
-    <td colspan="4">
+  <!-- <tr>
+    <td>
       <table class="option-table">
         <tr>
           <th>타입</th>
@@ -21,8 +24,7 @@
         />
       </table>
     </td>
-  </tr>
-  <RouterLink :to="{ name: 'ProductDetailView', params:{id: product.id}}">자세히 보기</RouterLink>
+  </tr> -->
 </template>
 
 <script setup>

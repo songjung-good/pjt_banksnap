@@ -61,9 +61,15 @@ const likeProduct = function() {
     <div v-if="isData">
         <main>
             <h1 class="text-body-emphasis">💰{{ product.fin_prdt_nm }}💰</h1>
-            <p class="fs-5 col-md-8" v-html="product.etc_note.replace(/\n/g, '<br>')"></p>
+            <br>    
+            <p class="fs-5 col-md-8">은행 명 : {{ product.kor_co_nm }}</p>
             <p class="fs-5 col-md-8">가입 대상 : {{ product.join_member }}</p>
             <p class="fs-5 col-md-8">가입 방법 : {{ product.join_way }}</p>
+            <p class="fs-5 col-md-8">상품 정보</p>
+            
+            <div class="fs-6 col-md-8" v-html="product.etc_note.replace(/\n/g, '<br>')"></div>
+            <br>
+            <p class="fs-5 col-md-8">금리</p>
             <table class="table">
                 <thead>
                 <tr>
@@ -79,12 +85,6 @@ const likeProduct = function() {
                     <td>{{ option.save_trm }}개월</td>
                     <td>{{ option.intr_rate }}</td>
                     <td>{{ option.intr_rate2 }}</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
                 </tr>
                 </tbody>
                 </table>

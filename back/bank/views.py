@@ -162,7 +162,7 @@ def price(request):
   items = []
   for (name, url) in item_lst:
     res = req.urlopen(url)
-    soup = BeautifulSoup(res, "html.parser")
+    soup = BeautifulSoup(res, "html.parser", from_encoding='utf-8')
     graph = soup.select_one("#content > div.spot > div.flash_area > img").get("src")
     prices = soup.select("#content > div.spot > div.today > p.no_today")
     before_prices = soup.select("#content > div.spot > div.today > p.no_exday")
@@ -173,6 +173,7 @@ def price(request):
     
     for before_p in before_prices:
       before_price += before_p.get_text()
+    print(before_prices)
     items.append({
       'name': name,
       'graph': graph,

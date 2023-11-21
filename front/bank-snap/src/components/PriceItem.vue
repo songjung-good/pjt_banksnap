@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ item.name }} 현재 가격</h3>
+    <h3>실시간 {{ item.name }} 시세</h3>
     <h5>{{ item.price }}</h5>
     <p>{{ item.before_price }}</p>
     <img :src="item.graph" alt="">

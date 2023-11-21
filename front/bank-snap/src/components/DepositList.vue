@@ -1,17 +1,22 @@
 <template>
   <div>
     <table class="table">
-      <tr class="table-info">
-        <th>상품 코드</th>
-        <th>은행명</th>
-        <th>상품명</th>
-        <th>가입 방법</th>
-      </tr>
-      <DepositListItem
-      v-for="product in products"
-      :key="product.id"
-      :product="product"
-      />
+      <thead>
+
+        <tr class="table-info">
+          <th>상품 코드</th>
+          <th>은행명</th>
+          <th>상품명</th>
+          <th>기타</th>
+        </tr>
+      </thead>
+      <tbody>
+        <DepositListItem
+        v-for="product in products"
+        :key="product.id"
+        :product="product"
+        />
+      </tbody>
     </table>
     
   </div>
