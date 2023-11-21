@@ -1,16 +1,21 @@
 <template>
-  <div>
+  <div class="p-5">
     <h1>{{ type }}</h1>
     <form @submit.prevent="writeArticle">
-      <div>
-        <label for="title">제목 : </label>
-        <input type="text" v-model.trim="title" id="title">
+      
+      <div class="input-group">
+        <span class="input-group-text">제목</span>
+        <input type="text" v-model.trim="title" id="title" class="form-control">
       </div>
-      <div>
-        <label for="content">내용</label>
-        <textarea v-model.trim="content" id="content"></textarea>
+      <br>
+      <div class="input-group">
+        <span class="input-group-text">내용</span>
+        <textarea v-model.trim="content" id="content" class="form-control" rows="10" aria-label="내용"></textarea>
       </div>
-      <input type="submit">
+      <div class="text-end">
+
+        <input class="btn btn-outline-secondary px-4 m-1" type="submit" value="작성">
+      </div>
     </form>
   </div>
 </template>
