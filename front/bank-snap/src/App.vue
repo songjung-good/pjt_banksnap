@@ -59,6 +59,9 @@ const closeNavbar = () => {
             <li class="nav-item">
               <RouterLink class="nav-link" :to="{ name: 'map' }">MAP</RouterLink>
             </li>
+            <li class="nav-item">
+              <RouterLink class="nav-link" :to="{ name: 'PriceView' }">투자</RouterLink>
+            </li>
             <li class="nav-item" v-if="!isLogin">
               <RouterLink class="nav-link" :to="{ name: 'LoginView' }">Login</RouterLink>
             </li>

@@ -8,6 +8,8 @@ from django.conf import settings
 from .serializers import DepositProductSerializer, DepositOptionSerializer, BankSerializer
 from .models import DepositProduct, DepositOption, Bank
 
+from bs4 import BeautifulSoup
+import urllib.request as req
 
 @api_view(['GET'])
 def exchange(request):
@@ -138,3 +140,39 @@ def product_like(request, product_id):
     product.like_users.add(request.user)
     is_liked = True
   return Response({'is_liked': is_liked})
+
+
+@api_view(['GET'])
+def price(request):
+  url = "https://finance.naver.com/marketindex"
+  res = req.urlopen(url)
+
+  soup = BeautifulSoup(res, "html.parser")
+  gold_price = soup.select_one("a.head.gold_domestic > div.head_info > span.value").string
+  gasoline_price = soup.select_one("a.head.gasoline > div.head_info > span.value").string
+  gold_graph = soup.select_one("#oilGoldList > li:nth-child(4) > a.graph_img > img").get("src")
+  gasoline_graph = soup.select_one("#oilGoldList > li.on > a.graph_img > img").get("src")
+  # print(gold_graph)
+  # print()
+  # print(gasoline_graph)
+  # print()
+  # print('금 가격 = ', gold_price)
+  # print('휘발유 가격 = ', gasoline_price)
+  # gold = {
+  #   'name': 'gold',
+  #   'graph': gold_graph,
+  #   'price': gold_price
+  # }
+  # gasoline = 
+  items = [{
+    'name': '금',
+    'graph': gold_graph,
+    'price': gold_price
+  },
+  {
+    'name': '가솔린',
+    'graph': gasoline_graph,
+    'price': gasoline_price
+  }]
+
+  return Response(items)
