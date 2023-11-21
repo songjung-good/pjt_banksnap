@@ -33,52 +33,65 @@ const closeNavbar = () => {
 
 <template>
   <header>
-    <nav class="navbar navbar-expand-lg bg-light">
+    <nav class="navbar navbar-expand-lg bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
           <img alt="Pjt logo" class="logo" src="@/assets/logo_nonbackgroound.png" height="50" @click="goHome" />
         </a>
-        <button class="navbar-toggler" type="button" @click="toggleNavbar">
+        <button class="navbar-toggler bg-light" type="button" @click="toggleNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="navbar-collapse collapse" :class="{ 'show': isNavbarOpen }" @click="closeNavbar">
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <ul class="navbar-nav nav-tabs ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <RouterLink class="btn btn-outline-info nav-link" :to="{ name: 'main' }">
+              <RouterLink class="nav-link btn btn-outline-light" :to="{ name: 'main' }">
                 🏡메인
               </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'test' }">👑장선생님의 영혼</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-light" :to="{ name: 'community' }">
+                📢커뮤니티
+              </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'DepositView' }">🐷예적금 상품</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-light" :to="{ name: 'PriceView' }">
+                👑현물 상품
+              </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'exchangecalculator' }">💹환율계산기</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-light" :to="{ name: 'DepositView' }">
+                🐷저축성 상품
+              </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'map' }">🗺️MAP</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-light" :to="{ name: 'ExchangeCalculator' }">
+                💹외환 상품
+              </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'community' }">📢커뮤니티</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-light" :to="{ name: 'EconomyNews' }">
+                📰경제뉴스
+              </RouterLink>
             </li>
-            <li class="nav-item">
-              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'PriceView' }">📰투자 정보</RouterLink>
-            </li>
-            <li class="nav-item" v-if="isLogin">
-              <RouterLink v-if="user" class="nav-link btn btn-outline-info" :to="{ name: 'ProfileView', params:{id: user}}">⚙️MyPage</RouterLink>
+            <li class="nav-item" v-if="user">
+              <RouterLink v-if="isLogin" class="nav-link btn btn-outline-info" :to="{ name: 'ProfileView', params:{id: user}}">
+                ⚙️내 정보
+              </RouterLink>
             </li>
             <li>              
-              <RouterLink v-if="!isLogin" class="nav-link btn btn-outline-info" :to="{ name: 'LoginView' }" >🔑Login</RouterLink>
+              <RouterLink v-if="!isLogin" class="nav-link btn btn-outline-info" :to="{ name: 'LoginView' }" >
+                🔑로그인
+              </RouterLink>
             </li>
             <li>
               <a type="button" class="nav-link btn btn-outline-info" @click="logout" v-if="isLogin">
-                🔑Logout
+                🔑로그아웃
               </a>
             </li>
             <li>
-              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'SignUpView' }">🖋️SignUp</RouterLink>
+              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'SignUpView' }">
+                🖋️회원가입
+              </RouterLink>
             </li>
           </ul>
         </div>
@@ -88,6 +101,7 @@ const closeNavbar = () => {
 </template>
 
 <style scoped>
+@import '@/assets/css/bootstrap.min.css';
 .logo {
   cursor: pointer;
 }
@@ -99,6 +113,3 @@ const closeNavbar = () => {
 }
 </style>
 
-<style>
-
-</style>

@@ -1,67 +1,39 @@
 <!-- SurveyModal.vue -->
 <template>
-    <div class="modal fade" id="surveyModal" tabindex="-1" aria-labelledby="surveyModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="surveyModalLabel">Survey</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div v-if="currentQuestionIndex < questions.length">
-              <h2>{{ questions[currentQuestionIndex].question }}</h2>
-              <div v-for="(option, index) in questions[currentQuestionIndex].options" :key="index">
-                <input type="radio" :id="`option-${index}`" :value="index" v-model="selectedOption" />
-                <label :for="`option-${index}`">{{ option }}</label>
-              </div>
+  <div>
+    <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
+      <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content rounded-3 shadow">
+            <div class="modal-body p-4 text-center">
+              <h5 class="mb-0">Enable this setting?</h5>
+              <p class="mb-0">You can always change your mind in your account settings.</p>
             </div>
-            <div v-else>
-              <h2>Survey Result</h2>
-              <p>You submitted: {{ selectedAnswers }}</p>
-              <p>Explanation: {{ questions[currentQuestionIndex - 1].explanation }}</p>
+            <div class="modal-footer flex-nowrap p-0">
+              <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong>Yes, enable</strong></button>
+              <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary" @click="nextQuestion">Next</button>
           </div>
         </div>
       </div>
     </div>
-  </template>
+
+    <div class="b-example-divider"></div>
+
+    <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalSignin">
+      <!-- ... Your modal content for modalSignin ... -->
+    </div>
+
+    <div class="b-example-divider"></div>
+  </div>
+</template>
   
-  <script setup>
-  const questions = [
-    {
-      question: "Question 1",
-      options: ["Option A", "Option B", "Option C"],
-      explanation: "Explanation for Question 1",
-    },
-    {
-      question: "Question 2",
-      options: ["Option X", "Option Y", "Option Z"],
-      explanation: "Explanation for Question 2",
-    },
-    {
-      question: "Question 3",
-      options: ["Option P", "Option Q", "Option R"],
-      explanation: "Explanation for Question 3",
-    },
-  ];
+<script setup>
+import '@/assets/dist/js/bootstrap.bundle.min.js';
+
+</script>
   
-  let currentQuestionIndex = 0;
-  let selectedOption = null;
-  const selectedAnswers = [];
-  
-  const nextQuestion = () => {
-    if (selectedOption !== null) {
-      selectedAnswers.push(questions[currentQuestionIndex].options[selectedOption]);
-      currentQuestionIndex++;
-      selectedOption = null;
-    }
-  };
-  </script>
-  
-  <style scoped>
-  /* Add your custom styles here */
-  @import '@/assets/css/bootstrap.min.css';
-  </style>
+<style scoped>
+/* Add your custom styles here */
+@import '@/assets/css/bootstrap.min.css';
+</style>
