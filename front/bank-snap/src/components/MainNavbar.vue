@@ -82,9 +82,6 @@ const closeNavbar = () => {
       </div>
     </nav>
   </header>
-  <body class="center">
-    <RouterView :key="$route.fullPath"/>  
-  </body>
 </template>
 
 <style scoped>

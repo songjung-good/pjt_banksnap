@@ -3,7 +3,6 @@
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router';
 import axios from 'axios'
-import MainNavbar from '@/components/MainNavbar.vue';
 
 const router = useRouter()
 const newsList = ref([])
@@ -39,7 +38,7 @@ const imgIsEmpty = computed(() => {
 </script>
 
 <template>
-  <MainNavbar />
+
 <body>
   <div>
     <h1>메인 페이지</h1>
