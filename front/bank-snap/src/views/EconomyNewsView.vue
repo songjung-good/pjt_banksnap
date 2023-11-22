@@ -1,5 +1,5 @@
 <template>
-
+<div>
 <div class="card p-5 m-5">
   <h3>오늘의 경제 이슈</h3>
   <div class="card-body"></div>
