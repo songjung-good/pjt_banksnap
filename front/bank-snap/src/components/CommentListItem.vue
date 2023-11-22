@@ -2,7 +2,7 @@
   <div>
     <p>
       {{ comment.username }} : {{ comment.content }}
-      <button @click="deleteComment" class="btn btn-outline-secondary">댓글 삭제</button>
+      <button v-if="comment.username === store.user" @click="deleteComment" class="btn btn-outline-secondary">댓글 삭제</button>
     </p>
   </div>
 </template>

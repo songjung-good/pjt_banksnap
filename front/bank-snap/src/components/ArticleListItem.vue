@@ -3,7 +3,7 @@
     <td>{{ article.id }}</td>
     <td class="text-start">
       <RouterLink :to="{ name: 'DetailView', params: { id: article.id }}">
-      {{ article.title }}
+      {{ article.title }} [{{ article.comment_count }}]
       </RouterLink></td>
     <td>{{ createdAt }}</td>
     <td>{{ article.username }}</td>
