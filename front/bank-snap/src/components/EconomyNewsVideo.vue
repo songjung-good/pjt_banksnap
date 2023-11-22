@@ -4,7 +4,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import axios from "axios"
 
-const apiKey = process.env.VITE_VIDEO_API_KEY;
+const apiKey = import.meta.env.VITE_VIDEO_API_KEY;
 const router = useRouter()
 const products = ref([])
 const searchURL = 'https://www.googleapis.com/youtube/v3/search?'
