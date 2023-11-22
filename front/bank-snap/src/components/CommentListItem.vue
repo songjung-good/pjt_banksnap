@@ -1,8 +1,16 @@
 <template>
   <div>
     <p>
-      {{ comment.username }} : {{ comment.content }}
-      <button v-if="comment.username === store.user" @click="deleteComment" class="btn btn-outline-secondary">댓글 삭제</button>
+      <div class="container">
+        <div class="row">
+          <div class="col-auto me-auto">
+            {{ comment.username }} : {{ comment.content }}
+          </div>
+          <div class="col-auto">
+            <button v-if="comment.username === store.user" @click="deleteComment" class="btn btn-outline-secondary">댓글 삭제</button>
+          </div>
+        </div>
+      </div>
     </p>
   </div>
 </template>
