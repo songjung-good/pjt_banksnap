@@ -7,8 +7,9 @@ import { useIndexStore  } from '@/stores/index'
 const router = useRouter()
 const store = useIndexStore()
 
-const user = ref(null)
-user.value = store.user
+const user = computed(() => {
+  return store.user
+})
 const isLogin = computed(()=>{
   return store.isLogin
 })
