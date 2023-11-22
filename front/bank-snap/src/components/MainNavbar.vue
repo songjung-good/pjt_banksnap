@@ -45,52 +45,52 @@ const closeNavbar = () => {
         <div class="navbar-collapse collapse" :class="{ 'show': isNavbarOpen }" @click="closeNavbar">
           <ul class="navbar-nav nav-tabs ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <RouterLink class="nav-link btn btn-outline-light" :to="{ name: 'main' }">
+              <RouterLink class="nav-link" :to="{ name: 'main' }">
                 🏡메인
               </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link btn btn-outline-light" :to="{ name: 'community' }">
+              <RouterLink class="nav-link" :to="{ name: 'community' }">
                 📢커뮤니티
               </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link btn btn-outline-light" :to="{ name: 'PriceView' }">
+              <RouterLink class="nav-link" :to="{ name: 'PriceView' }">
                 👑현물 상품
               </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link btn btn-outline-light" :to="{ name: 'DepositView' }">
+              <RouterLink class="nav-link" :to="{ name: 'DepositView' }">
                 🐷저축성 상품
               </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link btn btn-outline-light" :to="{ name: 'ExchangeCalculator' }">
+              <RouterLink class="nav-link" :to="{ name: 'ExchangeCalculator' }">
                 💹외환 상품
               </RouterLink>
             </li>
             <li class="nav-item">
-              <RouterLink class="nav-link btn btn-outline-light" :to="{ name: 'EconomyNews' }">
+              <RouterLink class="nav-link" :to="{ name: 'EconomyNews' }">
                 📰경제뉴스
               </RouterLink>
             </li>
             <li class="nav-item" v-if="user">
-              <RouterLink v-if="isLogin" class="nav-link btn btn-outline-info" :to="{ name: 'ProfileView', params:{id: user}}">
+              <RouterLink v-if="isLogin" class="nav-link" :to="{ name: 'ProfileView', params:{id: user}}">
                 ⚙️내 정보
               </RouterLink>
             </li>
             <li>              
-              <RouterLink v-if="!isLogin" class="nav-link btn btn-outline-info" :to="{ name: 'LoginView' }" >
+              <RouterLink v-if="!isLogin" class="nav-link" :to="{ name: 'LoginView' }" >
                 🔑로그인
               </RouterLink>
             </li>
             <li>
-              <a type="button" class="nav-link btn btn-outline-info" @click="logout" v-if="isLogin">
+              <a type="button" class="nav-link" @click="logout" v-if="isLogin">
                 🔑로그아웃
               </a>
             </li>
             <li>
-              <RouterLink v-if="!isLogin" class="nav-link btn btn-outline-info" :to="{ name: 'SignUpView' }">
+              <RouterLink v-if="!isLogin" class="nav-link" :to="{ name: 'SignUpView' }">
                 🖋️회원가입
               </RouterLink>
             </li>
@@ -111,6 +111,12 @@ const closeNavbar = () => {
   gap: 10px; /* 좌우 간격을 조절할 값 (원하는 간격으로 조절) */
   justify-content: space-around; /* 입력 요소들을 동일한 간격으로 배치 */
   align-items: center; /* 세로 중앙 정렬을 위한 설정 */
+}
+.nav-link{
+  color: white;
+}
+.nav-link:hover{
+  color: rgb(187, 187, 187);
 }
 </style>
 
