@@ -29,5 +29,7 @@ const user = computed(() => {
 
 
 <style scoped>
-
+.nav-link {
+  color: rgb(173, 173, 173);
+}
 </style>
