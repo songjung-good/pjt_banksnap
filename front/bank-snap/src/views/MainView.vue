@@ -1,20 +1,17 @@
 <!-- MainView.vue -->
 <script setup>
-import { ref } from 'vue'
-import MainSurvey from '@/components/MainSurvey.vue';
-const isFirstVisit = ref(true);
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const showModal = () => {
-  // if (isFirstVisit.value) {
-    // const survey = new MainSurvey();
-    survey.show();
-    // isFirstVisit.value = false;
-  }
+  router.push('/survey')
+}
 
 </script>
 
 <template>
-  <div class="d-flex h-100 text-center text-white bg-dark">
+  <div class="d-flex h-100 text-center text-black bg-light">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="mb-auto">
         <div>
@@ -33,7 +30,6 @@ const showModal = () => {
         <p class="lead">
           <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-gray" @click="showModal">시작하세요</a>
         </p>
-        <MainSurvey />
       </main>
     </div>
   </div>
