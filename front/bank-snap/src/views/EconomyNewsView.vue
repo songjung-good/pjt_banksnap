@@ -1,17 +1,18 @@
 <template>
 <div>
-<div class="card p-5 m-5">
-  <h3>오늘의 경제 이슈</h3>
-  <div class="card-body"></div>
-    <ul>
+  
+  <div class="card p-5 m-5">
+    <h3>오늘의 경제 이슈</h3>
+    <div class="card-body">
+      <ul>
         <div v-for="news in newsList" :key="news.title">
-        <a :href="news.link">
-          <li v-html="news.title"></li>
-        </a>
-      </div>
-    </ul>
+          <a :href="news.link">
+            <li v-html="news.title"></li>
+          </a>
+        </div>
+      </ul>
+    </div>
   </div>
-
   <EconomyNewsVideo />
 </div>  
 </template>
