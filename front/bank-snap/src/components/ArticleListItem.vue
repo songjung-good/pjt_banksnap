@@ -22,8 +22,12 @@ const createdAt = ref(moment(props.article.created_at).format('YYYY-MM-DD'))
 </script>
 
 <style scoped>
-a {
-    text-decoration: none;
-    color: black;
+a{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  line-height: 2;
+}
+a:hover {
+  color: rgb(133, 133, 133);
 }
 </style>
