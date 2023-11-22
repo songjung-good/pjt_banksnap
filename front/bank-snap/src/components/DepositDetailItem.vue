@@ -1,7 +1,7 @@
 
 <script setup>
-import { ref, onMounted, onBeforeMount } from 'vue'
-import { useRoute } from 'vue-router'
+import { ref, onBeforeMount } from 'vue'
+import { useRoute, RouterLink } from 'vue-router'
 import axios from 'axios'
 import { useIndexStore } from '@/stores/index'
 
@@ -88,15 +88,18 @@ const likeProduct = function() {
                 </tr>
                 </tbody>
                 </table>
+                <div class="text-center">
 
-            <button class="btn btn-primary btn-lg" @click="likeProduct">{{ likeButton }}</button>
-
-
+                    <button class="btn btn-secondary" @click="likeProduct">{{ likeButton }}</button>
+                    <RouterLink class="btn btn-outline-secondary" :to="{ name: 'map', params:{'bank': product.kor_co_nm}}">가까운 {{ product.kor_co_nm }} 찾기</RouterLink>
+                </div>
+            
         </main>
         
     </div>
 </template>
 
 <style scoped>
+
 
 </style>

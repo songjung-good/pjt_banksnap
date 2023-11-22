@@ -1,9 +1,9 @@
 <template>
-    <div>
-      <h1>Calculator</h1>
+    <div class="p-2">
+      <h1>외환상품</h1>
       <br>
       <div>
-        <h3>환율계산</h3>
+        <h3>환율 계산하기</h3>
         <div class="rounded-pill bg-light input-container">
           <div class="container">
             보유화폐 : 
@@ -12,6 +12,7 @@
             </select>
             <input class="" type="number" v-model="exchangeMoney1">
           </div>
+          ▶️
           <div class="container">
             기준화폐 :
             <select v-model="selectedCur2">

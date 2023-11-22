@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h3>Article List</h3>
     <table class="table">
   <thead>
     <tr class="text-center">

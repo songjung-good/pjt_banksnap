@@ -42,17 +42,22 @@
 
 <script setup>
 import { ref, onMounted, watch, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import local from "@/assets/local.json"
 const API_KEY = import.meta.env.VITE_KAKAO
 const map = ref(null);
 const infowindow = ref(null); // infowindow 추가
 const markers = ref([])
+const route = useRoute()
 let marker = ''
 
 // select 박스 설정
-const selectLocal1 = ref(Object.keys(local)[0])
-const selectLocal2 = ref(Object.keys(local[selectLocal1.value])[0])
-const selectLocal3 = ref(local[selectLocal1.value][selectLocal2.value][0])
+// const selectLocal1 = ref(Object.keys(local)[0])
+// const selectLocal2 = ref(Object.keys(local[selectLocal1.value])[0])
+// const selectLocal3 = ref(local[selectLocal1.value][selectLocal2.value][0])
+const selectLocal1 = ref('부산광역시')
+const selectLocal2 = ref('강서구')
+const selectLocal3 = ref('녹산동')
 
 const localType1 = ref(Object.keys(local))
 const localType2 = computed(() => {
@@ -71,7 +76,7 @@ watch(selectLocal2, () => {
 
 
 const banks = ["국민은행","우리은행","신한은행","KEB하나은행","한국스탠다드차타드은행","외한은행","한국시티은행","경남은행","광주은행","대구은행","부산은행","전북은행","제주은행","기업은행","농협","수협","한국산업은행","한국수출입은행"]
-const selecteBank = ref(banks[0])
+const selecteBank = ref(route.params.bank)
 
 
 onMounted(() => {

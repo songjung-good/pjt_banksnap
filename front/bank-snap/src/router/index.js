@@ -42,7 +42,7 @@ const router = createRouter({
       component: () => import('../views/CommunityView.vue')
     },
     {
-      path: '/map',
+      path: '/map/:bank',
       name: 'map',
       component: () => import('../views/MapView.vue')
     },
@@ -86,11 +86,7 @@ const router = createRouter({
       name: 'PriceView',
       component: () => import('@/views/PriceView.vue')
     },
-    {
-      path: '/estate',
-      name: 'EstateView',
-      component: () => import('@/views/EstateView.vue')
-    },
+    
   ]
 })
 

@@ -20,3 +20,10 @@ const props = defineProps({
 })
 const createdAt = ref(moment(props.article.created_at).format('YYYY-MM-DD'))
 </script>
+
+<style scoped>
+a {
+    text-decoration: none;
+    color: black;
+}
+</style>
