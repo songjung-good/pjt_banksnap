@@ -30,10 +30,6 @@ const start = () => {
   })
 }
 
-
-
-
-
 onMounted(() => {
     start(); // 컴포넌트가 마운트되면 start 함수 실행
 })
@@ -52,7 +48,7 @@ onMounted(() => {
             <a :href="video.url">
               <img :src="video.snippet.thumbnails.high.url" alt="" class="card-img-top">
               <div class="card-body">
-                <h5 class="card-title">{{ video.snippet.title }}</h5>
+                <h5 class="card-title" v-html="video.snippet.title"></h5>
               </div>
             </a>
           </div>
@@ -68,7 +64,3 @@ a{
   text-decoration: none;
 }
 </style>
-
-
-
-
