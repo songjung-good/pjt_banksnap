@@ -1,39 +1,54 @@
-<!-- SurveyModal.vue -->
 <template>
-  <div>
-    <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
-      <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalChoice">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content rounded-3 shadow">
-            <div class="modal-body p-4 text-center">
-              <h5 class="mb-0">Enable this setting?</h5>
-              <p class="mb-0">You can always change your mind in your account settings.</p>
-            </div>
-            <div class="modal-footer flex-nowrap p-0">
-              <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong>Yes, enable</strong></button>
-              <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">No thanks</button>
-            </div>
-          </div>
-        </div>
+ <div>
+  <div class="modal modal-dialog-centered modal-dialog-scrollable" tabindex="-1" role="dialog" id="modalChoice">
+   <div class="modal-content">
+    <div class="modal-header">
+     <h5 class="modal-title">설문조사</h5>
+     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+     <div v-for="(question, index) in questions" :key="index">
+      <p style="width: calc(100% - 20px); height: 200px;">{{ question }}</p>
       </div>
     </div>
-
-    <div class="b-example-divider"></div>
-
-    <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabindex="-1" role="dialog" id="modalSignin">
-      <!-- ... Your modal content for modalSignin ... -->
+    <div class="modal-footer">
+     <button type="button" class="btn btn-primary" @click="submit">제출</button>
     </div>
-
-    <div class="b-example-divider"></div>
+   </div>
   </div>
+ </div>
 </template>
+    
+  <script setup>
+  import { ref } from 'vue';
   
-<script setup>
-import '@/assets/dist/js/bootstrap.bundle.min.js';
-
-</script>
+  const questions = ref([
+    '당신의 성별은?',
+    '당신의 나이는?',
+    '당신의 관심사는?',
+    '당신의 취미는?',
+    '당신의 직업은?',
+  ]);
   
-<style scoped>
-/* Add your custom styles here */
-@import '@/assets/css/bootstrap.min.css';
-</style>
+  const answers = ref([]);
+  
+  const nextQuestion = () => {
+    answers.push(questions.value[questions.value.length - 1] === '남자' ? 1 : 0);
+    questions.value.pop();
+  };
+  
+  const submit = () => {
+    // 답변 저장
+    // 모달 창 닫기
+    document.getElementById('modalChoice').style.display = 'none';
+  };
+  </script>
+  
+  <style scoped>
+  /* Add your custom styles here */
+  @import '@/assets/css/bootstrap.min.css';
+  .modal {
+  width: 1280px;
+}
+  </style>
+  
