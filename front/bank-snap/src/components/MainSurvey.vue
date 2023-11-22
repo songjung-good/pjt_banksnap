@@ -48,10 +48,9 @@ const selectedAnswers = ref([]);
 const submit = () => {
   // 서버로 선택된 답변을 전송하는 로직 추가
   console.log('선택된 답변:', selectedAnswers.value);
-
   router.push({
     name: 'SurveyAnswer',
-    params: { selectedAnswers: selectedAnswers.value },
+    query: { selectedAnswers: selectedAnswers.value },
   });
 };
 </script>

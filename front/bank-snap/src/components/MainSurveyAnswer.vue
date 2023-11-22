@@ -1,3 +1,4 @@
+<!-- MainSurveyAnswer.vue -->
 <template>
     <div class="container">
       <h2 class="text-center">선택된 답변 결과</h2>
@@ -16,8 +17,9 @@ const selectedAnswers = ref([]);
 onMounted(() => {
   // 페이지가 로드될 때 라우터에서 전달된 params를 확인하여 selectedAnswers 업데이트
   const route = useRoute();
-  if (route.params.selectedAnswers) {
-    selectedAnswers.value = route.params.selectedAnswers;
+  if (route.query.selectedAnswers) {
+    selectedAnswers.value = route.query.selectedAnswers;
+    console.log(selectedAnswers.value)
   }
 });
 </script>
