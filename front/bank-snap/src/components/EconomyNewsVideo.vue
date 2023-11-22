@@ -22,7 +22,8 @@ const start = () => {
 }
 
 const params = ref({
-        key: 'AIzaSyCu6NZ13UapmgRPfQ7Up-wptjpNpCjqsdo',
+        key: {apiKey},
+        // key: 'AIzaSyCu6NZ13UapmgRPfQ7Up-wptjpNpCjqsdo',
         part: 'snippet',
         q: searchTerm.value,
         maxResults: 4,
@@ -33,27 +34,31 @@ const params = ref({
 
 const goDetail = (video) => {
     router.push({
-		name: 'videodetail',
+        name: 'videodetail',
         params: {
             video: video.id.videoId
         },
-		state: {
-			data: params,
-		},
+        state: {
+            data: params,
+        },
     })
 }
+
+onMounted(() => {
+    start(); // 컴포넌트가 마운트되면 start 함수 실행
+})
 
 </script>
 
 <template>
-    <div>
-        <div class="video-list">
-            <div v-for="product in products" :key="product.id" class="video-card">
-                <img :src="product.snippet.thumbnails.medium.url" alt="썸네일" @click="goDetail(product)">
-                <strong>{{ product.snippet.title }}</strong>
-            </div>
-        </div>
+  <div>
+    <div class="video-list">
+      <div v-for="product in products" :key="product.id" class="video-card">
+        <img :src="product.snippet.thumbnails.medium.url" alt="썸네일" @click="goDetail(product)">
+        <strong>{{ product.snippet.title }}</strong>
+      </div>
     </div>
+  </div>
 </template>
 
 <style scoped>

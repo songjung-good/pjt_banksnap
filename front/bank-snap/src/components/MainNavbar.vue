@@ -13,7 +13,7 @@ const user = computed(() => {
 const isLogin = computed(()=>{
   return store.isLogin
 })
-console.log(isLogin)
+// console.log(isLogin)
 
 const logout = ref(store.logout)
 
