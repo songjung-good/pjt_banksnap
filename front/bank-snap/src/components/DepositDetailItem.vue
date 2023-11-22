@@ -11,7 +11,7 @@ const route = useRoute()
 const product = ref(null)
 const likeButton = ref(null)
 const isData = ref(false)
-
+const isLike = ref(false)
 onBeforeMount(() => {
     axios({
         method: 'get',
@@ -23,9 +23,9 @@ onBeforeMount(() => {
     .then((res) =>{
         product.value = res.data.product
         if (res.data.is_liked){
-            likeButton.value = '즐겨찾기 취소'
+            isLike.value = true
         }else {
-            likeButton.value = '즐겨찾기'
+            isLike.value = false
         }
         isData.value = true
     })
@@ -44,9 +44,9 @@ const likeProduct = function() {
     })
     .then((res) =>{
         if (res.data.is_liked){
-            likeButton.value = '즐겨찾기 취소'
+            isLike.value = true
         }else{
-            likeButton.value = '즐겨찾기'
+            isLike.value = false
         }
 
     })
@@ -63,14 +63,24 @@ const likeProduct = function() {
             <h1 class="text-body-emphasis">💰{{ product.fin_prdt_nm }}💰</h1>
             <br>    
             <p class="fs-5 col-md-8">은행 명 : {{ product.kor_co_nm }}</p>
+            
             <p class="fs-5 col-md-8">가입 대상 : {{ product.join_member }}</p>
             <p class="fs-5 col-md-8">가입 방법 : {{ product.join_way }}</p>
             <p class="fs-5 col-md-8">상품 정보</p>
             
             <div class="fs-6 col-md-8" v-html="product.etc_note.replace(/\n/g, '<br>')"></div>
             <br>
+            <RouterLink class="btn btn-outline-secondary" :to="{ name: 'map', params:{'bank': product.kor_co_nm}}">🗺️ 가까운 {{ product.kor_co_nm }} 찾기</RouterLink>
+            <br>
+            <br>
+            <br>
+            <div class="text-center">
+                
+                <i class="bi" :class="isLike ? 'bi-heart-fill':'bi-heart'" @click="likeProduct"></i>
+                <p>찜하기</p>
+            </div>
             <p class="fs-5 col-md-8">금리</p>
-            <table class="table">
+            <table class="table text-center">
                 <thead>
                 <tr>
                     <th>구분</th>
@@ -88,18 +98,15 @@ const likeProduct = function() {
                 </tr>
                 </tbody>
                 </table>
-                <div class="text-center">
-
-                    <button class="btn btn-secondary" @click="likeProduct">{{ likeButton }}</button>
-                    <RouterLink class="btn btn-outline-secondary" :to="{ name: 'map', params:{'bank': product.kor_co_nm}}">가까운 {{ product.kor_co_nm }} 찾기</RouterLink>
-                </div>
-            
+                
         </main>
         
     </div>
 </template>
 
 <style scoped>
-
+i{
+    font-size: 50px;
+}
 
 </style>
