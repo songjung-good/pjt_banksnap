@@ -34,7 +34,6 @@ const showModal = () => {
     </div>
   </div>
 
-  <MainSurvey />
 </template>
 
 <style scoped>
