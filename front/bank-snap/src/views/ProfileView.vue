@@ -70,5 +70,7 @@ onMounted(() => {
 a {
   color: black;
 }
-
+.nav-link {
+  color: rgb(173, 173, 173);
+}
 </style>

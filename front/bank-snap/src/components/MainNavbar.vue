@@ -118,5 +118,8 @@ const closeNavbar = () => {
 .nav-link:hover{
   color: rgb(187, 187, 187);
 }
+.router-link-exact-active, .router-link-active {
+  color: rgb(187, 187, 187) !important;
+}
 </style>
 
