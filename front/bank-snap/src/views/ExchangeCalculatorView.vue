@@ -4,21 +4,40 @@
       <br>
       <div>
         <h3>환율 계산하기</h3>
-        <div class="rounded-pill bg-light input-container">
-          <div class="container">
-            보유화폐 : 
-            <select v-model="selectedCur1">
-              <option v-for="data in dataList" :value="data.cur_nm"> {{ data.cur_nm }}</option>            
-            </select>
-            <input class="" type="number" v-model="exchangeMoney1">
+        <div class="rounded-pill bg-light input-container p-3">
+          <div class="container p-3">
+            <div class="row d-flex align-items-center">
+              <div class="col-2">
+
+                보유화폐 : 
+              </div>
+              <div class="col-5 p-0">
+
+                <select v-model="selectedCur1" class="form-control">
+                  <option v-for="data in dataList" :value="data.cur_nm"> {{ data.cur_nm }}</option>            
+                </select>
+              </div>
+              <div class="col-5 p-0">
+
+                <input class="form-control" type="number" v-model="exchangeMoney1">
+              </div>
+            </div>
           </div>
           ▶️
           <div class="container">
-            기준화폐 :
-            <select v-model="selectedCur2">
-              <option v-for="data in dataList" :value="data.cur_nm">{{ data.cur_nm }}</option>            
-            </select>
-            <input type="number" v-model="exchangeMoney2" readonly>
+            <div class="row d-flex align-items-center">
+              <div class="col-2">
+                기준화폐 :
+              </div>
+              <div class="col-5 p-0">
+                <select v-model="selectedCur2" class="form-control">
+                  <option v-for="data in dataList" :value="data.cur_nm">{{ data.cur_nm }}</option>            
+                </select>
+              </div>
+              <div class="col-5 p-0">
+                <input class="form-control" type="number" v-model="exchangeMoney2" readonly>
+              </div>
+            </div>
           </div>
         </div>
       </div>

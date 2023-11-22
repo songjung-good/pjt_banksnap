@@ -57,11 +57,5 @@ onMounted(() => {
 
 </style>
 <style>
-  th {
-    border-bottom: 1px solid black;
-    padding: 3px;
-  }
-  .tr-border {
-    border-top: 1px solid black;
-  }
+
 </style>

@@ -48,9 +48,8 @@ onMounted(() => {
         <p>투자 성향 : {{ depositType }}</p>
       </div>
     </div>
+    <RouterLink :to="{ name: 'PropensityUpdateView' }" class="btn btn-secondary">정보 수정</RouterLink>
   </div>
-  <br>
-  <RouterLink :to="{ name: 'PropensityUpdateView' }" class="btn btn-secondary">정보 수정</RouterLink>
 </template>
 <style scoped>
 

@@ -41,18 +41,21 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <h3>비디오 자리</h3>
-    <div class="container">
-      <div v-if="videos.length > 0" class="row row-cols-1 row-cols-md-3 g-3">
+  <div class="card p-5 m-5">
+    <h3>오늘의 경제 영상</h3>
+    <div class="card-body">
+      <div class="container">
         
-        <div v-for="video in videos" class="card mt-3 mb-3 mx-3 h-100" style="width: 18rem;">
-          <a :href="video.url">
-            <img :src="video.snippet.thumbnails.high.url" alt="" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title">{{ video.snippet.title }}</h5>
-            </div>
-          </a>
+        <div v-if="videos.length > 0" class="row justify-content-center row-cols-1 row-cols-m-3 g-3">
+          
+          <div v-for="video in videos" class="card mt-3 mb-3 mx-3" style="width: 18rem;">
+            <a :href="video.url">
+              <img :src="video.snippet.thumbnails.high.url" alt="" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">{{ video.snippet.title }}</h5>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>

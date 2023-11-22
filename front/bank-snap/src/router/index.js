@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import MapView from '@/views/MapView.vue'
 import MainView from '@/views/MainView.vue'
 
 

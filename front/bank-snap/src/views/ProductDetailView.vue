@@ -1,7 +1,6 @@
 <template>
     <div>
-        <h1>상품 상세 페이지</h1>
-        <div>
+        <div class="p-5">
             <DepositDetailItem />            
         </div>   
     </div>
