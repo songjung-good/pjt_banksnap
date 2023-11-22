@@ -1,8 +1,6 @@
-
 <template>
-
 <div class="product-card">
-    <h3 >오늘의 경제 이슈</h3>
+    <h2>오늘의 경제 이슈</h2>
     <ul>
         <div v-for="news in newsList" :key="news.title">
         <a :href="news.link">
@@ -12,6 +10,7 @@
     </ul>
 </div>
 
+<EconomyNewsVideo />
 </template>
 
 <script setup>

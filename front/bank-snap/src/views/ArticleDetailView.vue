@@ -1,6 +1,9 @@
-<template>
+a<template>
   <div>
-    <h1>Detail</h1>
+    <h1>
+      <RouterLink :to="{ name: 'community' }">📢</RouterLink>
+      게시판
+    </h1>
     <main class="flex-shrink-0">
     <div v-if="article">
         <div class="container">
@@ -37,6 +40,7 @@ import { useRoute, useRouter, RouterLink } from 'vue-router'
 import CommentList from '@/components/CommentList.vue'
 import CommentWrite from '@/components/CommentWrite.vue'
 import moment from 'moment'
+
 
 const store = useIndexStore()
 const route = useRoute()
