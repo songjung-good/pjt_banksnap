@@ -9,10 +9,11 @@ a<template>
         <div class="container">
           <h1 class="mt-5">제목 : {{ article.title }}</h1>
           <p class="text-end">작성일 : {{ article.created_at }} | 수정일 : {{ article.updated_at }}</p>
+          <p class="text-end">작성자 : {{ article.username }}</p>
           <p class="lead">{{ article.content }}</p>
           <div class="text-end ">
 
-            <div class="btn-group" role="group">
+            <div v-if="article.username === store.user" class="btn-group" role="group">
               <button @click="deleteArticle" class="btn btn-outline-secondary">삭제</button>
               <RouterLink class="btn btn-outline-secondary"
               :to="{name: 'CreateArticleView', query: { type: 'modify', id: $route.params.id }}">

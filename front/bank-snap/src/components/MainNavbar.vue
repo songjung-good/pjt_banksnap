@@ -2,7 +2,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
-import { useIndexStore  } from '@/stores/index'
+import { useIndexStore } from '@/stores/index'
 
 const router = useRouter()
 const store = useIndexStore()
@@ -90,7 +90,7 @@ const closeNavbar = () => {
               </a>
             </li>
             <li>
-              <RouterLink class="nav-link btn btn-outline-info" :to="{ name: 'SignUpView' }">
+              <RouterLink v-if="!isLogin" class="nav-link btn btn-outline-info" :to="{ name: 'SignUpView' }">
                 🖋️회원가입
               </RouterLink>
             </li>

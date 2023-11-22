@@ -8,23 +8,7 @@
     </td>
       
   </tr>
-  <!-- <tr>
-    <td>
-      <table class="option-table">
-        <tr>
-          <th>타입</th>
-          <th>가입 기간</th>
-          <th>이율</th>
-          <th>최대 이율</th>
-        </tr>
-        <DepositOptionItem
-        v-for="option in options"
-        :key="option.id"
-        :option="option" 
-        />
-      </table>
-    </td>
-  </tr> -->
+
 </template>
 
 <script setup>

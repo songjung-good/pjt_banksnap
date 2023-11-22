@@ -1,24 +1,30 @@
 <template>
   <div class="text-center p-5">
     <img class="mb-4" src="../assets/logo_nonbackgroound.png" alt="" width="80" height="57">
-       
-    <h1>{{ username }} 님의 Profile</h1>
-    <template v-if="articles.length > 0">
-      <ProfileArticle :articles="articles" />
-    </template>
-    <hr>
-    <template v-if="comments.length > 0">
-      <ProfileComment :comments="comments" />
-    </template>
-    <hr>
-    <template v-if="products.length > 0">
-      <ProfileProduct :products="products" />
-    </template>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+
+            <p class="nav-link active" aria-current="page" >프로필</p>
+        </li>
+        <li class="nav-item">
+            <RouterLink :to="{ name: 'PropensityView' }" class="nav-link">내 금융정보</RouterLink>
+        </li>
+    </ul>
+    <h1 class="p-5">{{ username }} 님의 프로필</h1>
+      <div class="card-group">
+
+        <template v-if="articles.length > 0">
+          <ProfileArticle :articles="articles" />
+        </template>
+        <template v-if="comments.length > 0">
+          <ProfileComment :comments="comments" />
+        </template>
+        <template v-if="products.length > 0">
+          <ProfileProduct :products="products" />
+        </template>
+      </div>
+    </div>
     
-    <p>
-      <RouterLink :to="{name: 'PropensityView'}" class="btn btn-secondary">내 금융 정보</RouterLink>
-    </p>
-  </div>
 </template>
 
 <script setup>
@@ -48,7 +54,6 @@ onMounted(() => {
       }
     })
       .then((res) =>{
-        console.log(res.data)
         username.value = res.data.username
         articles.value = res.data.article_set
         comments.value = res.data.comment_set
@@ -61,6 +66,9 @@ onMounted(() => {
 
 </script>
 
-<style scoped>
+<style>
+a {
+  color: black;
+}
 
 </style>
