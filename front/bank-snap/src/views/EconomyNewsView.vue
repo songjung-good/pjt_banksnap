@@ -1,8 +1,9 @@
 
 <template>
 
-<div class="product-card">
-    <h3 >오늘의 경제 이슈</h3>
+<div class="card p-5 m-5">
+  <h3>오늘의 경제 이슈</h3>
+  <div class="card-body"></div>
     <ul>
         <div v-for="news in newsList" :key="news.title">
         <a :href="news.link">
@@ -38,6 +39,7 @@ onMounted(() => {
   })
     .then((response) => {
       newsList.value = response.data.items
+      console.log(response.data)
     })
     .catch((error) => {
       console.error(error)
@@ -51,10 +53,19 @@ const imgIsEmpty = computed(() => {
 </script>
 
 <style scoped>
-  .product-card{
+  /* .product-card{
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-  }
+  } */
+a{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  line-height: 2;
+}
+a:hover {
+  color: rgb(75, 75, 75);
+  font-size: 17px
+}
 </style>

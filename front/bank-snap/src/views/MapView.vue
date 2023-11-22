@@ -17,9 +17,8 @@
         <select v-model="selecteBank">
             <option v-for="bank in banks" :key="bank" :value="bank">{{ bank }}</option>
         </select>
-        <form @submit.prevent="searchPlaces">
-            <button type="submit">검색하기</button> 
-        </form>
+        <button @click="searchPlaces" class="btn btn-secondary">검색하기</button> 
+        
     </div>
     <div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
@@ -52,12 +51,15 @@ const route = useRoute()
 let marker = ''
 
 // select 박스 설정
-// const selectLocal1 = ref(Object.keys(local)[0])
-// const selectLocal2 = ref(Object.keys(local[selectLocal1.value])[0])
-// const selectLocal3 = ref(local[selectLocal1.value][selectLocal2.value][0])
-const selectLocal1 = ref('부산광역시')
-const selectLocal2 = ref('강서구')
-const selectLocal3 = ref('녹산동')
+const selectLocal1 = ref(Object.keys(local)[0])
+const selectLocal2 = ref(Object.keys(local[selectLocal1.value])[0])
+const selectLocal3 = ref(local[selectLocal1.value][selectLocal2.value][0])
+const coords = ref([37.566826, 126.9786567])
+const currentLocation = function() {
+    
+
+}
+
 
 const localType1 = ref(Object.keys(local))
 const localType2 = computed(() => {
@@ -80,11 +82,13 @@ const selecteBank = ref(route.params.bank)
 
 
 onMounted(() => {
-  if (window.kakao && window.kakao.maps) {
-    loadMap();
-  } else {
-    loadScript();
-  }
+    currentLocation()
+    if (window.kakao && window.kakao.maps) {
+        
+        loadMap()
+    } else {
+        loadScript()
+      }
 });
 
 
@@ -101,30 +105,60 @@ const loadScript = () => {
 
 // 맵 출력하기
 const loadMap = () => {
-  const container = document.getElementById("map");
-  const options = {
-    center: new window.kakao.maps.LatLng(37.566826, 126.9786567),
-    level: 3,
-  };
+    const container = document.getElementById("map");
+    navigator.geolocation.getCurrentPosition(
+        (res) =>{
+            coords.value[0] = res.coords.latitude
+            coords.value[1] = res.coords.longitude
+            const options = {
+                center: new window.kakao.maps.LatLng(coords.value[0], coords.value[1]),
+                level: 7,
+            };
 
-  map.value = new window.kakao.maps.Map(container, options);
-  infowindow.value = new window.kakao.maps.InfoWindow({ zIndex: 1 }); // Correct initialization
-  
+            map.value = new window.kakao.maps.Map(container, options);
+            infowindow.value = new window.kakao.maps.InfoWindow({ zIndex: 1 }); // Correct initialization
+            const ps = new kakao.maps.services.Places();
+            ps.setMap(map.value)
+            // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다\
+            const searchOptions = {
+                x: coords.value[0],
+                y: coords.value[1], 
+                radius: 20000,
+                useMapCenter: true,
+            }
+            ps.keywordSearch(selecteBank.value, placesSearchCB, searchOptions);
+        }
+        ,
+        () => {
+            alert('위치 정보를 가져오지 못했습니다.')
+            const options = {
+                center: new window.kakao.maps.LatLng(coords.value[0], coords.value[1]),
+                level: 7,
+            };
+
+            map.value = new window.kakao.maps.Map(container, options);
+            infowindow.value = new window.kakao.maps.InfoWindow({ zIndex: 1 }); // Correct initialization
+            searchPlaces();
+        }
+    )
+    
+    
   // 키워드로 장소를 검색합니다
-  searchPlaces();
+  
   
   
 
 };
 const searchPlaces = function() {
-    
     const keywordValue = `${selectLocal1.value} ${selectLocal2.value} ${selectLocal3.value} ${selecteBank.value}`
     if (!keywordValue) {
       alert('키워드를 입력해주세요!');
       return;
     }
     const ps = new kakao.maps.services.Places();
+    ps.setMap(map.value)
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다\
+    
     ps.keywordSearch(keywordValue, placesSearchCB);
     
   }
