@@ -1,3 +1,4 @@
+<!-- MainSurvey.vue -->
 <template>
   <div class="container">
     <h2 class="text-center">당신의 투자성향은?</h2>
@@ -26,6 +27,9 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 const questions = ref([
   { title: '고객님의 연령대는 어떻게 되시나요?', answers: ['19세 이하', '20~59세', '60세 이상'] },
@@ -44,6 +48,11 @@ const selectedAnswers = ref([]);
 const submit = () => {
   // 서버로 선택된 답변을 전송하는 로직 추가
   console.log('선택된 답변:', selectedAnswers.value);
+
+  router.push({
+    name: 'SurveyAnswer',
+    params: { selectedAnswers: selectedAnswers.value },
+  });
 };
 </script>
 

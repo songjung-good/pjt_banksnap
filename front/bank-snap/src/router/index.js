@@ -17,6 +17,11 @@ const router = createRouter({
       component: () => import('../components/MainSurvey.vue')
     },
     {
+      path: '/survey-answer',
+      name: 'SurveyAnswer',
+      component: () => import('../components/MainSurveyAnswer.vue')
+    },
+    {
       path: '/deposit',
       name: 'DepositView',
       component: () => import('../views/DepositView.vue')

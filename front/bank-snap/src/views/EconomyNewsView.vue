@@ -1,24 +1,26 @@
 <template>
-
+<div>
 <div class="card p-5 m-5">
   <h3>오늘의 경제 이슈</h3>
   <div class="card-body"></div>
     <ul>
         <div v-for="news in newsList" :key="news.title">
         <a :href="news.link">
-            <li v-html="news.title"></li>
+          <li v-html="news.title"></li>
         </a>
-        </div>
+      </div>
     </ul>
-</div>
+  </div>
 
-<EconomyNewsVideo />
+  <EconomyNewsVideo />
+</div>  
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRouter } from 'vue-router';
 import axios from 'axios'
+import EconomyNewsVideo from '@/components/EconomyNewsVideo.vue'
 
 const router = useRouter()
 const newsList = ref([])
