@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <h1>정보 수정</h1>
+  <div class="text-center p-3 m-5">
     <PropensityWrite />
   </div>
 </template>

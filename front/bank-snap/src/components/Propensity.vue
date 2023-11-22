@@ -36,18 +36,21 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <h1>{{ username }} 님의 정보 </h1>
-    <div>
-      <p>나이 : {{ age }}</p>
-      <p>연봉 : {{ income }}</p>
-      <p>선호 은행 : {{ bank }}</p>
-      <p>보유 금액 : {{ depositNow }}</p>
-      <p>투자 성향 : {{ depositType }}</p>
+  <div class="p-5">
+    <h1>{{ username }} 님의 금융 정보 </h1>
+    <div class="card p-5 m-5">
+      <div class="card-body fs-4">
+
+        <p>나이 : {{ age }} 세</p>
+        <p>연봉 : {{ income }} 원</p>
+        <p>선호 은행 : {{ bank }}</p>
+        <p>보유 금액 : {{ depositNow }} 원</p>
+        <p>투자 성향 : {{ depositType }}</p>
+      </div>
     </div>
   </div>
-  <RouterLink v-if="userId" :to="{ name: 'PropensityUpdateView' }">정보 수정</RouterLink>
-
+  <br>
+  <RouterLink :to="{ name: 'PropensityUpdateView' }" class="btn btn-secondary">정보 수정</RouterLink>
 </template>
 <style scoped>
 

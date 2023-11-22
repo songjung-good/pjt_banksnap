@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Profile</h1>
+  <div class="text-center p-3 m-5">
+    <img class="mb-4" src="../assets/logo_nonbackgroound.png" alt="" width="80" height="57">
     <Propensity />
   </div>
 </template>

@@ -1,21 +1,55 @@
 <template>
-  <div>
+  <div class="text-center p-5">
+    <!-- <img class="m-3" src="../assets/logo_nonbackgroound.png" alt="" width="80" height="57"> -->
     <h1>정보 수정</h1>
+    
     <form @submit.prevent="updatePropensity">
-      <div>
-        <p>나이 : <input type="number" v-model="age"></p>
-        <p>연봉 : <input type="number" v-model="income"></p>
-        <p>선호은행 : 
-          <select v-model="bankName">
-            <option v-for="bank in banks" :key="bank" :value="bank">{{ bank }}</option>            
-          </select>
-        </p>
-        <p>투자성향 : <input type="text" v-model="depositType"></p>
-        <p>보유금액 : <input type="number" v-model="depositNow"></p>
+      <div class="card p-5 m-5">
+        <div class="card-body">
+          <div class="mb-3 row justify-content-center">
+            <label for="age" class="col-sm-2 col-form-label">나이</label>
+            <div class="col-sm-3">
+              <input type="number" class="form-control" id="age" v-model="age">
+            </div>
+          </div>
+          <div class="mb-3 row justify-content-center">
+            <label for="income" class="col-sm-2 col-form-label">연봉</label>
+            <div class="col-sm-3">
+              <input type="number" class="form-control" id="income" v-model="income">
+            </div>
+          </div>
+          <div class="mb-3 row justify-content-center">
+            <label for="bank" class="col-sm-2 col-form-label">선호은행</label>
+            <div class="col-sm-3">
+              <select class="form-control" v-model="bankName" id="bank">
+                <option v-for="bank in banks" :key="bank" :value="bank">{{ bank }}</option>            
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row justify-content-center">
+            <label for="type" class="col-sm-2 col-form-label">투자성향</label>
+            <div class="col-sm-3">
+              <select class="form-control" v-model="depositType" id="type">
+                <option value="안정형">안정형</option>
+                <option value="안정추구형">안정추구형</option>
+                <option value="위험중립형">위험중립형</option>
+                <option value="적극투자형">적극투자형</option>
+                <option value="공격투자형">공격투자형</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row justify-content-center">
+            <label for="money" class="col-sm-2 col-form-label">보유 금액</label>
+            <div class="col-sm-3">
+              <input type="number" class="form-control" id="money" v-model="depositNow">
+            </div>
+          </div>
+        </div>
       </div>
-      <button type="submit">수정하기</button>
-    </form>
-  </div>
+      <br>
+        <button type="submit" class="btn btn-secondary">수정하기</button>
+      </form>
+    </div>
 </template>
 
 <script setup>

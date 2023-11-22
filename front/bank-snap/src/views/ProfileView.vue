@@ -1,9 +1,8 @@
 <template>
-  <div>
+  <div class="text-center p-5">
+    <img class="mb-4" src="../assets/logo_nonbackgroound.png" alt="" width="80" height="57">
+       
     <h1>{{ username }} 님의 Profile</h1>
-    <p>
-      <RouterLink :to="{name: 'PropensityView'}">내 정보</RouterLink>
-    </p>
     <template v-if="articles.length > 0">
       <ProfileArticle :articles="articles" />
     </template>
@@ -15,7 +14,10 @@
     <template v-if="products.length > 0">
       <ProfileProduct :products="products" />
     </template>
-
+    
+    <p>
+      <RouterLink :to="{name: 'PropensityView'}" class="btn btn-secondary">내 금융 정보</RouterLink>
+    </p>
   </div>
 </template>
 
