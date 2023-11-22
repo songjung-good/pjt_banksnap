@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
   like_products = DepositProductSerializer(many=True, read_only=True)
   class Meta:
     model = get_user_model()
-    fields = '__all__'    
+    fields = ('username', 'article_set', 'comment_set', 'like_products',)   
 
 
 class PropensitySerializer(serializers.ModelSerializer):
@@ -29,3 +29,8 @@ class PropensityFormSerializer(serializers.ModelSerializer):
     model = Propensity
     fields = ('age',)
     read_only_fields = ('bank', 'user',)
+
+class UserInfoSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = get_user_model()
+    fields = ('id', 'username',)

@@ -14,7 +14,8 @@ import MainNavbar from '@/components/MainNavbar.vue';
 @import '@/assets/css/bootstrap.min.css';
 /* Bootstrap styles */
 body {
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
+  /* font-family: 'Nanum Gothic', sans-serif; */
 }
 
 

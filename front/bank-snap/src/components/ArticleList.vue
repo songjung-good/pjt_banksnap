@@ -3,7 +3,7 @@
     <h3>Article List</h3>
     <table class="table">
   <thead>
-    <tr>
+    <tr class="text-center">
       <th scope="col">번호</th>
       <th scope="col">제목</th>
       <th scope="col">작성일자</th>

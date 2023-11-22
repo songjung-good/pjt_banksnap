@@ -152,25 +152,26 @@ def product_like(request, product_id):
 @permission_classes([IsAuthenticatedOrReadOnly])
 def price(request):
   item_lst = [
-    ["금", "https://finance.naver.com/marketindex/goldDetail.naver"],
-    ["은", "https://finance.naver.com/marketindex/worldGoldDetail.naver?marketindexCd=CMDT_SI&fdtc=2"],
-    ["가솔린", "https://finance.naver.com/marketindex/oilDetail.naver?marketindexCd=OIL_GSL"],
-    ["천연가스", "https://finance.naver.com/marketindex/materialDetail.naver?marketindexCd=CMDT_NG"],
-    ["커피", "https://finance.naver.com/marketindex/materialDetail.naver?marketindexCd=CMDT_KC"]
+    ["금", "https://finance.naver.com/marketindex/goldDetail.naver", "원/g"],
+    ["은", "https://finance.naver.com/marketindex/worldGoldDetail.naver?marketindexCd=CMDT_SI&fdtc=2", "달러/트로이온스"],
+    ["가솔린", "https://finance.naver.com/marketindex/oilDetail.naver?marketindexCd=OIL_GSL", "원/리터"],
+    ["천연가스", "https://finance.naver.com/marketindex/materialDetail.naver?marketindexCd=CMDT_NG", "USD/MMBTU"],
+    ["커피", "https://finance.naver.com/marketindex/materialDetail.naver?marketindexCd=CMDT_KC", "센트/파운드"]
   ]
 
   items = []
 
-  for (name, url) in item_lst:
+  for (name, url, unit) in item_lst:
     res = req.urlopen(url)
     soup = BeautifulSoup(res, "html.parser", from_encoding='utf-8')
     graph = soup.select_one("#content > div.spot > div.flash_area > img").get("src")
-    prices = soup.select("#content > div.spot > div.today > p.no_today")
-    before_prices = soup.select("#content > div.spot > div.today > p.no_exday")
+    prices = soup.select("#content > div.spot > div.today > p.no_today > em > span")
+    before_prices = soup.select("#content > div.spot > div.today > p.no_exday > em > span")
     price = ''
-    before_price = ''
+    before_price = '전일 대비 '
     for p in prices:
       price += p.get_text()
+    price += ' ' + unit
     
     for before_p in before_prices:
       before_price += before_p.get_text()

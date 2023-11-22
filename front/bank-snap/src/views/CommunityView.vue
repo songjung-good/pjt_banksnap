@@ -3,10 +3,11 @@
 
     <div>
         <h1>Community</h1>
-        <span v-if="isLogin">
-            <RouterLink :to="{ name: 'CreateArticleView', query:{ type: 'create' }}">글 쓰기</RouterLink>
-        </span>
+        
         <ArticleList />
+        <div class="text-end" v-if="isLogin">
+            <RouterLink class="btn btn-outline-secondary px-4 m-1" :to="{ name: 'CreateArticleView', query:{ type: 'create' }}">글 쓰기</RouterLink>
+        </div>
     </div>
     
 

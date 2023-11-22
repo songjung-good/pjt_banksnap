@@ -1,5 +1,5 @@
 <script setup>
-import MainSurvey from '@/components/MainSurvey.vue';
+// import MainSurvey from '@/components/MainSurvey.vue';
 </script>
 
 <template>
@@ -27,7 +27,7 @@ import MainSurvey from '@/components/MainSurvey.vue';
     </div>
   </div>
 
-  <MainSurvey />
+  <!-- <MainSurvey /> -->
 </template>
 
 <style scoped>

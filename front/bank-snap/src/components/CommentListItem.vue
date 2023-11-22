@@ -1,7 +1,7 @@
 <template>
   <div>
     <p>
-      {{ comment.user }} : {{ comment.content }}
+      {{ comment.username }} : {{ comment.content }}
       <button @click="deleteComment" class="btn btn-outline-secondary">댓글 삭제</button>
     </p>
   </div>
