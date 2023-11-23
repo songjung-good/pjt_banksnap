@@ -1,0 +1,132 @@
+[
+{
+    "model": "articles.comment",
+    "pk": 1,
+    "fields": {
+        "user": 2,
+        "article": 2,
+        "content": "주식 가시죠",
+        "created_at": "2023-11-23T14:45:03.346Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 2,
+    "fields": {
+        "user": 2,
+        "article": 1,
+        "content": "ㅎㅇㅎㅇ",
+        "created_at": "2023-11-23T14:46:48.978Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 3,
+    "fields": {
+        "user": 3,
+        "article": 3,
+        "content": "ㄱㄱ",
+        "created_at": "2023-11-23T14:47:27.043Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 4,
+    "fields": {
+        "user": 4,
+        "article": 1,
+        "content": "안녕하세요",
+        "created_at": "2023-11-23T14:48:40.724Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 5,
+    "fields": {
+        "user": 4,
+        "article": 3,
+        "content": "ㄱㅂㅈㄱ",
+        "created_at": "2023-11-23T14:48:55.405Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 6,
+    "fields": {
+        "user": 4,
+        "article": 4,
+        "content": "심심해ㅐㅐ",
+        "created_at": "2023-11-23T14:49:04.636Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 7,
+    "fields": {
+        "user": 5,
+        "article": 3,
+        "content": "ㄱㅊ",
+        "created_at": "2023-11-23T14:50:30.717Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 8,
+    "fields": {
+        "user": 5,
+        "article": 2,
+        "content": "외환 ㄱㄱ",
+        "created_at": "2023-11-23T14:50:42.984Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 9,
+    "fields": {
+        "user": 2,
+        "article": 7,
+        "content": "공격투자형 나옴",
+        "created_at": "2023-11-23T14:53:10.081Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 10,
+    "fields": {
+        "user": 6,
+        "article": 8,
+        "content": "ㄱㄱ",
+        "created_at": "2023-11-23T14:55:57.250Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 11,
+    "fields": {
+        "user": 6,
+        "article": 7,
+        "content": "ㅋㅋ",
+        "created_at": "2023-11-23T14:56:03.994Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 12,
+    "fields": {
+        "user": 6,
+        "article": 6,
+        "content": "ㄱㅊㄱㅊ",
+        "created_at": "2023-11-23T14:56:12.925Z"
+    }
+},
+{
+    "model": "articles.comment",
+    "pk": 13,
+    "fields": {
+        "user": 4,
+        "article": 10,
+        "content": "삼전 ㄱㄱ",
+        "created_at": "2023-11-23T14:57:13.342Z"
+    }
+}
+]

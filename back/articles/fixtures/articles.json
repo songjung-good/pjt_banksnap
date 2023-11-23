@@ -1,0 +1,112 @@
+[
+{
+    "model": "articles.article",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "title": "안녕하세요.",
+        "content": "여기 글을 써 봅시다.",
+        "created_at": "2023-11-23T14:43:13.629Z",
+        "updated_at": "2023-11-23T14:43:13.629Z"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 2,
+    "fields": {
+        "user": 1,
+        "title": "어떤 상품이 괜찮나요?",
+        "content": "어디 투자할지 고민입니다..",
+        "created_at": "2023-11-23T14:43:51.973Z",
+        "updated_at": "2023-11-23T14:43:51.973Z"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 3,
+    "fields": {
+        "user": 2,
+        "title": "엔화 투자 합니다.",
+        "content": "지금 800원 중반대던데 괜찮지 않나요",
+        "created_at": "2023-11-23T14:45:33.944Z",
+        "updated_at": "2023-11-23T14:46:07.592Z"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 4,
+    "fields": {
+        "user": 3,
+        "title": "심심하다",
+        "content": "다들 뭐하세요",
+        "created_at": "2023-11-23T14:47:18.945Z",
+        "updated_at": "2023-11-23T14:47:18.945Z"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 5,
+    "fields": {
+        "user": 4,
+        "title": "선물 해보신 분",
+        "content": "계신가요",
+        "created_at": "2023-11-23T14:48:24.771Z",
+        "updated_at": "2023-11-23T14:48:24.771Z"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 6,
+    "fields": {
+        "user": 5,
+        "title": "우리은행 적금 어떤가요",
+        "content": "??",
+        "created_at": "2023-11-23T14:50:22.308Z",
+        "updated_at": "2023-11-23T14:50:22.308Z"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 7,
+    "fields": {
+        "user": 1,
+        "title": "안정추구형 나왔습니다.",
+        "content": "다들 뭐나옴?",
+        "created_at": "2023-11-23T14:51:34.903Z",
+        "updated_at": "2023-11-23T14:51:34.903Z"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 8,
+    "fields": {
+        "user": 2,
+        "title": "옥수수 사볼까 함",
+        "content": "어떻게 생각하세요",
+        "created_at": "2023-11-23T14:52:43.889Z",
+        "updated_at": "2023-11-23T14:52:43.889Z"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 9,
+    "fields": {
+        "user": 6,
+        "title": "살까 말까",
+        "content": "살까말까",
+        "created_at": "2023-11-23T14:55:52.947Z",
+        "updated_at": "2023-11-23T14:55:52.947Z"
+    }
+},
+{
+    "model": "articles.article",
+    "pk": 10,
+    "fields": {
+        "user": 3,
+        "title": "주식 종목",
+        "content": "추천받음",
+        "created_at": "2023-11-23T14:56:51.104Z",
+        "updated_at": "2023-11-23T14:56:51.104Z"
+    }
+}
+]
