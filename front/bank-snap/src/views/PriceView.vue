@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>실시간 시세</h1>
+  <div class="p-5">
+    <h1>현물 상품</h1>
     <Price />
   </div>
 </template>

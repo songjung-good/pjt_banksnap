@@ -1,7 +1,7 @@
 
 <template>
-    <div>
-        <h1>Interest-Rates</h1>
+    <div class="p-5">
+        <h1>저축성 상품</h1>
         <!-- 적금 -->
         <ul class="nav nav-tabs">
             <li class="nav-item">
