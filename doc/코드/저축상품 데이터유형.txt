@@ -1,0 +1,24 @@
+products	상품목록
+product	상품
+
+baseinfo	기본정보
+
+fin_prdt_cd **(text)		금융상품 코드
+kor_co_nm(text)		금융회사 명
+fin_prdt_nm(text)		금융 상품명
+etc_note(text)		기타 유의사항
+join_deny(int)		가입제한
+			Ex) 1:제한없음, 2:서민전용, 3:일부제한
+join_member(text)		가입대상
+join_way(text)		가입 방법
+spcl_cnd(text)		우대조건
+
+
+options
+
+product(int)		외래키
+fin_prdt_cd(text)		금융상품코드
+intr_rate_type_nm(char100)	저축 금리 유형명
+intr_rate(float)		저축 금리 [소수점 2자리]
+intr_rate2(float)		최고 우대금리 [소수점 2자리]
+save_trm(int)		저축 기간 [단위: 개월]
