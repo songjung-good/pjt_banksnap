@@ -111,7 +111,8 @@ def price(request):
   return Response(items)
 
 
-def save_bank(request):
+@api_view(['GET'])
+def bank(request):
   bank = Bank()
   bank.fin_co_no = 000000
   bank.kor_co_nm = '미선택'
@@ -194,3 +195,79 @@ def finance(request):
   data = response['result']['baseList']
   return Response(data)
 
+
+@api_view(['GET'])
+def saving_bank(request):
+  
+  authkey = settings.FINANCE_KEY
+  DP_URL = 'http://finlife.fss.or.kr/finlifeapi/depositProductsSearch.json'
+  SP_URL = 'http://finlife.fss.or.kr/finlifeapi/savingProductsSearch.json'
+
+  params = {
+        'auth': authkey,
+        'topFinGrpNo': '030300',
+        'pageNo': 1
+        }
+  
+  # 정기예금 목록 저장
+  response = requests.get(DP_URL, params=params).json()
+  baseList = response.get('result').get('baseList')   # 상품 목록
+  optionList = response.get('result').get('optionList')
+
+  for product in baseList:
+    if DepositProduct.objects.filter(fin_prdt_cd=product.get('fin_prdt_cd')).exists():
+      continue
+    if not Bank.objects.filter(fin_co_no=product.get('fin_co_no')).exists():
+      bank_serializer = BankSerializer(data=product)
+      if bank_serializer.is_valid():
+        bank = bank_serializer.save()
+    else:
+      bank = Bank.objects.get(fin_co_no=product.get('fin_co_no'))
+    # 저축은행 deposit_type = 1
+    product['deposit_type'] = 3
+    product_serializer = DepositProductSerializer(data=product)
+    
+    if product_serializer.is_valid(raise_exception=True):
+      product_serializer.save(bank=bank)
+
+
+  for option in optionList:
+        
+    product = DepositProduct.objects.get(fin_prdt_cd=option.get('fin_prdt_cd'))
+    if DepositOption.objects.filter(fin_prdt_cd=option.get('fin_prdt_cd'), save_trm=option.get('save_trm')).exists():
+      continue
+    option_serializer = DepositOptionSerializer(data=option)
+    if option_serializer.is_valid(raise_exception=True):
+        option_serializer.save(product=product)
+
+  # 적금 목록 저장
+  response = requests.get(SP_URL, params=params).json()
+  baseList = response.get('result').get('baseList')   # 상품 목록
+  optionList = response.get('result').get('optionList')
+
+  for product in baseList:
+    if DepositProduct.objects.filter(fin_prdt_cd=product.get('fin_prdt_cd')).exists():
+      continue
+    if not Bank.objects.filter(fin_co_no=product.get('fin_co_no')).exists():
+      bank_serializer = BankSerializer(data=product)
+      if bank_serializer.is_valid():
+        bank = bank_serializer.save()
+    else:
+      bank = Bank.objects.get(fin_co_no=product.get('fin_co_no'))
+    # 저축은행 deposit_type = 3
+    product['deposit_type'] = 3
+    product_serializer = DepositProductSerializer(data=product)
+    if product_serializer.is_valid(raise_exception=True):
+      product_serializer.save(bank=bank)
+
+  for option in optionList:
+        
+    product = DepositProduct.objects.get(fin_prdt_cd=option.get('fin_prdt_cd'))
+    if DepositOption.objects.filter(fin_prdt_cd=option.get('fin_prdt_cd'), save_trm=option.get('save_trm')).exists():
+      continue
+    option_serializer = DepositOptionSerializer(data=option)
+
+    if option_serializer.is_valid(raise_exception=True):
+        option_serializer.save(product=product)
+  data = response['result']['baseList']
+  return Response(data)
