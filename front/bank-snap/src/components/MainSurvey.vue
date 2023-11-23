@@ -63,23 +63,25 @@ const questions = ref([
 // },
 ]);
 
-const selectedAnswers = ref([]);
+const selectedAnswers = ref([NaN, NaN, NaN, NaN, NaN]);
 
 const submit = () => {
   // 서버로 선택된 답변을 전송하는 로직 추가
 
-  console.log('선택된 답변:', selectedAnswers.value);
-  console.log(selectedAnswers)
-  console.log(selectedAnswers.value)
   let sum = 0
   for (let i=0; i<selectedAnswers.value.length; i++){
     sum += selectedAnswers.value[i]
   }
-  router.push({
-    name: 'SurveyAnswer',
-    query: { selectedAnswers: sum
-    },
-  });
+  if (isNaN(sum)){
+    console.log(sum)
+    alert('모두 선택해 주세요.')
+  }else{
+    router.push({
+      name: 'SurveyAnswer',
+      query: { selectedAnswers: sum
+      },
+    });
+  }
 };
 </script>
 

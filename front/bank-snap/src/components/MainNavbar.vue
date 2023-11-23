@@ -79,18 +79,18 @@ const closeNavbar = () => {
                 ⚙️내 정보
               </RouterLink>
             </li>
-            <li>              
-              <RouterLink v-if="!isLogin" class="nav-link" :to="{ name: 'LoginView' }" >
+            <li class="nav-item" v-if="!isLogin">              
+              <RouterLink class="nav-link" :to="{ name: 'LoginView' }" >
                 🔑로그인
               </RouterLink>
             </li>
-            <li>
-              <a type="button" class="nav-link" @click="logout" v-if="isLogin">
+            <li class="nav-item" v-if="isLogin">
+              <a class="nav-link" type="button" @click="logout">
                 🔑로그아웃
               </a>
             </li>
-            <li>
-              <RouterLink v-if="!isLogin" class="nav-link" :to="{ name: 'SignUpView' }">
+            <li class="nav-item" v-if="!isLogin" >
+              <RouterLink class="nav-link" :to="{ name: 'SignUpView' }">
                 🖋️회원가입
               </RouterLink>
             </li>

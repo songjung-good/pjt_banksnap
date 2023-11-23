@@ -19,6 +19,9 @@
         <li class="nav-item">
           <div class="nav-link" :class="{ 'active': activeTab === 'coffee' }" @click="itemClick('coffee', 4)">커피</div>
         </li>
+        <li class="nav-item">
+          <div class="nav-link" :class="{ 'active': activeTab === 'corn' }" @click="itemClick('corn', 5)">옥수수</div>
+        </li>
 
       </ul>
       <div v-if="item">

@@ -11,6 +11,9 @@
             <li class="nav-item">
                 <RouterLink :to="{ name: 'SavingView' }" class="nav-link active" aria-current="page">적금</RouterLink>
             </li>
+            <li class="nav-item">
+                <RouterLink :to="{ name: 'SavingBankView' }" class="nav-link">저축은행</RouterLink>
+            </li>
         </ul>
         <DepositList type="saving" />        
     </div>

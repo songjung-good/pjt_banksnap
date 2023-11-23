@@ -2,7 +2,7 @@
 <template>
   <div class="container p-5">
     <div class="text-center">
-      <h2 class="text-center">고객님의 저축성향은?</h2>
+      <h2 class="text-center">고객님의 투자성향은?</h2>
       <div class="card m-3">
         <div class="card-body p-5">
 
@@ -14,12 +14,33 @@
           <br>
           <div v-if="product">
           <h3>이런 상품을 추천합니다!</h3>
-            <div v-for="p in product">
-              <p class="lead">
+            <!-- <div v-for="p in product"> -->
+              <!-- <div class="container">
+                <div class="row "> -->
+
+                  <div class="row">
+                    <div class="col d-flex justify-content-center p-5" v-for="p in product" >
+                      <div class="card h-100" style="width: 18rem;">
+                        <img :src="p.img" class="card-img-top" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ p.name }}</h5>
+                          <p class="card-text">{{ p.content }}</p>
+                      <a class="btn btn-outline-secondary" :href="p.url">{{ p.name }}정보 보러가기</a>
+                    </div>
+                  <!-- </div>
+                  </div> -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- <p class="lead">
                 {{ p.name }}
                 <a class="btn btn-outline-secondary" :href="p.url">정보 보러가기</a>
-              </p>
-            </div>
+              </p> -->
+
+
+
+            <!-- </div> -->
           </div>
         </div>
       </div>
@@ -61,16 +82,31 @@ onMounted(() => {
 })
 
 const products = ref([
-  [{name: '예금', url: '/deposit'}, {name:'적금', url: '/saving'}],
-  [{name: '저축은행 상품', url: 'main'}],
-  [{name: '외환 상품', url: '/exchange'}],
-  [{name: '현물 상품', url: '/price'}],
-  [{name: '주식', url: 'https://finance.naver.com/'}, {name: '선물', url: '/price'}]
+  [
+    {name: '예금', url: '/deposit', img: 'src/assets/deposit_2.jpg', content: '이자가 낮은 대신 입금/출금/송금이 자유로운 상품'},
+    {name:'적금', url: '/saving', img: 'src/assets/deposit.jpg', content: '자금을 일정 기간동안 약정된 금리로 예치해 두는 상품'}
+  ],
+  [
+    {name: '저축은행 상품', url: '/savingBank', img: 'src/assets/deposit.jpg', content: '일반 예/적금 보다 조금 더 높은 수익을 기대할 수 있는 상품'}
+  ],
+  [
+    {name: '외환 상품', url: '/exchange', img: 'src/assets/money.png', content: '다른 국가의 통화나 외국 환율을 기반으로 하는 투자 상품'}
+  ],
+  [
+    {name: '현물 상품', url: '/price', img: 'src/assets/gold.jpg', content: '물리적으로 보유하는 금, 은과 같은 상품에 투자하여 시장 가격 변동으로 이익을 얻을 수 있는 상품'}
+  ],
+  [
+    {name: '주식', url: 'https://finance.naver.com/', img: 'src/assets/stock.jpg', content: '위험을 감내하더라도 높은 수준의 투자 수익을 얻을 수 있는 상품'}, 
+    {name: '선물', url: '/price', img: 'src/assets/coffee.jpg', content: ' 미래의 특정 시점에 특정 가격으로 상품을 매매하는 투자'}
+  ]
 ])
 
 </script>
   
 <style scoped>
-/* 필요한 스타일링을 추가하세요 */
+img {
+  height: 250px;
+  object-fit: cover;  
+}
 </style>
   
