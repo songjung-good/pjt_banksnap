@@ -12,16 +12,45 @@
     </ul>
     <h1 class="p-5">{{ username }} 님의 프로필</h1>
       <div class="card-group">
-
-        <template v-if="articles.length > 0">
-          <ProfileArticle :articles="articles" />
-        </template>
-        <template v-if="comments.length > 0">
-          <ProfileComment :comments="comments" />
-        </template>
-        <template v-if="products.length > 0">
-          <ProfileProduct :products="products" />
-        </template>
+        <div class="card">
+          <div class="card-header text-center">
+                <h5>작성 게시글</h5>
+            </div>
+          <template v-if="articles.length > 0">
+            <ProfileArticle :articles="articles" />
+          </template>
+          <template v-else>
+            <div class="card-body">
+              <p>작성 게시글이 없습니다.</p>
+            </div>
+          </template>
+        </div>
+        <div class="card">
+          <div class="card-header text-center">
+                <h5>작성 댓글</h5>
+            </div>
+          <template v-if="comments.length > 0">
+            <ProfileComment :comments="comments" />
+          </template>
+          <template v-else>
+            <div class="card-body">
+              <p>작성 댓글이 없습니다.</p>
+            </div>
+          </template>
+        </div>
+        <div class="card">
+          <div class="card-header text-center">
+                <h5>관심 상품</h5>
+            </div>
+          <template v-if="products.length > 0">
+            <ProfileProduct :products="products" />
+          </template>
+          <template v-else>
+            <div class="card-body">
+              <p>관심 상품이 없습니다.</p>
+            </div>
+          </template>
+        </div>
       </div>
     </div>
     

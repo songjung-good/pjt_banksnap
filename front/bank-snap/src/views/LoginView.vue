@@ -12,7 +12,7 @@
           <input type="password" v-model.trim="password" class="form-control" id="floatingPassword" placeholder="Password">
           <label for="floatingPassword">비밀번호</label>
         </div>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+        <button class="w-100 btn btn-lg btn-outline-success" type="submit">로그인</button>
         <p class="mt-5 mb-3 text-muted">안녕하세요, 고객님!</p>
       </form>
     </main>

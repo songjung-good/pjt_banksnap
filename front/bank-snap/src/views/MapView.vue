@@ -1,25 +1,38 @@
 <template>
-  <div>
-    <h1>MAP</h1>
+  <div class="container p-5">
+    <h1>은행 찾기</h1>
+    <!-- <div class="containe"></div> -->
+    <div class="row p-3">
+        <div class="col-2 p-1">
+            <select v-model="selectedLocal1" class="form-control">    
+                <option v-for="local1 in localType1" :key="local1" :value="local1">
+                    {{ local1 }}
+                </option>            
+            </select>
+        </div>
+        <div class="col-2 p-1">
 
-    <div>
-        <select v-model="selectLocal1">
-            <option v-for="local1 in localType1" :key="local1" :value="local1">
-                {{ local1 }}
-            </option>            
-        </select>
-        <select v-model="selectLocal2">
-            <option v-for="local2 in localType2" :key="local2" :value="local2">{{ local2 }}</option>            
-        </select>
-        <select v-model="selectLocal3">
-            <option v-for="local3 in localType3" :key="local3" :value="local3">{{ local3 }}</option>            
-        </select>
-        <select v-model="selecteBank">
-            <option v-for="bank in banks" :key="bank" :value="bank">{{ bank }}</option>
-        </select>
-        <button @click="searchPlaces" class="btn btn-secondary">검색하기</button> 
+            <select v-model="selectedLocal2" class="form-control">
+                <option v-for="local2 in localType2" :key="local2" :value="local2">{{ local2 }}</option>            
+            </select>
+        </div>
+        <div class="col-2 p-1">
+            
+            <select v-model="selectedLocal3" class="form-control">
+                <option v-for="local3 in localType3" :key="local3" :value="local3">{{ local3 }}</option>            
+            </select>
+        </div>
+        <div class="col-2 p-1">
+            <select v-model="selecteBank" class="form-control">
+                <option v-for="bank in banks" :key="bank" :value="bank">{{ bank }}</option>
+            </select>
+        </div>
+        <div class="col-2 p-1">
+            <button @click="searchPlaces" class="btn btn-secondary col-12">검색하기</button> 
+        </div>
         
     </div>
+    <br>
     <div class="map_wrap">
     <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
     
@@ -51,9 +64,12 @@ const route = useRoute()
 let marker = ''
 
 // select 박스 설정
-const selectLocal1 = ref(Object.keys(local)[0])
-const selectLocal2 = ref(Object.keys(local[selectLocal1.value])[0])
-const selectLocal3 = ref(local[selectLocal1.value][selectLocal2.value][0])
+// const selectLocal1 = ref(Object.keys(local)[0])
+// const selectLocal2 = ref(Object.keys(local[selectLocal1.value])[0])
+// const selectLocal3 = ref(local[selectLocal1.value][selectLocal2.value][0])
+const selectedLocal1 = ref('부산광역시')
+const selectedLocal2 = ref('강서구')
+const selectedLocal3 = ref('녹산동')
 const coords = ref([37.566826, 126.9786567])
 const currentLocation = function() {
     
@@ -63,17 +79,17 @@ const currentLocation = function() {
 
 const localType1 = ref(Object.keys(local))
 const localType2 = computed(() => {
-    return Object.keys(local[selectLocal1.value])
+    return Object.keys(local[selectedLocal1.value])
 })
 const localType3 = computed(() => {
-    return local[selectLocal1.value][selectLocal2.value]
+    return local[selectedLocal1.value][selectedLocal2.value]
 })
 
-watch(selectLocal1, () => {
-    selectLocal2.value = Object.keys(local[selectLocal1.value])[0]
+watch(selectedLocal1, () => {
+    selectedLocal2.value = Object.keys(local[selectedLocal1.value])[0]
 })
-watch(selectLocal2, () => {
-    selectLocal3.value = local[selectLocal1.value][selectLocal2.value][0]
+watch(selectedLocal2, () => {
+    selectedLocal3.value = local[selectedLocal1.value][selectedLocal2.value][0]
 })
 
 
@@ -150,7 +166,7 @@ const loadMap = () => {
 
 };
 const searchPlaces = function() {
-    const keywordValue = `${selectLocal1.value} ${selectLocal2.value} ${selectLocal3.value} ${selecteBank.value}`
+    const keywordValue = `${selectedLocal1.value} ${selectedLocal2.value} ${selectedLocal3.value} ${selecteBank.value}`
     if (!keywordValue) {
       alert('키워드를 입력해주세요!');
       return;

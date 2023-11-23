@@ -12,6 +12,6 @@ class Propensity(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     bank = models.ForeignKey(Bank, on_delete=models.CASCADE)
     deposit_now = models.IntegerField(default=0)
-    deposit_type = models.CharField(max_length=10)
+    deposit_type = models.CharField(max_length=10, default='미선택')
     income = models.IntegerField(default=0)
     age = models.IntegerField(default=0)

@@ -30,6 +30,7 @@
             <label for="type" class="col-sm-2 col-form-label">투자성향</label>
             <div class="col-sm-3">
               <select class="form-control" v-model="depositType" id="type">
+                <option value="미선택">미선택</option>
                 <option value="안정형">안정형</option>
                 <option value="안정추구형">안정추구형</option>
                 <option value="위험중립형">위험중립형</option>

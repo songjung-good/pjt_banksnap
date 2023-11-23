@@ -95,6 +95,7 @@ export const useIndexStore = defineStore('index', () => {
       })
       .catch((err) => {
         console.log(err)
+        alert('아이디와 비밀번호를 확인해 주세요.')
       })
   }
   const logout = function () {
