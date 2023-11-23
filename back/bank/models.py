@@ -3,7 +3,7 @@ from django.conf import settings
 
 
 class Bank(models.Model):
-  fin_co_no = models.CharField(max_length=20)
+  fin_co_no = models.CharField(max_length=20, unique=True)
   kor_co_nm = models.CharField(max_length=30)
 
 
