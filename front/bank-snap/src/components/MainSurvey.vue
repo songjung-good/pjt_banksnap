@@ -1,7 +1,7 @@
 <!-- MainSurvey.vue -->
 <template>
-  <div class="container">
-    <h2 class="text-center">당신의 투자성향은?</h2>
+  <div class="container p-3">
+    <h2 class="text-center p-3">당신의 투자성향은?</h2>
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -19,8 +19,8 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <button type="button" class="btn btn-primary" @click="submit">제출</button>
+      <div class="col-md-12 text-center">
+        <button type="button" class="btn btn-secondary" @click="submit">제출</button>
       </div>
     </div>
   </div>

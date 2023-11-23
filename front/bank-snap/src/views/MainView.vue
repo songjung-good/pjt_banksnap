@@ -11,7 +11,7 @@ const showModal = () => {
 </script>
 
 <template>
-  <div class="d-flex h-100 text-center text-black bg-light">
+  <div class="d-flex h-100 text-center text-black bg-light pt-5">
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
       <header class="mb-auto">
         <!-- <div>
@@ -25,9 +25,12 @@ const showModal = () => {
       </header>
       <main class="px-3">
         <h1>당신의 자산을 투자하세요.</h1>
-        <p class="lead">가치있는 자산을 만들어, 고객의 오늘을 즐겁게. 당신이 직접 만들어 가는 가치 다양한 상품 확인하고 여러분의 자산을 투자하세요 Bank Snap이 함께하겠습니다.</p>
+        <br>
+        <p class="lead">가치있는 자산을 만들어, 고객의 오늘을 즐겁게.</p>
+        <p class="lead">당신이 직접 만들어 가는 가치 다양한 상품 확인하고 여러분의 자산을 투자하세요.</p> 
+        <p class="lead">Bank Snap이 함께하겠습니다.</p>
         <p class="lead">
-          <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-gray" @click="showModal">준비되셨나요?</a>
+          <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-gray" @click.prevent="showModal">준비되셨나요?</a>
         </p>
       </main>
       <video autoplay muted loop>

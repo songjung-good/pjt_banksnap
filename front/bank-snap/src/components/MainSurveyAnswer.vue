@@ -1,22 +1,31 @@
 <!-- MainSurveyAnswer.vue -->
 <template>
   <div class="container p-5">
+    <div class="text-center">
       <h2 class="text-center">고객님의 저축성향은?</h2>
       <div class="card m-3">
-        <div class="card-body text-center">
+        <div class="card-body p-5">
 
           <!-- 여기에 선택된 답변에 따른 결과를 표시하는 내용을 추가하세요 -->
           <h5>{{ result[0] }}</h5>
           <h3>{{ result[1] }}</h3>
-
+          <br>
           <hr>
+          <br>
+          <div v-if="product">
           <h3>이런 상품을 추천합니다!</h3>
-          <div v-for="p in product">
-            {{ p }}
+            <div v-for="p in product">
+              <p class="lead">
+                {{ p.name }}
+                <a class="btn btn-outline-secondary" :href="p.url">정보 보러가기</a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
+      <RouterLink class="btn btn-secondary" :to="{ name: 'Survey' }">다시하기</RouterLink>
     </div>
+  </div>
 </template>
 
 <script setup>
@@ -52,14 +61,12 @@ onMounted(() => {
 })
 
 const products = ref([
-  ['예금', '적금'],
-  ['저축 은행 상품']
-  ['외환 상품'],
-  ['현물 상품'],
-  ['주식, 선물']
+  [{name: '예금', url: '/deposit'}, {name:'적금', url: '/saving'}],
+  [{name: '저축은행 상품', url: 'main'}],
+  [{name: '외환 상품', url: '/exchange'}],
+  [{name: '현물 상품', url: '/price'}],
+  [{name: '주식', url: 'https://finance.naver.com/'}, {name: '선물', url: '/price'}]
 ])
-
-
 
 </script>
   

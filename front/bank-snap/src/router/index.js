@@ -46,7 +46,7 @@ const router = createRouter({
       component: () => import('../components/EconomyNewsVideo.vue')
     },
     {
-      path: '/calculator',
+      path: '/exchange',
       name: 'ExchangeCalculator',
       component: () => import('../views/ExchangeCalculatorView.vue')
     },
