@@ -101,7 +101,14 @@
   const exchange = function() {
     cur1.value = dataList.value.find(data => data.cur_nm === selectedCur1.value)
     cur2.value = dataList.value.find(data => data.cur_nm === selectedCur2.value)
-    const deal = Number(cur1.value.deal_bas_r.replace(/,/g, '')) / Number(cur2.value.deal_bas_r.replace(/,/g, ''))
+    let deal = Number(cur1.value.deal_bas_r.replace(/,/g, '')) / Number(cur2.value.deal_bas_r.replace(/,/g, ''))
+    if ((cur1.value.cur_nm === '일본 옌' || cur1.value.cur_nm === '인도네시아 루피아') && (cur2.value.cur_nm !== '일본 옌' || cur2.value.cur_nm !== '인도네시아 루피아')){
+      deal /= 100
+    }
+    if ((cur2.value.cur_nm === '일본 옌' || cur2.value.cur_nm === '인도네시아 루피아') && (cur2.value.cur_nm !== '일본 옌' || cur2.value.cur_nm !== '인도네시아 루피아')){
+      deal *= 100
+    }
+
     exchangeMoney2.value = (Number(exchangeMoney1.value) * deal).toFixed(2)
   }
   
