@@ -1,5 +1,4 @@
 <template>
-  <h1>SignUp</h1>
   <div class="text-center">
     <main class="form-signin">
       <form @submit.prevent="signUp">
