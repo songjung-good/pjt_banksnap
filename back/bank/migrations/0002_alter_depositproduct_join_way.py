@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('accounts', '0002_initial'),
+        ('bank', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='propensity',
-            name='deposit_type',
-            field=models.CharField(default='미선택', max_length=10),
+            model_name='depositproduct',
+            name='join_way',
+            field=models.TextField(default='none', null=True),
         ),
     ]

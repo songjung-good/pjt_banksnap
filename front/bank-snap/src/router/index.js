@@ -31,6 +31,11 @@ const router = createRouter({
       component: () => import('../views/SavingView.vue')
     },
     {
+      path: '/savingBank',
+      name: 'SavingBankView',
+      component: () => import('../views/SavingBankView.vue')
+    },
+    {
       path: '/product/:id',
       name: 'ProductDetailView',
       component: () => import('../views/ProductDetailView.vue')
