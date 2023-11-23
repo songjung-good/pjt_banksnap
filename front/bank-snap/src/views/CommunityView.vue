@@ -1,8 +1,8 @@
 
 <template>
 
-    <div>
-        <h1>Community</h1>
+    <div class="p-5">
+        <h1>커뮤니티</h1>
         
         <ArticleList />
         <div class="text-end" v-if="isLogin">

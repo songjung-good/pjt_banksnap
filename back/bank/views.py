@@ -13,13 +13,12 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 
 from bs4 import BeautifulSoup
 import urllib.request as req
-# from selenium import webdriver
 
 @api_view(['GET'])
 def exchange(request):
   authkey = settings.EXCHANGE_KEY
-  # now = datetime.datetime.now().strftime("%Y%m%d")
-  now = 20231117
+  now = datetime.datetime.now().strftime("%Y%m%d")
+  
   data = 'AP01'
   URL = 'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON'
   params = {
@@ -132,7 +131,6 @@ def deposit_detail(request, product_id):
     'product': serializer.data,
     'is_liked': is_liked
   }
-  # return Response(serializer.data)
   return Response(response)
 
 

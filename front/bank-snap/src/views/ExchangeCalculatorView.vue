@@ -1,5 +1,5 @@
 <template>
-    <div class="p-2">
+    <div class="p-3">
       <h1>외환상품</h1>
       <br>
       <div>
@@ -102,7 +102,7 @@
     cur1.value = dataList.value.find(data => data.cur_nm === selectedCur1.value)
     cur2.value = dataList.value.find(data => data.cur_nm === selectedCur2.value)
     const deal = Number(cur1.value.deal_bas_r.replace(/,/g, '')) / Number(cur2.value.deal_bas_r.replace(/,/g, ''))
-    exchangeMoney2.value = Number(exchangeMoney1.value) * deal
+    exchangeMoney2.value = (Number(exchangeMoney1.value) * deal).toFixed(2)
   }
   
   
