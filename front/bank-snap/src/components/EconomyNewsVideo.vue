@@ -7,7 +7,7 @@ const apiKey = import.meta.env.VITE_VIDEO_API_KEY;
 const router = useRouter()
 const videos = ref([])
 const searchURL = 'https://www.googleapis.com/youtube/v3/search?'
-const searchTerm = '경제'
+const searchTerm = '한국경제'
 
 const params = {
         key: apiKey,
