@@ -33,7 +33,7 @@
 
 - |                      장지민(도자기.VER)                      |                      배영환(인생샷.PNG)                      |
   | :----------------------------------------------------------: | :----------------------------------------------------------: |
-  | <img src="C:\Users\SSAFY\Desktop\projectBankSnap\doc\디자인\godgodgod.png" alt="장지민" style="zoom:150%;" /> | <img src="C:\Users\SSAFY\Desktop\projectBankSnap\doc\디자인\yeonghwan.png" alt="배영환" style="zoom:150%;" /> |
+  | <img src=".\doc\디자인\godgodgod.png" alt="장지민" style="zoom:150%;" /> | <img src=".\doc\디자인\yeonghwan.png" alt="배영환" style="zoom:150%;" /> |
   |                  https://github.com/jjm6604                  |              https://github.com/songjung-good/               |
 
   
