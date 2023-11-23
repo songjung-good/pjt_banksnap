@@ -7,9 +7,9 @@ const store = useIndexStore()
 const username = ref(null)
 const userId = ref(null)
 const bank = ref(null)
-const age = ref(-11)
-const income = ref(-11)
-const depositNow = ref(-11)
+const age = ref(0)
+const income = ref(0)
+const depositNow = ref(0)
 const depositType = ref('무')
 onMounted(() => {
   axios({
