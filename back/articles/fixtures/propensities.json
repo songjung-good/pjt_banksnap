@@ -1,0 +1,74 @@
+[
+{
+    "model": "accounts.propensity",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "bank": 5,
+        "deposit_now": 100000000,
+        "deposit_type": "안정추구형",
+        "income": 50000000,
+        "age": 28
+    }
+},
+{
+    "model": "accounts.propensity",
+    "pk": 2,
+    "fields": {
+        "user": 2,
+        "bank": 9,
+        "deposit_now": 10000000,
+        "deposit_type": "안정형",
+        "income": 40000000,
+        "age": 26
+    }
+},
+{
+    "model": "accounts.propensity",
+    "pk": 3,
+    "fields": {
+        "user": 3,
+        "bank": 15,
+        "deposit_now": 20000000,
+        "deposit_type": "안정추구형",
+        "income": 38000000,
+        "age": 22
+    }
+},
+{
+    "model": "accounts.propensity",
+    "pk": 4,
+    "fields": {
+        "user": 4,
+        "bank": 13,
+        "deposit_now": 40000000,
+        "deposit_type": "적극투자형",
+        "income": 60000000,
+        "age": 25
+    }
+},
+{
+    "model": "accounts.propensity",
+    "pk": 5,
+    "fields": {
+        "user": 5,
+        "bank": 12,
+        "deposit_now": 30000000,
+        "deposit_type": "안정추구형",
+        "income": 50000000,
+        "age": 25
+    }
+},
+{
+    "model": "accounts.propensity",
+    "pk": 6,
+    "fields": {
+        "user": 6,
+        "bank": 12,
+        "deposit_now": 40000000,
+        "deposit_type": "안정추구형",
+        "income": 40000000,
+        "age": 25
+    }
+}
+]
