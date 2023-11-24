@@ -1,5 +1,6 @@
-
-
+<p align="center">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,2,3&height=250&section=header&text=Bank%20Snap&animation=fadeIn&fontColor=3366FF&fontSize=90">
+</p>
 <body>
 <img src="header_photo.png" alt="배너 그림" />
 </body>
