@@ -87,6 +87,7 @@
   <img src="https://img.shields.io/badge/Framework-Vue-red?style=flat&logo=vue.js&logoColor=white">
   <img src="https://img.shields.io/badge/Library-Bootstrap-purple?style=flat&logo=bootstrap&logoColor=white">
 </p>
+
 - window10
 - python: 3.9.13
 - JavaScript: es6++
