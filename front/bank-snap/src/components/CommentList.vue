@@ -30,7 +30,6 @@ onMounted(() => {
     })
       .then((res) =>{
         comments.value = res.data
-        console.log(res.data)
       })
       .catch((err) => {
         console.log(err)

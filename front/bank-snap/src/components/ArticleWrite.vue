@@ -1,6 +1,6 @@
 <template>
   <div class="p-5">
-    <h1>{{ type }}</h1>
+    <h1>게시글 작성</h1>
     <form @submit.prevent="writeArticle">
       
       <div class="input-group">

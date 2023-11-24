@@ -42,7 +42,6 @@ onMounted(() => {
   })
     .then((response) => {
       newsList.value = response.data.items
-      console.log(response.data)
     })
     .catch((error) => {
       console.error(error)
