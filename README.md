@@ -113,7 +113,7 @@
 
 ## ERD
 
-![DB구조](.\doc\구조\ERD_plus.png)
+![DB구조](./doc/구조/ERD_plus.png)
 
   <br> <br>
 
@@ -121,7 +121,7 @@
 
 
 
-![아키텍쳐](.\doc\구조\아키텍쳐.png)
+![아키텍쳐](./doc/구조/아키텍쳐.png)
 
 
 
