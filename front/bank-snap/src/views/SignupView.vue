@@ -2,7 +2,7 @@
   <div class="text-center">
     <main class="form-signin">
       <form @submit.prevent="signUp">
-        <img class="mb-4" src="../assets/logo_nonbackgroound.png" alt="" width="80" height="57">
+        <img class="mb-4 mt-4" src="../assets/logo_nonbackgroound.png" alt="" height="40">
         <h1 class="h3 mb-3 fw-normal">회원가입</h1>
         <div class="form-floating pb-2">
           <input type="text" v-model.trim="username" class="form-control" id="floatingInput" placeholder="ID">
@@ -21,7 +21,7 @@
           <label for="floatingInput">나이</label>
         </div>
         <button class="w-100 btn btn-lg btn-outline-success" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">뱅크스냅에 오신 것을 환영합니다!</p>
+        <p class="mt-5 mb-3 text-muted">iM뱅크에 오신 것을 환영합니다!</p>
       </form>
     </main>
   </div>

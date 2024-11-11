@@ -67,9 +67,9 @@ let marker = ''
 // const selectLocal1 = ref(Object.keys(local)[0])
 // const selectLocal2 = ref(Object.keys(local[selectLocal1.value])[0])
 // const selectLocal3 = ref(local[selectLocal1.value][selectLocal2.value][0])
-const selectedLocal1 = ref('부산광역시')
-const selectedLocal2 = ref('강서구')
-const selectedLocal3 = ref('녹산동')
+const selectedLocal1 = ref('대구광역시')
+const selectedLocal2 = ref('북구')
+const selectedLocal3 = ref('산격2동')
 const coords = ref([37.566826, 126.9786567])
 const currentLocation = function() {
     
@@ -93,7 +93,7 @@ watch(selectedLocal2, () => {
 })
 
 
-const banks = ["국민은행","우리은행","신한은행","KEB하나은행","한국스탠다드차타드은행","외한은행","한국시티은행","경남은행","광주은행","대구은행","부산은행","전북은행","제주은행","기업은행","농협","수협","한국산업은행","한국수출입은행"]
+const banks = ["국민은행","우리은행","신한은행","KEB하나은행","한국스탠다드차타드은행","외한은행","한국시티은행","경남은행","광주은행","iM뱅크","부산은행","전북은행","제주은행","기업은행","농협","수협","한국산업은행","한국수출입은행"]
 const selecteBank = ref(route.params.bank)
 
 

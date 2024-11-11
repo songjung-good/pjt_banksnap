@@ -37,7 +37,7 @@ const closeNavbar = () => {
     <nav class="navbar navbar-expand-lg bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">
-          <img alt="Pjt logo" class="logo" src="@/assets/logo_nonbackgroound.png" height="50" @click="goHome" />
+          <img alt="Pjt logo" class="logo" src="@/assets/logo_nonbackgroound.png" height="35" @click="goHome" />
         </a>
         <button class="navbar-toggler bg-light" type="button" @click="toggleNavbar">
           <span class="navbar-toggler-icon"></span>

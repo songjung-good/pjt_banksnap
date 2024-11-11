@@ -2,7 +2,7 @@
   <div class="text-center">
     <main class="form-signin">
       <form @submit.prevent="login">
-        <img class="mb-4" src="../assets/logo_nonbackgroound.png" alt="" width="80" height="57">
+        <img class="mb-4 mt-4" src="../assets/logo_nonbackgroound.png" alt="" height="40">
         <h1 class="h3 mb-3 fw-normal">로그인페이지</h1>
         <div class="form-floating">
           <input type="text" v-model.trim="username" class="form-control" id="floatingInput" placeholder="ID">
