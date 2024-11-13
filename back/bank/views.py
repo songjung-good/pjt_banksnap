@@ -23,7 +23,7 @@ def exchange(request):
   URL = 'https://www.koreaexim.go.kr/site/program/financial/exchangeJSON'
   params = {
     'authkey': authkey,
-    'searchdate': now,
+    'searchdate': '20241108',
     'data': data,
   }
   response = requests.get(URL, params).json()
